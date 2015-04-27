@@ -1,0 +1,173 @@
+
+var logger        = require('yocto-logger');
+var _             = require('lodash');
+var path          = require('path');
+var crypto        = require('crypto');
+
+
+
+/**
+ * Yocto utilities functions.
+ * Utils contains all utilities functions for yocto core stack
+ *
+ * For more details on these dependencies read links below :
+ * - yocto-logger : http://lab.yocto.digital:8888/yocto-node-modules/yocto-logger
+ * - LodAsh : https://lodash.com/
+ * - crypto : https://nodejs.org/api/crypto.html
+ * - path : https://nodejs.org/api/path.html
+ *
+ *
+ * @date : 27/04/2015
+ * @author : Mathieu ROBERT <mathieu@yocto.re>, Cédric BALARD <cedric@yocto.re>
+ * @copyright : Yocto SAS, All right reserved
+ * @class Utils
+ */
+Utils = function() {};
+
+/**
+ * Force a require file to be reload from root path of the app
+ * @param (String), path, the current path to use
+ */
+Utils.prototype.forceRelodRequire = function(path) {
+  delete(require.cache[path]);
+  //return require(_.join('/', '../..', path, true));
+  return _(['../..', path, true]).join('/');
+};
+
+/**
+ * Return true if has no difference between source and compare list
+ * @param (Array|Object), source list of item
+ * @param (Array|Object), compate list of item
+ * @return (Boolean), true is no difference, false otherwise
+ */
+Utils.prototype.allItemIsInList = function(source, compare) {
+  if (!_.isUndefined(source) && !_.isUndefined(compare)) {
+
+    if (!_.isArray(source) && _.isObject(source)) {
+      source = Object.keys(source);
+    }
+
+    if (!_.isArray(compare) && _.isObject(compare)) {
+      compare = Object.keys(compare);
+    }
+
+    if (_.isArray(source) && _.isArray(compare)) {
+      return _.isEmpty(_.difference(source, compare));
+    }
+  }
+
+  return false;
+};
+
+
+/**
+ * Return a password from two rules
+ * @param (Integer), n, password length
+ * @param (String), a, chars to use
+ */
+Utils.prototype.randomizedPassword = function(n, a) {
+
+  if (_.isUndefined(a) || _.isEmpty(a) || _.isNull(a)) {
+    a = 'qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890&(!-_%<>';
+  }
+
+  var index = (Math.random() * (a.length - 1)).toFixed(0);
+  return n > 0 ? a[index] + this.randomizedPassword(n - 1, a) : '';
+};
+
+/**
+ * Utility function to encrypt data
+ * @param (String), key, key to use for encryption
+ * @param (Mixed), data, data to encrypt
+ * @return (String), crypted data
+ */
+Utils.prototype.encrypt = function(key, data) {
+  data = JSON.stringify(data);
+
+  var cipher  = crypto.createCipher('aes256', key);
+  var crypted = cipher.update(data, 'utf-8', 'hex');
+  crypted     += cipher.final('hex');
+
+  return crypted;
+};
+
+
+/**
+ * Utility function to decrypt data
+ * @param (String), key, key to use for encryption
+ * @param (Mixed), data, data to encrypt
+ * @return (String), decrypted data
+ */
+Utils.prototype.decrypt = function(key, data) {
+  var decipher  = crypto.createDecipher('aes256', key);
+  var decrypted = decipher.update(data, 'hex', 'utf-8');
+  decrypted     += decipher.final('utf-8');
+
+  return JSON.parse(decrypted);
+};
+
+/**
+ * Utility function to build date list for search view
+ * @param (Integer), min, start value
+ * @param (Integer), max, end value
+ * @param (String), prefixMin, prefix to use on min value
+ * @param (String), prefixMax, prefix to use on max value
+ * @param (Boolean), reverse, true if we need to reverse array
+ * @return (Array), list of date
+ */
+Utils.prototype.generateSearchDateList = function(min, max, prefixMin, prefixMax, reverse) {
+  var list  = [];
+  var date  = new Date();
+
+  // init with default value to prevent infinite loop
+  max       = max || date.getFullYear();
+  min       = min || 0;
+
+  // process number
+  for(var i = min; i <= max; i++) {
+    list.push(i.toString());
+  }
+
+  // check is prefix is needed on list
+  if (!_.isNull(prefixMin) && !_.isEmpty(prefixMin)) {
+    list[0] = _([ prefixMin, list[0]]).join(' ');
+  }
+
+  // check is prefix is needed on list
+  if (!_.isNull(prefixMax) && !_.isEmpty(prefixMax)) {
+    list[list.length - 1] = _([ prefixMax, list[list.length - 1]] ).join(' ');
+  }
+
+  // reverse if needed
+  if (!_.isNull(reverse) && reverse) {
+    list = list.reverse();
+  }
+
+  return list;
+};
+
+/**
+ * Return the correct host from a request header.
+ * Implement x-forwarded data
+ * @param (Object), HTTP request object
+ */
+Utils.prototype.getCorrectHost = function(request) {
+  if (!_.isUndefined(request)) {
+    return _( [request.protocol,  request.get('x-forwarded-host') || request.get('x-forwarded-server') || request.get('host') || 'localhost' ] ).join('://' );
+  }
+  return null;
+};
+
+/**
+ * Check if is an allowed image type format
+ * @param (String), type to check
+ * @return (Boolean), true if is correct false otherwise
+ */
+Utils.prototype.isValidImageFormat = function(type) {
+  type = _(['', type.toLowerCase(), '']).join('|');
+  return '|jpg|png|jpeg|gif|'.indexOf(type) !== -1;
+};
+
+
+
+module.exports = new (Utils)();

@@ -1,0 +1,341 @@
+{
+    "project": {
+        "name": "yocto-utils",
+        "description": "Utils contains all utilities functions for yocto core stack",
+        "version": "0.1.0",
+        "url": "http://www.yocto.re"
+    },
+    "files": {
+        "exemple/test.js": {
+            "name": "exemple/test.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/index.js": {
+            "name": "src/index.js",
+            "modules": {},
+            "classes": {
+                "Utils": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "gruntfile.js": {
+            "name": "gruntfile.js",
+            "modules": {
+                "Grunt file": 1,
+                "jshint": 1,
+                "yuidoc": 1,
+                "uglify": 1
+            },
+            "classes": {
+                "Gruntfile": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {
+        "Grunt file": {
+            "name": "Grunt file",
+            "submodules": {
+                "jshint": 1,
+                "yuidoc": 1,
+                "uglify": 1
+            },
+            "classes": {
+                "Utils": 1,
+                "Gruntfile": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "gruntfile.js",
+            "line": 2,
+            "description": "Gruntfile.js is used to configure or define tasks and load Grunt plugins.\n\nUse uglify with Grunt to minify all \".js\" file in documentation\nUse yuidoc to generate the docs"
+        },
+        "jshint": {
+            "name": "jshint",
+            "submodules": {},
+            "classes": {},
+            "fors": {},
+            "is_submodule": 1,
+            "namespaces": {},
+            "module": "Grunt file",
+            "namespace": "",
+            "file": "gruntfile.js",
+            "line": 21,
+            "description": "Jshint permit to flags suspicious usage in programs"
+        },
+        "yuidoc": {
+            "name": "yuidoc",
+            "submodules": {},
+            "classes": {},
+            "fors": {},
+            "is_submodule": 1,
+            "namespaces": {},
+            "module": "Grunt file",
+            "namespace": "",
+            "file": "gruntfile.js",
+            "line": 33,
+            "description": "Yuidoc permit to generate the yuidoc of the Yocto Stack Generator"
+        },
+        "uglify": {
+            "name": "uglify",
+            "submodules": {},
+            "classes": {
+                "Gruntfile": 1
+            },
+            "fors": {},
+            "is_submodule": 1,
+            "namespaces": {},
+            "module": "Grunt file",
+            "namespace": "",
+            "file": "gruntfile.js",
+            "line": 2,
+            "description": "Uglify permit to minify javascript file"
+        }
+    },
+    "classes": {
+        "Utils": {
+            "name": "Utils",
+            "shortname": "Utils",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Grunt file",
+            "file": "src/index.js",
+            "line": 9,
+            "description": "Yocto utilities functions.\nUtils contains all utilities functions for yocto core stack\n\nFor more details on these dependencies read links below :\n- yocto-logger : http://lab.yocto.digital:8888/yocto-node-modules/yocto-logger\n- LodAsh : https://lodash.com/\n- crypto : https://nodejs.org/api/crypto.html\n- path : https://nodejs.org/api/path.html",
+            "date": ": 27/04/2015",
+            "author": ": Mathieu ROBERT <mathieu@yocto.re>, Cédric BALARD <cedric@yocto.re>",
+            "copyright": ": Yocto SAS, All right reserved"
+        },
+        "Gruntfile": {
+            "name": "Gruntfile",
+            "shortname": "Gruntfile",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Grunt file",
+            "file": "gruntfile.js",
+            "line": 2,
+            "description": "Gruntfile.js is used to configure or define tasks and load Grunt plugins.\n\nUse uglify with Grunt to minify all \".js\" file in documentation\nUse yuidoc to generate the docs",
+            "date": "21/04/2015",
+            "author": "ROBERT Mathieu <mathieu@yocto.re>",
+            "copyright": "Yocto SAS, All Right Reserved <http://www.yocto.re>",
+            "submodule": "uglify"
+        }
+    },
+    "classitems": [
+        {
+            "file": "exemple/test.js",
+            "line": 1,
+            "description": "Class that just test utils function\n\nadd test for :\n-forceRelodRequire\n-getCorrectHost",
+            "class": "Utils"
+        },
+        {
+            "file": "src/index.js",
+            "line": 27,
+            "description": "Force a require file to be reload from root path of the app",
+            "params": [
+                {
+                    "name": "(String),",
+                    "description": "path, the current path to use"
+                }
+            ],
+            "class": "Utils"
+        },
+        {
+            "file": "src/index.js",
+            "line": 37,
+            "description": "Return true if has no difference between source and compare list",
+            "params": [
+                {
+                    "name": "(Array|Object),",
+                    "description": "source list of item"
+                },
+                {
+                    "name": "(Array|Object),",
+                    "description": "compate list of item"
+                }
+            ],
+            "return": {
+                "description": "(Boolean), true is no difference, false otherwise"
+            },
+            "class": "Utils"
+        },
+        {
+            "file": "src/index.js",
+            "line": 63,
+            "description": "Return a password from two rules",
+            "params": [
+                {
+                    "name": "(Integer),",
+                    "description": "n, password length"
+                },
+                {
+                    "name": "(String),",
+                    "description": "a, chars to use"
+                }
+            ],
+            "class": "Utils"
+        },
+        {
+            "file": "src/index.js",
+            "line": 78,
+            "description": "Utility function to encrypt data",
+            "params": [
+                {
+                    "name": "(String),",
+                    "description": "key, key to use for encryption"
+                },
+                {
+                    "name": "(Mixed),",
+                    "description": "data, data to encrypt"
+                }
+            ],
+            "return": {
+                "description": "(String), crypted data"
+            },
+            "class": "Utils"
+        },
+        {
+            "file": "src/index.js",
+            "line": 95,
+            "description": "Utility function to decrypt data",
+            "params": [
+                {
+                    "name": "(String),",
+                    "description": "key, key to use for encryption"
+                },
+                {
+                    "name": "(Mixed),",
+                    "description": "data, data to encrypt"
+                }
+            ],
+            "return": {
+                "description": "(String), decrypted data"
+            },
+            "class": "Utils"
+        },
+        {
+            "file": "src/index.js",
+            "line": 109,
+            "description": "Utility function to build date list for search view",
+            "params": [
+                {
+                    "name": "(Integer),",
+                    "description": "min, start value"
+                },
+                {
+                    "name": "(Integer),",
+                    "description": "max, end value"
+                },
+                {
+                    "name": "(String),",
+                    "description": "prefixMin, prefix to use on min value"
+                },
+                {
+                    "name": "(String),",
+                    "description": "prefixMax, prefix to use on max value"
+                },
+                {
+                    "name": "(Boolean),",
+                    "description": "reverse, true if we need to reverse array"
+                }
+            ],
+            "return": {
+                "description": "(Array), list of date"
+            },
+            "class": "Utils"
+        },
+        {
+            "file": "src/index.js",
+            "line": 149,
+            "description": "Return the correct host from a request header.\nImplement x-forwarded data",
+            "params": [
+                {
+                    "name": "(Object),",
+                    "description": "HTTP request object"
+                }
+            ],
+            "class": "Utils"
+        },
+        {
+            "file": "src/index.js",
+            "line": 161,
+            "description": "Check if is an allowed image type format",
+            "params": [
+                {
+                    "name": "(String),",
+                    "description": "type to check"
+                }
+            ],
+            "return": {
+                "description": "(Boolean), true if is correct false otherwise"
+            },
+            "class": "Utils"
+        }
+    ],
+    "warnings": [
+        {
+            "message": "unknown tag: date",
+            "line": " src/index.js:9"
+        },
+        {
+            "message": "unknown tag: copyright",
+            "line": " src/index.js:9"
+        },
+        {
+            "message": "unknown tag: date",
+            "line": " gruntfile.js:2"
+        },
+        {
+            "message": "unknown tag: copyright",
+            "line": " gruntfile.js:2"
+        },
+        {
+            "message": "Missing item type\nClass that just test utils function\n\nadd test for :\n-forceRelodRequire\n-getCorrectHost",
+            "line": " exemple/test.js:1"
+        },
+        {
+            "message": "Missing item type\nForce a require file to be reload from root path of the app",
+            "line": " src/index.js:27"
+        },
+        {
+            "message": "Missing item type\nReturn true if has no difference between source and compare list",
+            "line": " src/index.js:37"
+        },
+        {
+            "message": "Missing item type\nReturn a password from two rules",
+            "line": " src/index.js:63"
+        },
+        {
+            "message": "Missing item type\nUtility function to encrypt data",
+            "line": " src/index.js:78"
+        },
+        {
+            "message": "Missing item type\nUtility function to decrypt data",
+            "line": " src/index.js:95"
+        },
+        {
+            "message": "Missing item type\nUtility function to build date list for search view",
+            "line": " src/index.js:109"
+        },
+        {
+            "message": "Missing item type\nReturn the correct host from a request header.\nImplement x-forwarded data",
+            "line": " src/index.js:149"
+        },
+        {
+            "message": "Missing item type\nCheck if is an allowed image type format",
+            "line": " src/index.js:161"
+        }
+    ]
+}
