@@ -1,17 +1,15 @@
-'use-strict';
+'use strict';
 
-var logger        = require('yocto-logger');
 var _             = require('lodash');
 var path          = require('path');
 var crypto        = require('crypto');
-
 
 /**
  * Yocto utilities functions.<br/>
  * Utils contains all utilities functions for yocto core stack
  *
  * For more details on these dependencies read links below :
- * - yocto-logger : lab.yocto.digital:yocto-node-modules/yocto-utils.git
+ * - yocto-logger : git+ssh://lab.yocto.digital:yocto-node-modules/yocto-utils.git
  * - LodAsh : https://lodash.com/
  * - crypto : https://nodejs.org/api/crypto.html
  * - path : https://nodejs.org/api/path.html
@@ -24,6 +22,40 @@ var crypto        = require('crypto');
  * @class Utils
  */
 function Utils() {}
+
+/**
+ * Rename key utility function. Parse an object from key and rename this key
+ * 
+ * @method renameKey
+ * @param {Object} object reference to use
+ * @param {String} reference key to use on object
+ * @param {String} new key to use on current object
+ * @return {Object} object to use. empty object if required checking format is invalid
+ */
+Utils.prototype.renameKey = function(o, key, newKey) {
+
+  // nested check
+  if (!_.isUndefined(o) && !_.isNull(o) && _.isObject(o) &&
+    !_.isUndefined(key) && !_.isNull(key) && _.isString(key) &&
+    !_.isUndefined(newKey) && !_.isNull(newKey) && _.isString(newKey)) {
+
+    // clone object
+    var c     = _.clone(o);
+    var value = c[key];
+  
+    // remove non needed key
+    delete c[key];    
+  
+    // set new key
+    _.set(c, newKey, value);
+  
+    // return object 
+    return c;        
+  }
+
+  // return default object
+  return {};  
+};
 
 /**
  * Force a require file to be reload from root path of the app
@@ -66,7 +98,6 @@ Utils.prototype.allItemIsInList = function(source, compare) {
   return false;
 };
 
-
 /**
  * Return a password from two rules
  * @method randomizedPassword
@@ -86,6 +117,7 @@ Utils.prototype.randomizedPassword = function(n, a) {
 
 /**
  * Utility function to encrypt data
+ *
  * @method encrypt
  * @param {String} key key to use for encryption
  * @param {Mixed} data data to encrypt
@@ -104,6 +136,7 @@ Utils.prototype.encrypt = function(key, data) {
 
 /**
  * Utility function to decrypt data
+ *
  * @method decrypt
  * @param {String} key key to use for encryption
  * @param {Mixed} data data to encrypt
@@ -119,7 +152,8 @@ Utils.prototype.decrypt = function(key, data) {
 
 /**
  * Utility function to build date list for search view
- * @method generateSearchDateList
+ *
+ * @method generateDateList
  * @param {Integer} min start value
  * @param {Integer} max end value
  * @param {String} prefixMin prefix to use on min value
@@ -127,7 +161,7 @@ Utils.prototype.decrypt = function(key, data) {
  * @param {Boolean} reverse true if we need to reverse array
  * @return {Array} list of date
  */
-Utils.prototype.generateSearchDateList = function(min, max, prefixMin, prefixMax, reverse) {
+Utils.prototype.generateDateList = function(min, max, prefixMin, prefixMax, reverse) {
   var list  = [];
   var date  = new Date();
 
@@ -159,8 +193,8 @@ Utils.prototype.generateSearchDateList = function(min, max, prefixMin, prefixMax
 };
 
 /**
- * Return the correct host from a request header.
- * Implement x-forwarded data
+ * Return the correct host from a request header. Implement x-forwarded data
+ * 
  * @method getCorrectHost
  * @param {Object} HTTP request object
  * @return {String} Return the correct host from a request header, null if request is undefined
@@ -174,6 +208,7 @@ Utils.prototype.getCorrectHost = function(request) {
 
 /**
  * Check if is an allowed image type format
+ *
  * @method isValidImageFormat
  * @param {String} type to check
  * @return {Boolean} true if is correct false otherwise

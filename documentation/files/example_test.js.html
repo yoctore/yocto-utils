@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>exemple/test.js - yocto-utils</title>
+    <title>example/test.js - yocto-utils</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -75,7 +75,7 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-<h1 class="file-heading">File: exemple/test.js</h1>
+<h1 class="file-heading">File: example/test.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
@@ -89,8 +89,6 @@
  */
 
 var utils       = require(&quot;../src/index.js&quot;);
-var logger      = require(&#x27;yocto-logger&#x27;);
-
 
 var objA = {
     &quot;A&quot; : &quot;aaa&quot;,
@@ -107,26 +105,32 @@ var objC = {
     &quot;C&quot; : &quot;fff&quot;
 };
 
-logger.info( &quot;allItemIsInList( objA, objB) : &quot;, utils.allItemIsInList( objA, objB) );
-logger.info( &quot;allItemIsInList( objA, objC) : &quot;, utils.allItemIsInList( objA, objC) );
+console.log( &quot;allItemIsInList( objA, objB) : &quot;, utils.allItemIsInList( objA, objB) );
+console.log( &quot;allItemIsInList( objA, objC) : &quot;, utils.allItemIsInList( objA, objC) );
 
 
-logger.info( &quot;randomizedPassword( 10, &#x27;totoMdp&#x27;) : &quot;, utils.randomizedPassword( 10, &#x27;totoMdp&#x27;)  );
-logger.info( &quot;randomizedPassword( 10, &#x27;&#x27;) : &quot;, utils.randomizedPassword( 10, &#x27;&#x27;)  );
+console.log( &quot;randomizedPassword( 10, &#x27;totoMdp&#x27;) : &quot;, utils.randomizedPassword( 10, &#x27;totoMdp&#x27;)  );
+console.log( &quot;randomizedPassword( 10, &#x27;&#x27;) : &quot;, utils.randomizedPassword( 10, &#x27;&#x27;)  );
 
 var encryptedData = utils.encrypt( &#x27;Yocto&#x27;, &#x27;dataToEncrypt&#x27;);
-logger.info( &quot;encryptedData = encrypt( &#x27;totoYocto&#x27;, &#x27;mdpDeTest&#x27;) : &quot;, encryptedData  );
+console.log( &quot;encryptedData = encrypt( &#x27;totoYocto&#x27;, &#x27;mdpDeTest&#x27;) : &quot;, encryptedData  );
 
-logger.info ( &quot;decrypt(&#x27;Yocto&#x27;, encryptedData ) = &quot; , utils.decrypt(&#x27;Yocto&#x27;, encryptedData ));
-
-
-logger.info ( &quot; utils.geberateSearchDateList(0, 5, &#x27;min&#x27;, &#x27;max&#x27;, false) :&quot; , utils.generateSearchDateList(0, 5, &#x27;min&#x27;, &#x27;max&#x27;, false) );
+console.log ( &quot;decrypt(&#x27;Yocto&#x27;, encryptedData ) = &quot; , utils.decrypt(&#x27;Yocto&#x27;, encryptedData ));
 
 
-logger.info( &#x27;getCorrectHost : &#x27;, utils.getCorrectHost());
+console.log ( &quot; utils.geberateSearchDateList(0, 5, &#x27;min&#x27;, &#x27;max&#x27;, false) :&quot; , utils.generateDateList(0, 5, &#x27;min&#x27;, &#x27;max&#x27;, false) );
 
-logger.info( &#x27;isValidImageFormat(\&#x27;jpeg\&#x27;): &#x27; +  utils.isValidImageFormat(&#x27;jpeg&#x27;));
 
+console.log( &#x27;getCorrectHost : &#x27;, utils.getCorrectHost());
+
+console.log( &#x27;isValidImageFormat(\&#x27;jpeg\&#x27;): &#x27; +  utils.isValidImageFormat(&#x27;jpeg&#x27;));
+
+
+var rename = { a : 1 };
+
+var r = utils.renameKey(rename, &#x27;a&#x27;, &#x27;a.b.c&#x27;);
+
+console.log(rename, r);
     </pre>
 </div>
                     </div>

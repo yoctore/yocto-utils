@@ -6,8 +6,8 @@
         "url": "http://www.yocto.re"
     },
     "files": {
-        "exemple/test.js": {
-            "name": "exemple/test.js",
+        "example/test.js": {
+            "name": "example/test.js",
             "modules": {},
             "classes": {},
             "fors": {},
@@ -34,8 +34,8 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "src/index.js",
-            "line": 9,
-            "description": "Yocto utilities functions.<br/>\nUtils contains all utilities functions for yocto core stack\n\nFor more details on these dependencies read links below :\n- yocto-logger : http://lab.yocto.digital:8888/yocto-node-modules/yocto-logger\n- LodAsh : https://lodash.com/\n- crypto : https://nodejs.org/api/crypto.html\n- path : https://nodejs.org/api/path.html",
+            "line": 7,
+            "description": "Yocto utilities functions.<br/>\nUtils contains all utilities functions for yocto core stack\n\nFor more details on these dependencies read links below :\n- yocto-logger : git+ssh://lab.yocto.digital:yocto-node-modules/yocto-utils.git\n- LodAsh : https://lodash.com/\n- crypto : https://nodejs.org/api/crypto.html\n- path : https://nodejs.org/api/path.html",
             "date": ": 27/04/2015",
             "author": ": Cédric BALARD <cedric@yocto.re>",
             "copyright": ": Yocto SAS, All right reserved"
@@ -43,14 +43,43 @@
     },
     "classitems": [
         {
-            "file": "exemple/test.js",
+            "file": "example/test.js",
             "line": 1,
             "description": "Class that just test utils function\n\nadd test for :\n-forceRelodRequire\n-getCorrectHost",
             "class": "Utils"
         },
         {
             "file": "src/index.js",
-            "line": 28,
+            "line": 26,
+            "description": "Rename key utility function. Parse an object from key and rename this key",
+            "itemtype": "method",
+            "name": "renameKey",
+            "params": [
+                {
+                    "name": "object",
+                    "description": "reference to use",
+                    "type": "Object"
+                },
+                {
+                    "name": "reference",
+                    "description": "key to use on object",
+                    "type": "String"
+                },
+                {
+                    "name": "new",
+                    "description": "key to use on current object",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "object to use. empty object if required checking format is invalid",
+                "type": "Object"
+            },
+            "class": "Utils"
+        },
+        {
+            "file": "src/index.js",
+            "line": 60,
             "description": "Force a require file to be reload from root path of the app",
             "itemtype": "method",
             "name": "forceReloadRequire",
@@ -69,7 +98,7 @@
         },
         {
             "file": "src/index.js",
-            "line": 40,
+            "line": 72,
             "description": "Return true if has no difference between source and compare list",
             "itemtype": "method",
             "name": "allItemIsInList",
@@ -93,7 +122,7 @@
         },
         {
             "file": "src/index.js",
-            "line": 70,
+            "line": 101,
             "description": "Return a password from two rules",
             "itemtype": "method",
             "name": "randomizedPassword",
@@ -117,7 +146,7 @@
         },
         {
             "file": "src/index.js",
-            "line": 87,
+            "line": 118,
             "description": "Utility function to encrypt data",
             "itemtype": "method",
             "name": "encrypt",
@@ -141,7 +170,7 @@
         },
         {
             "file": "src/index.js",
-            "line": 105,
+            "line": 137,
             "description": "Utility function to decrypt data",
             "itemtype": "method",
             "name": "decrypt",
@@ -165,10 +194,10 @@
         },
         {
             "file": "src/index.js",
-            "line": 120,
+            "line": 153,
             "description": "Utility function to build date list for search view",
             "itemtype": "method",
-            "name": "generateSearchDateList",
+            "name": "generateDateList",
             "params": [
                 {
                     "name": "min",
@@ -204,8 +233,8 @@
         },
         {
             "file": "src/index.js",
-            "line": 161,
-            "description": "Return the correct host from a request header.\nImplement x-forwarded data",
+            "line": 195,
+            "description": "Return the correct host from a request header. Implement x-forwarded data",
             "itemtype": "method",
             "name": "getCorrectHost",
             "params": [
@@ -223,7 +252,7 @@
         },
         {
             "file": "src/index.js",
-            "line": 175,
+            "line": 209,
             "description": "Check if is an allowed image type format",
             "itemtype": "method",
             "name": "isValidImageFormat",
@@ -242,7 +271,7 @@
         },
         {
             "file": "src/index.js",
-            "line": 187,
+            "line": 222,
             "description": "Export Utils",
             "class": "Utils"
         }
@@ -250,19 +279,19 @@
     "warnings": [
         {
             "message": "unknown tag: date",
-            "line": " src/index.js:9"
+            "line": " src/index.js:7"
         },
         {
             "message": "unknown tag: copyright",
-            "line": " src/index.js:9"
+            "line": " src/index.js:7"
         },
         {
             "message": "Missing item type\nClass that just test utils function\n\nadd test for :\n-forceRelodRequire\n-getCorrectHost",
-            "line": " exemple/test.js:1"
+            "line": " example/test.js:1"
         },
         {
             "message": "Missing item type\nExport Utils",
-            "line": " src/index.js:187"
+            "line": " src/index.js:222"
         }
     ]
 }
