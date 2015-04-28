@@ -1,3 +1,4 @@
+'use-strict';
 
 var logger        = require('yocto-logger');
 var _             = require('lodash');
@@ -5,9 +6,8 @@ var path          = require('path');
 var crypto        = require('crypto');
 
 
-
 /**
- * Yocto utilities functions.
+ * Yocto utilities functions.<br/>
  * Utils contains all utilities functions for yocto core stack
  *
  * For more details on these dependencies read links below :
@@ -18,15 +18,18 @@ var crypto        = require('crypto');
  *
  *
  * @date : 27/04/2015
- * @author : Mathieu ROBERT <mathieu@yocto.re>, Cédric BALARD <cedric@yocto.re>
+ * @author : Mathieu ROBERT <mathieu@yocto.re>
+ * @author : Cédric BALARD <cedric@yocto.re>
  * @copyright : Yocto SAS, All right reserved
  * @class Utils
  */
-Utils = function() {};
+function Utils() {}
 
 /**
  * Force a require file to be reload from root path of the app
- * @param (String), path, the current path to use
+ * @method forceReloadRequire
+ * @param {String} path the current path to use
+ * @return {String} path
  */
 Utils.prototype.forceRelodRequire = function(path) {
   delete(require.cache[path]);
@@ -36,21 +39,25 @@ Utils.prototype.forceRelodRequire = function(path) {
 
 /**
  * Return true if has no difference between source and compare list
- * @param (Array|Object), source list of item
- * @param (Array|Object), compate list of item
- * @return (Boolean), true is no difference, false otherwise
+ * @method allItemIsInList
+ * @param {Array|Object} source list of item
+ * @param {Array|Object} compare list of item
+ * @return {Boolean} true is no difference, false otherwise
  */
 Utils.prototype.allItemIsInList = function(source, compare) {
   if (!_.isUndefined(source) && !_.isUndefined(compare)) {
 
+    // Check type of source
     if (!_.isArray(source) && _.isObject(source)) {
       source = Object.keys(source);
     }
 
+    // Check type of compare
     if (!_.isArray(compare) && _.isObject(compare)) {
       compare = Object.keys(compare);
     }
 
+    //check is source and compare are Array
     if (_.isArray(source) && _.isArray(compare)) {
       return _.isEmpty(_.difference(source, compare));
     }
@@ -62,8 +69,10 @@ Utils.prototype.allItemIsInList = function(source, compare) {
 
 /**
  * Return a password from two rules
- * @param (Integer), n, password length
- * @param (String), a, chars to use
+ * @method randomizedPassword
+ * @param {Integer} n password length
+ * @param {String} a chars to use
+ * @return {String} a randomized password
  */
 Utils.prototype.randomizedPassword = function(n, a) {
 
@@ -77,9 +86,10 @@ Utils.prototype.randomizedPassword = function(n, a) {
 
 /**
  * Utility function to encrypt data
- * @param (String), key, key to use for encryption
- * @param (Mixed), data, data to encrypt
- * @return (String), crypted data
+ * @method encrypt
+ * @param {String} key key to use for encryption
+ * @param {Mixed} data data to encrypt
+ * @return {String} crypted data
  */
 Utils.prototype.encrypt = function(key, data) {
   data = JSON.stringify(data);
@@ -94,9 +104,10 @@ Utils.prototype.encrypt = function(key, data) {
 
 /**
  * Utility function to decrypt data
- * @param (String), key, key to use for encryption
- * @param (Mixed), data, data to encrypt
- * @return (String), decrypted data
+ * @method decrypt
+ * @param {String} key key to use for encryption
+ * @param {Mixed} data data to encrypt
+ * @return {String} decrypted data
  */
 Utils.prototype.decrypt = function(key, data) {
   var decipher  = crypto.createDecipher('aes256', key);
@@ -108,12 +119,13 @@ Utils.prototype.decrypt = function(key, data) {
 
 /**
  * Utility function to build date list for search view
- * @param (Integer), min, start value
- * @param (Integer), max, end value
- * @param (String), prefixMin, prefix to use on min value
- * @param (String), prefixMax, prefix to use on max value
- * @param (Boolean), reverse, true if we need to reverse array
- * @return (Array), list of date
+ * @method generateSearchDateList
+ * @param {Integer} min start value
+ * @param {Integer} max end value
+ * @param {String} prefixMin prefix to use on min value
+ * @param {String} prefixMax prefix to use on max value
+ * @param {Boolean} reverse true if we need to reverse array
+ * @return {Array} list of date
  */
 Utils.prototype.generateSearchDateList = function(min, max, prefixMin, prefixMax, reverse) {
   var list  = [];
@@ -149,7 +161,9 @@ Utils.prototype.generateSearchDateList = function(min, max, prefixMin, prefixMax
 /**
  * Return the correct host from a request header.
  * Implement x-forwarded data
- * @param (Object), HTTP request object
+ * @method getCorrectHost
+ * @param {Object} HTTP request object
+ * @return {String} Return the correct host from a request header, null if request is undefined
  */
 Utils.prototype.getCorrectHost = function(request) {
   if (!_.isUndefined(request)) {
@@ -160,8 +174,9 @@ Utils.prototype.getCorrectHost = function(request) {
 
 /**
  * Check if is an allowed image type format
- * @param (String), type to check
- * @return (Boolean), true if is correct false otherwise
+ * @method isValidImageFormat
+ * @param {String} type to check
+ * @return {Boolean} true if is correct false otherwise
  */
 Utils.prototype.isValidImageFormat = function(type) {
   type = _(['', type.toLowerCase(), '']).join('|');
@@ -169,5 +184,7 @@ Utils.prototype.isValidImageFormat = function(type) {
 };
 
 
-
+/**
+* Export Utils
+*/
 module.exports = new (Utils)();
