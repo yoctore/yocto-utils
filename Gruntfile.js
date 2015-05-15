@@ -54,14 +54,16 @@
 
     /**
      * Uglify permit to minify javascript file
-     *
-     * @submodule uglify
      */
      uglify : {
        api : {
-          src    : [ 'src/modules/*/*', 'src/index.js' ],
-          dest   : 'dist/index.js'
-       }
+         files: [{
+          expand: true,
+          cwd: 'src/',
+          src: '**/*.js',
+          dest: 'dist/'
+        }]
+      }
      },
      
      /**

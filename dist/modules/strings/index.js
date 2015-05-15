@@ -1,0 +1,1 @@
+"use strict";function Strings(){}module.exports=new Strings;

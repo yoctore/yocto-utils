@@ -1,0 +1,1 @@
+"use strict";function UnitTests(){}var _=require("lodash");UnitTests.prototype.generateTypeForUnitTests=function(a,b){a=_.isArray(a)&&!_.isEmpty(a)?a:[null,void 0,1,!0,!1,0/0,"a","",{},[]],b=_.isNumber(b)&&b>0?b:0;var c=[];return _.each(a,function(a){for(var d=[],e=0;b>e;e++)d[e]=a;c.push(d)}),c},module.exports=new UnitTests;

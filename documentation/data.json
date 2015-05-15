@@ -2,7 +2,7 @@
     "project": {
         "name": "yocto-utils",
         "description": "Utils contains utils function for multiple usage (Crypto / Date / Media / Request / Strings / Unit Tests)",
-        "version": "0.1.0",
+        "version": "0.1.1",
         "url": "http://www.yocto.re"
     },
     "files": {

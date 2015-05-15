@@ -1,0 +1,1 @@
+"use strict";function Media(){}var _=require("lodash");Media.prototype.isValidImageFormat=function(a){return a=_(["",a.toLowerCase(),""]).join("|"),-1!=="|jpg|png|jpeg|gif|".indexOf(a)},module.exports=new Media;
