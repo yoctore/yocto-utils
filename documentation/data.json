@@ -1,15 +1,62 @@
 {
     "project": {
         "name": "yocto-utils",
-        "description": "Utils contains all utilities functions for yocto core stack",
+        "description": "Utils contains utils function for multiple usage (Crypto / Date / Media / Request / Strings / Unit Tests)",
         "version": "0.1.0",
         "url": "http://www.yocto.re"
     },
     "files": {
-        "example/test.js": {
-            "name": "example/test.js",
+        "src/modules/crypto/index.js": {
+            "name": "src/modules/crypto/index.js",
             "modules": {},
-            "classes": {},
+            "classes": {
+                "Crypto": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/modules/date/index.js": {
+            "name": "src/modules/date/index.js",
+            "modules": {},
+            "classes": {
+                "YDate": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/modules/media/index.js": {
+            "name": "src/modules/media/index.js",
+            "modules": {},
+            "classes": {
+                "Media": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/modules/request/index.js": {
+            "name": "src/modules/request/index.js",
+            "modules": {},
+            "classes": {
+                "Request": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/modules/strings/index.js": {
+            "name": "src/modules/strings/index.js",
+            "modules": {},
+            "classes": {
+                "Strings": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/modules/unit-tests/index.js": {
+            "name": "src/modules/unit-tests/index.js",
+            "modules": {},
+            "classes": {
+                "UnitTests": 1
+            },
             "fors": {},
             "namespaces": {}
         },
@@ -25,6 +72,96 @@
     },
     "modules": {},
     "classes": {
+        "Crypto": {
+            "name": "Crypto",
+            "shortname": "Crypto",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/modules/crypto/index.js",
+            "line": 6,
+            "description": "Yocto utilities functions : Module Crypto<br/>\nContains utility function for cryptography action \n\nFor more details on these dependencies read links below :\n- LodAsh : https://lodash.com/\n- Crypto : https://nodejs.org/api/crypto.html",
+            "date": ": 15/05/2015",
+            "author": ": Mathieu ROBERT <mathieu@yocto.re>",
+            "copyright": ": Yocto SAS, All right reserved"
+        },
+        "YDate": {
+            "name": "YDate",
+            "shortname": "YDate",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/modules/date/index.js",
+            "line": 5,
+            "description": "Yocto utilities functions : Module YDate<br/>\nContains utility function for date manipulation  \n\nFor more details on these dependencies read links below :\n- LodAsh : https://lodash.com/",
+            "date": ": 15/05/2015",
+            "author": ": Mathieu ROBERT <mathieu@yocto.re>",
+            "copyright": ": Yocto SAS, All right reserved"
+        },
+        "Media": {
+            "name": "Media",
+            "shortname": "Media",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/modules/media/index.js",
+            "line": 5,
+            "description": "Yocto utilities functions : Module Multimedia<br/>\nContains utility function to manage multimedia process \n\nFor more details on these dependencies read links below :",
+            "date": ": 15/05/2015",
+            "author": ": Mathieu ROBERT <mathieu@yocto.re>",
+            "copyright": ": Yocto SAS, All right reserved"
+        },
+        "Request": {
+            "name": "Request",
+            "shortname": "Request",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/modules/request/index.js",
+            "line": 5,
+            "description": "Yocto utilities functions : Module Request<br/>\nContains utility function for request/http manipulation  \n\nFor more details on these dependencies read links below :\n- LodAsh : https://lodash.com/",
+            "date": ": 15/05/2015",
+            "author": ": Mathieu ROBERT <mathieu@yocto.re>",
+            "copyright": ": Yocto SAS, All right reserved"
+        },
+        "Strings": {
+            "name": "Strings",
+            "shortname": "Strings",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/modules/strings/index.js",
+            "line": 3,
+            "description": "Yocto utilities functions : Module String<br/>\nContains utility function to manipulate strings \n\nFor more details on these dependencies read links below :",
+            "date": ": 15/05/2015",
+            "author": ": Mathieu ROBERT <mathieu@yocto.re>",
+            "copyright": ": Yocto SAS, All right reserved"
+        },
+        "UnitTests": {
+            "name": "UnitTests",
+            "shortname": "UnitTests",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/modules/unit-tests/index.js",
+            "line": 5,
+            "description": "Yocto utilities functions : Module UnitTests<br/>\nContains utility function to use during unit testing \n\nFor more details on these dependencies read links below :\n- LodAsh : https://lodash.com/",
+            "date": ": 15/05/2015",
+            "author": ": Mathieu ROBERT <mathieu@yocto.re>",
+            "copyright": ": Yocto SAS, All right reserved"
+        },
         "Utils": {
             "name": "Utils",
             "shortname": "Utils",
@@ -34,8 +171,8 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "src/index.js",
-            "line": 7,
-            "description": "Yocto utilities functions.<br/>\nUtils contains all utilities functions for yocto core stack\n\nFor more details on these dependencies read links below :\n- yocto-logger : git+ssh://lab.yocto.digital:yocto-node-modules/yocto-utils.git\n- LodAsh : https://lodash.com/\n- crypto : https://nodejs.org/api/crypto.html\n- path : https://nodejs.org/api/path.html",
+            "line": 11,
+            "description": "Yocto utilities functions\n\nFor more details on these dependencies read links below :\n- LodAsh : https://lodash.com/",
             "date": ": 27/04/2015",
             "author": ": Cédric BALARD <cedric@yocto.re>",
             "copyright": ": Yocto SAS, All right reserved"
@@ -43,86 +180,8 @@
     },
     "classitems": [
         {
-            "file": "example/test.js",
-            "line": 1,
-            "description": "Class that just test utils function\n\nadd test for :\n-forceRelodRequire\n-getCorrectHost",
-            "class": "Utils"
-        },
-        {
-            "file": "src/index.js",
-            "line": 26,
-            "description": "Rename key utility function. Parse an object from key and rename this key",
-            "itemtype": "method",
-            "name": "renameKey",
-            "params": [
-                {
-                    "name": "object",
-                    "description": "reference to use",
-                    "type": "Object"
-                },
-                {
-                    "name": "reference",
-                    "description": "key to use on object",
-                    "type": "String"
-                },
-                {
-                    "name": "new",
-                    "description": "key to use on current object",
-                    "type": "String"
-                }
-            ],
-            "return": {
-                "description": "object to use. empty object if required checking format is invalid",
-                "type": "Object"
-            },
-            "class": "Utils"
-        },
-        {
-            "file": "src/index.js",
-            "line": 60,
-            "description": "Force a require file to be reload from root path of the app",
-            "itemtype": "method",
-            "name": "forceReloadRequire",
-            "params": [
-                {
-                    "name": "path",
-                    "description": "the current path to use",
-                    "type": "String"
-                }
-            ],
-            "return": {
-                "description": "path",
-                "type": "String"
-            },
-            "class": "Utils"
-        },
-        {
-            "file": "src/index.js",
-            "line": 72,
-            "description": "Return true if has no difference between source and compare list",
-            "itemtype": "method",
-            "name": "allItemIsInList",
-            "params": [
-                {
-                    "name": "source",
-                    "description": "list of item",
-                    "type": "Array|Object"
-                },
-                {
-                    "name": "compare",
-                    "description": "list of item",
-                    "type": "Array|Object"
-                }
-            ],
-            "return": {
-                "description": "true is no difference, false otherwise",
-                "type": "Boolean"
-            },
-            "class": "Utils"
-        },
-        {
-            "file": "src/index.js",
-            "line": 101,
+            "file": "src/modules/crypto/index.js",
+            "line": 21,
             "description": "Return a password from two rules",
             "itemtype": "method",
             "name": "randomizedPassword",
@@ -142,11 +201,11 @@
                 "description": "a randomized password",
                 "type": "String"
             },
-            "class": "Utils"
+            "class": "Crypto"
         },
         {
-            "file": "src/index.js",
-            "line": 118,
+            "file": "src/modules/crypto/index.js",
+            "line": 44,
             "description": "Utility function to encrypt data",
             "itemtype": "method",
             "name": "encrypt",
@@ -166,11 +225,11 @@
                 "description": "crypted data",
                 "type": "String"
             },
-            "class": "Utils"
+            "class": "Crypto"
         },
         {
-            "file": "src/index.js",
-            "line": 137,
+            "file": "src/modules/crypto/index.js",
+            "line": 66,
             "description": "Utility function to decrypt data",
             "itemtype": "method",
             "name": "decrypt",
@@ -190,14 +249,20 @@
                 "description": "decrypted data",
                 "type": "String"
             },
-            "class": "Utils"
+            "class": "Crypto"
         },
         {
-            "file": "src/index.js",
-            "line": 153,
-            "description": "Utility function to build date list for search view",
+            "file": "src/modules/crypto/index.js",
+            "line": 84,
+            "description": "Export Crypto",
+            "class": "Crypto"
+        },
+        {
+            "file": "src/modules/date/index.js",
+            "line": 19,
+            "description": "Utility function to build date list",
             "itemtype": "method",
-            "name": "generateDateList",
+            "name": "generateList",
             "params": [
                 {
                     "name": "min",
@@ -229,31 +294,18 @@
                 "description": "list of date",
                 "type": "Array"
             },
-            "class": "Utils"
+            "class": "YDate"
         },
         {
-            "file": "src/index.js",
-            "line": 195,
-            "description": "Return the correct host from a request header. Implement x-forwarded data",
-            "itemtype": "method",
-            "name": "getCorrectHost",
-            "params": [
-                {
-                    "name": "HTTP",
-                    "description": "request object",
-                    "type": "Object"
-                }
-            ],
-            "return": {
-                "description": "Return the correct host from a request header, null if request is undefined",
-                "type": "String"
-            },
-            "class": "Utils"
+            "file": "src/modules/date/index.js",
+            "line": 62,
+            "description": "Export YDate",
+            "class": "YDate"
         },
         {
-            "file": "src/index.js",
-            "line": 209,
-            "description": "Check if is an allowed image type format",
+            "file": "src/modules/media/index.js",
+            "line": 18,
+            "description": "Check if is an allowed image type format<br/>\nThis Function only check file extention it's not checking file format metadata",
             "itemtype": "method",
             "name": "isValidImageFormat",
             "params": [
@@ -267,11 +319,173 @@
                 "description": "true if is correct false otherwise",
                 "type": "Boolean"
             },
+            "class": "Media"
+        },
+        {
+            "file": "src/modules/media/index.js",
+            "line": 34,
+            "description": "Export Strings",
+            "class": "Media"
+        },
+        {
+            "file": "src/modules/request/index.js",
+            "line": 19,
+            "description": "Return the correct host from a request header. Implement x-forwarded rules",
+            "itemtype": "method",
+            "name": "getHost",
+            "params": [
+                {
+                    "name": "HTTP",
+                    "description": "request object",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "Return the correct host from a request header, null if request is undefined",
+                "type": "Mixed"
+            },
+            "class": "Request"
+        },
+        {
+            "file": "src/modules/request/index.js",
+            "line": 36,
+            "description": "Export YDate",
+            "class": "Request"
+        },
+        {
+            "file": "src/modules/strings/index.js",
+            "line": 16,
+            "description": "Export Strings",
+            "class": "Strings"
+        },
+        {
+            "file": "src/modules/unit-tests/index.js",
+            "line": 19,
+            "description": "Generate type for unit tests",
+            "itemtype": "method",
+            "name": "generateTypeForUnitTests",
+            "params": [
+                {
+                    "name": "types",
+                    "description": "array of types to check and use",
+                    "type": "Array"
+                },
+                {
+                    "name": "needed",
+                    "description": "length of args for generation",
+                    "type": "Integer"
+                }
+            ],
+            "return": {
+                "description": "array of type to use on calling function",
+                "type": "Array"
+            },
+            "class": "UnitTests"
+        },
+        {
+            "file": "src/modules/unit-tests/index.js",
+            "line": 51,
+            "description": "Export UnitTests",
+            "class": "UnitTests"
+        },
+        {
+            "file": "src/index.js",
+            "line": 24,
+            "description": "Default unit instance for crypto usage",
+            "itemtype": "property",
+            "name": "crypto",
+            "type": "Crypto",
             "class": "Utils"
         },
         {
             "file": "src/index.js",
-            "line": 222,
+            "line": 32,
+            "description": "Default unit instance for date usage",
+            "itemtype": "property",
+            "name": "date",
+            "type": "YDate",
+            "class": "Utils"
+        },
+        {
+            "file": "src/index.js",
+            "line": 40,
+            "description": "Default unit instance for date usage",
+            "itemtype": "property",
+            "name": "media",
+            "type": "Media",
+            "class": "Utils"
+        },
+        {
+            "file": "src/index.js",
+            "line": 48,
+            "description": "Default unit instance for request usage",
+            "itemtype": "property",
+            "name": "request",
+            "type": "Request",
+            "class": "Utils"
+        },
+        {
+            "file": "src/index.js",
+            "line": 56,
+            "description": "Default unit instance for strings usage",
+            "itemtype": "property",
+            "name": "strings",
+            "type": "Strings",
+            "class": "Utils"
+        },
+        {
+            "file": "src/index.js",
+            "line": 64,
+            "description": "Default unit instance for unit testing usage",
+            "itemtype": "property",
+            "name": "unit",
+            "type": "Unit",
+            "class": "Utils"
+        },
+        {
+            "file": "src/index.js",
+            "line": 73,
+            "description": "Rename key utility function. Parse an object from key and rename this key",
+            "itemtype": "method",
+            "name": "renameKey",
+            "params": [
+                {
+                    "name": "object",
+                    "description": "reference to use",
+                    "type": "Object"
+                },
+                {
+                    "name": "reference",
+                    "description": "key to use on object",
+                    "type": "String"
+                },
+                {
+                    "name": "new",
+                    "description": "key to use on current object",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "object to use. empty object if required checking format is invalid",
+                "type": "Object"
+            },
+            "class": "Utils"
+        },
+        {
+            "file": "src/index.js",
+            "line": 107,
+            "description": "Default get function",
+            "itemtype": "method",
+            "name": "get",
+            "return": {
+                "description": "wanted property",
+                "type": "Mixed"
+            },
+            "class": "Utils"
+        },
+        {
+            "file": "src/index.js",
+            "line": 117,
             "description": "Export Utils",
             "class": "Utils"
         }
@@ -279,19 +493,87 @@
     "warnings": [
         {
             "message": "unknown tag: date",
-            "line": " src/index.js:7"
+            "line": " src/modules/crypto/index.js:6"
         },
         {
             "message": "unknown tag: copyright",
-            "line": " src/index.js:7"
+            "line": " src/modules/crypto/index.js:6"
         },
         {
-            "message": "Missing item type\nClass that just test utils function\n\nadd test for :\n-forceRelodRequire\n-getCorrectHost",
-            "line": " example/test.js:1"
+            "message": "unknown tag: date",
+            "line": " src/modules/date/index.js:5"
+        },
+        {
+            "message": "unknown tag: copyright",
+            "line": " src/modules/date/index.js:5"
+        },
+        {
+            "message": "unknown tag: date",
+            "line": " src/modules/media/index.js:5"
+        },
+        {
+            "message": "unknown tag: copyright",
+            "line": " src/modules/media/index.js:5"
+        },
+        {
+            "message": "unknown tag: date",
+            "line": " src/modules/request/index.js:5"
+        },
+        {
+            "message": "unknown tag: copyright",
+            "line": " src/modules/request/index.js:5"
+        },
+        {
+            "message": "unknown tag: date",
+            "line": " src/modules/strings/index.js:3"
+        },
+        {
+            "message": "unknown tag: copyright",
+            "line": " src/modules/strings/index.js:3"
+        },
+        {
+            "message": "unknown tag: date",
+            "line": " src/modules/unit-tests/index.js:5"
+        },
+        {
+            "message": "unknown tag: copyright",
+            "line": " src/modules/unit-tests/index.js:5"
+        },
+        {
+            "message": "unknown tag: date",
+            "line": " src/index.js:11"
+        },
+        {
+            "message": "unknown tag: copyright",
+            "line": " src/index.js:11"
+        },
+        {
+            "message": "Missing item type\nExport Crypto",
+            "line": " src/modules/crypto/index.js:84"
+        },
+        {
+            "message": "Missing item type\nExport YDate",
+            "line": " src/modules/date/index.js:62"
+        },
+        {
+            "message": "Missing item type\nExport Strings",
+            "line": " src/modules/media/index.js:34"
+        },
+        {
+            "message": "Missing item type\nExport YDate",
+            "line": " src/modules/request/index.js:36"
+        },
+        {
+            "message": "Missing item type\nExport Strings",
+            "line": " src/modules/strings/index.js:16"
+        },
+        {
+            "message": "Missing item type\nExport UnitTests",
+            "line": " src/modules/unit-tests/index.js:51"
         },
         {
             "message": "Missing item type\nExport Utils",
-            "line": " src/index.js:222"
+            "line": " src/index.js:117"
         }
     ]
 }

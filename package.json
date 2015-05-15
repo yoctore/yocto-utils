@@ -1,47 +1,46 @@
 {
-  "name" : "yocto-utils",
-  "version" : "0.1.0",
-  "description" : "Utils contains all utilities functions for yocto core stack",
-  "private" : true,
-  "scripts" : {},
-  "homepage" : "http://www.yocto.re",
-  "author"  : "Yocto SAS <http://www.yocto.re>",  
-  "repository" : {
-    "type" : "git",
-    "url"  : "git@lab.yocto.digital:yocto-node-modules/yocto-utils.git"
+  "name": "yocto-utils",
+  "version": "0.1.0",
+  "description": "Utils contains utils function for multiple usage (Crypto / Date / Media / Request / Strings / Unit Tests)",
+  "private": true,
+  "scripts": {},
+  "homepage": "http://www.yocto.re",
+  "author": "Yocto SAS <http://www.yocto.re>",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh:://git@lab.yocto.digital:yocto-node-modules/yocto-utils.git"
   },
-  "contributors" : [{
-    "name"  : "ROBERT Mathieu",
-    "email" : "mathieu@yocto.re"
-    }, {
-    "name"  : "BALARD Cédric",
-    "email" : "cedric@yocto.re"
-  }],
-  "main" : "dist/index.js",
-  "repository" : {
-    "type" : "git",
-    "url" : "git+ssh:://git@lab.yocto.digital:yocto-node-modules/yocto-utils.git"
+  "contributors": [
+    {
+      "name": "ROBERT Mathieu",
+      "email": "mathieu@yocto.re"
+    },
+    {
+      "name": "BALARD Cédric",
+      "email": "cedric@yocto.re"
+    }
+  ],
+  "main": "dist/index.js",
+  "engines": {
+    "node": ">=0.12.2"
   },
-  "engines" : {
-    "node" : ">=0.12.2"
-  },
-  "files" : [
+  "files": [
     "dist",
     "documentation",
     "example"
   ],
-  "keywords" : [
-    "Utils"
+  "keywords": [
+    "Utilities"
   ],
-  "dependencies" : {
-    "lodash" : "latest"
+  "dependencies": {
+    "lodash": "^3.8.0"
   },
-  "devDependencies" : {
-    "grunt" : "~0.4.5",
-    "grunt-contrib-copy" : "^0.8.0",
-    "grunt-contrib-jshint" : "~0.10.0",
-    "grunt-contrib-nodeunit" : "~0.4.1",
-    "grunt-contrib-uglify" : "~0.5.0",
-    "grunt-contrib-yuidoc" : "^0.7.0"
+  "devDependencies": {
+    "grunt": "~0.4.5",
+    "grunt-contrib-jshint": "~0.10.0",
+    "grunt-contrib-nodeunit": "~0.4.1",
+    "grunt-contrib-uglify": "~0.5.0",
+    "grunt-contrib-yuidoc": "^0.7.0",
+    "grunt-mocha-cli": "^1.13.0"
   }
 }

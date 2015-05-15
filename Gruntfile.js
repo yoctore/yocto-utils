@@ -24,10 +24,13 @@
       */
      jshint : {
        options : {
-           node : true,
-           yui : true,
+           node   : true,
+           yui    : true,
+           undef  : true,
+           unused : true,
+           strict : true
        },
-       all : [ 'src/index.js' ]
+       all : [ 'src/*' ]
      },
 
      /**
@@ -44,7 +47,7 @@
          options     : {
            paths   : '.',
            outdir  : 'documentation',
-           exclude : 'Gruntfile.js, example, dist, documentation, node_modules'
+           exclude : 'Gruntfile.js,example,dist,documentation,node_modules'
          }
        },
      },
@@ -56,17 +59,36 @@
      */
      uglify : {
        api : {
-          src    : 'src/index.js',
+          src    : [ 'src/modules/*/*', 'src/index.js' ],
           dest   : 'dist/index.js'
        }
-     }
+     },
+     
+     /**
+      * Mocah unit test
+      */
+      mochacli : {
+        options : {
+          'reporter'       : 'spec',
+          'inline-diffs'   : false,
+          'no-exit'        : true,
+          'force'          : false,
+          'check-leaks'    : true,
+          'bail'           : false
+        },
+        all : [ 'test/*.js' ]
+      }     
    });
 
    // Load the plugins
    grunt.loadNpmTasks('grunt-contrib-jshint');
    grunt.loadNpmTasks('grunt-contrib-uglify');
    grunt.loadNpmTasks('grunt-contrib-yuidoc');
-
-   // register task
-   grunt.registerTask('default', [ 'jshint', 'yuidoc', 'uglify']);
+   grunt.loadNpmTasks('grunt-mocha-cli');
+   
+   // register tasks
+   grunt.registerTask('default', [ 'jshint', 'mochacli','yuidoc', 'uglify' ]);
+   grunt.registerTask('norme', 'jshint');   
+   grunt.registerTask('tests', 'mochacli');   
+   grunt.registerTask('build', [ 'jshint', 'yuidoc', 'uglify' ]);  
  };

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>src/index.js - yocto-utils</title>
+    <title>src/modules/crypto/index.js - yocto-utils</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -81,131 +81,97 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-<h1 class="file-heading">File: src/index.js</h1>
+<h1 class="file-heading">File: src/modules/crypto/index.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
 &#x27;use strict&#x27;;
 
-var _       = require(&#x27;lodash&#x27;);
-var crypto  = require(&#x27;./modules/crypto&#x27;);
-var date    = require(&#x27;./modules/date&#x27;);
-var media   = require(&#x27;./modules/media&#x27;);
-var request = require(&#x27;./modules/request&#x27;);
-var strings = require(&#x27;./modules/strings&#x27;);
-var unit    = require(&#x27;./modules/unit-tests&#x27;);
+var _         = require(&#x27;lodash&#x27;);
+var crypto    = require(&#x27;crypto&#x27;);
 
 /**
- * Yocto utilities functions
+ * Yocto utilities functions : Module Crypto&lt;br/&gt;
+ * Contains utility function for cryptography action 
  *
  * For more details on these dependencies read links below :
  * - LodAsh : https://lodash.com/
+ * - Crypto : https://nodejs.org/api/crypto.html
  *
- * @date : 27/04/2015
+ * @date : 15/05/2015
  * @author : Mathieu ROBERT &lt;mathieu@yocto.re&gt;
- * @author : Cédric BALARD &lt;cedric@yocto.re&gt;
  * @copyright : Yocto SAS, All right reserved
- * @class Utils
+ * @class Crypto
  */
-function Utils() {
-  /**
-   * Default unit instance for crypto usage
-   *
-   * @property crypto
-   * @type Crypto
-   */
-  this.crypto   = crypto;
-
-  /**
-   * Default unit instance for date usage
-   *
-   * @property date
-   * @type YDate
-   */
-  this.date     = date;
-
-  /**
-   * Default unit instance for date usage
-   *
-   * @property media
-   * @type Media
-   */
-  this.media     = media;
-
-  /**
-   * Default unit instance for request usage
-   *
-   * @property request
-   * @type Request
-   */
-  this.request  = request;
-
-  /**
-   * Default unit instance for strings usage
-   *
-   * @property strings
-   * @type Strings
-   */
-  this.strings  = strings;
-
-  /**
-   * Default unit instance for unit testing usage
-   *
-   * @property unit
-   * @type Unit
-   */
-  this.unit     = unit;
-}
+function Crypto() {}
 
 /**
- * Rename key utility function. Parse an object from key and rename this key
- * 
- * @method renameKey
- * @param {Object} object reference to use
- * @param {String} reference key to use on object
- * @param {String} new key to use on current object
- * @return {Object} object to use. empty object if required checking format is invalid
- */
-Utils.prototype.renameKey = function(o, key, newKey) {
-
-  // nested check
-  if (!_.isUndefined(o) &amp;&amp; !_.isNull(o) &amp;&amp; _.isObject(o) &amp;&amp;
-    !_.isUndefined(key) &amp;&amp; !_.isNull(key) &amp;&amp; _.isString(key) &amp;&amp;
-    !_.isUndefined(newKey) &amp;&amp; !_.isNull(newKey) &amp;&amp; _.isString(newKey)) {
-
-    // clone object
-    var c     = _.clone(o);
-    var value = c[key];
-  
-    // remove non needed key
-    delete c[key];    
-  
-    // set new key
-    _.set(c, newKey, value);
-  
-    // return object 
-    return c;        
-  }
-
-  // return a default object
-  return {};  
-};
-
-/**
- * Default get function
+ * Return a password from two rules
  *
- * @method get
- * @return {Mixed} wanted property
+ * @method randomizedPassword
+ * @param {Integer} n password length
+ * @param {String} a chars to use
+ * @return {String} a randomized password
  */
-Utils.prototype.get = function(name) {
-  return this[name];
+Crypto.prototype.randomizedPassword = function(n, a) {
+  
+  // process a to a correct value
+  a = (!_.isUndefined(a) &amp;&amp; !_.isNull(a) &amp;&amp; _.isString(a) &amp;&amp; !_.isEmpty(a)) ? a : &#x27;qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890&amp;(!-_%&lt;&gt;&#x27;;
+
+  // process n to a correct value
+  n = (_.isNumber(n) &amp;&amp; !_.isNaN(n) &amp;&amp; n &gt;= 0) ? n : 0;
+
+  // get correct index
+  var index = (Math.random() * (a.length - 1)).toFixed(0);
+
+  // return key
+  return n &gt; 0 ? (a[index] + this.randomizedPassword(n - 1, a)) : &#x27;&#x27;;
 };
 
 /**
-* Export Utils
-*/
-module.exports = new (Utils)();
+ * Utility function to encrypt data
+ *
+ * @method encrypt
+ * @param {String} key key to use for encryption
+ * @param {Mixed} data data to encrypt
+ * @return {String} crypted data
+ */
+Crypto.prototype.encrypt = function(key, data) {
+  // stringify data
+  data = JSON.stringify(data);
 
+  // manage cypher
+  var cipher  = crypto.createCipher(&#x27;aes256&#x27;, key);
+  var crypted = cipher.update(data, &#x27;utf-8&#x27;, &#x27;hex&#x27;);
+  crypted     += cipher.final(&#x27;hex&#x27;);
+
+  // return crypted data
+  return crypted;
+};
+
+
+/**
+ * Utility function to decrypt data
+ *
+ * @method decrypt
+ * @param {String} key key to use for encryption
+ * @param {Mixed} data data to encrypt
+ * @return {String} decrypted data
+ */
+Crypto.prototype.decrypt = function(key, data) {
+  // manage crypher
+  var decipher  = crypto.createDecipher(&#x27;aes256&#x27;, key);
+  var decrypted = decipher.update(data, &#x27;hex&#x27;, &#x27;utf-8&#x27;);
+  decrypted     += decipher.final(&#x27;utf-8&#x27;);
+
+  // return decrypted data
+  return JSON.parse(decrypted);
+};
+
+/**
+ * Export Crypto
+ */
+module.exports = new (Crypto)();
     </pre>
 </div>
                     </div>

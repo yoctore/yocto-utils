@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>src/index.js - yocto-utils</title>
+    <title>src/modules/unit-tests/index.js - yocto-utils</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -81,131 +81,64 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-<h1 class="file-heading">File: src/index.js</h1>
+<h1 class="file-heading">File: src/modules/unit-tests/index.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
 &#x27;use strict&#x27;;
 
-var _       = require(&#x27;lodash&#x27;);
-var crypto  = require(&#x27;./modules/crypto&#x27;);
-var date    = require(&#x27;./modules/date&#x27;);
-var media   = require(&#x27;./modules/media&#x27;);
-var request = require(&#x27;./modules/request&#x27;);
-var strings = require(&#x27;./modules/strings&#x27;);
-var unit    = require(&#x27;./modules/unit-tests&#x27;);
+var _ = require(&#x27;lodash&#x27;);
 
 /**
- * Yocto utilities functions
+ * Yocto utilities functions : Module UnitTests&lt;br/&gt;
+ * Contains utility function to use during unit testing 
  *
  * For more details on these dependencies read links below :
  * - LodAsh : https://lodash.com/
  *
- * @date : 27/04/2015
+ * @date : 15/05/2015
  * @author : Mathieu ROBERT &lt;mathieu@yocto.re&gt;
- * @author : Cédric BALARD &lt;cedric@yocto.re&gt;
  * @copyright : Yocto SAS, All right reserved
- * @class Utils
+ * @class UnitTests
  */
-function Utils() {
-  /**
-   * Default unit instance for crypto usage
-   *
-   * @property crypto
-   * @type Crypto
-   */
-  this.crypto   = crypto;
-
-  /**
-   * Default unit instance for date usage
-   *
-   * @property date
-   * @type YDate
-   */
-  this.date     = date;
-
-  /**
-   * Default unit instance for date usage
-   *
-   * @property media
-   * @type Media
-   */
-  this.media     = media;
-
-  /**
-   * Default unit instance for request usage
-   *
-   * @property request
-   * @type Request
-   */
-  this.request  = request;
-
-  /**
-   * Default unit instance for strings usage
-   *
-   * @property strings
-   * @type Strings
-   */
-  this.strings  = strings;
-
-  /**
-   * Default unit instance for unit testing usage
-   *
-   * @property unit
-   * @type Unit
-   */
-  this.unit     = unit;
-}
+function UnitTests() {}
 
 /**
- * Rename key utility function. Parse an object from key and rename this key
- * 
- * @method renameKey
- * @param {Object} object reference to use
- * @param {String} reference key to use on object
- * @param {String} new key to use on current object
- * @return {Object} object to use. empty object if required checking format is invalid
- */
-Utils.prototype.renameKey = function(o, key, newKey) {
-
-  // nested check
-  if (!_.isUndefined(o) &amp;&amp; !_.isNull(o) &amp;&amp; _.isObject(o) &amp;&amp;
-    !_.isUndefined(key) &amp;&amp; !_.isNull(key) &amp;&amp; _.isString(key) &amp;&amp;
-    !_.isUndefined(newKey) &amp;&amp; !_.isNull(newKey) &amp;&amp; _.isString(newKey)) {
-
-    // clone object
-    var c     = _.clone(o);
-    var value = c[key];
-  
-    // remove non needed key
-    delete c[key];    
-  
-    // set new key
-    _.set(c, newKey, value);
-  
-    // return object 
-    return c;        
-  }
-
-  // return a default object
-  return {};  
-};
-
-/**
- * Default get function
+ * Generate type for unit tests 
  *
- * @method get
- * @return {Mixed} wanted property
+ * @method generateTypeForUnitTests
+ * @param {Array} types array of types to check and use
+ * @param {Integer} needed length of args for generation
+ * @return {Array} array of type to use on calling function
  */
-Utils.prototype.get = function(name) {
-  return this[name];
+UnitTests.prototype.generateTypeForUnitTests = function(types, argsLength) {
+  types       = _.isArray(types) &amp;&amp; !_.isEmpty(types) ? types : [ null, undefined, 1, true, false, NaN, &#x27;a&#x27;, &#x27;&#x27;, {}, [] ];
+  argsLength  = _.isNumber(argsLength) &amp;&amp; argsLength &gt; 0 ? argsLength : 0;
+  
+  // define args
+  var args  = [];
+
+  // parse types
+  _.each(types, function(t) {
+    var fo = [];
+    
+    // parse args
+    for(var i = 0; i &lt; argsLength; i++) {
+      fo[i] = t;
+    }
+    
+    // adding args
+    args.push(fo);
+  });
+  
+  // return args
+  return args;
 };
 
 /**
-* Export Utils
-*/
-module.exports = new (Utils)();
-
+ * Export UnitTests
+ */
+module.exports = new (UnitTests)();
     </pre>
 </div>
                     </div>

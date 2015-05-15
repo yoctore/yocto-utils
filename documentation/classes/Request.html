@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>src/index.js - yocto-utils</title>
+    <title>Request - yocto-utils</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -81,132 +81,129 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-<h1 class="file-heading">File: src/index.js</h1>
+<h1>Request Class</h1>
+<div class="box meta">
 
-<div class="file">
-    <pre class="code prettyprint linenums">
-&#x27;use strict&#x27;;
 
-var _       = require(&#x27;lodash&#x27;);
-var crypto  = require(&#x27;./modules/crypto&#x27;);
-var date    = require(&#x27;./modules/date&#x27;);
-var media   = require(&#x27;./modules/media&#x27;);
-var request = require(&#x27;./modules/request&#x27;);
-var strings = require(&#x27;./modules/strings&#x27;);
-var unit    = require(&#x27;./modules/unit-tests&#x27;);
+        <div class="foundat">
+            Defined in: <a href="../files/src_modules_request_index.js.html#l5"><code>src&#x2F;modules&#x2F;request&#x2F;index.js:5</code></a>
+        </div>
 
-/**
- * Yocto utilities functions
- *
- * For more details on these dependencies read links below :
- * - LodAsh : https://lodash.com/
- *
- * @date : 27/04/2015
- * @author : Mathieu ROBERT &lt;mathieu@yocto.re&gt;
- * @author : Cédric BALARD &lt;cedric@yocto.re&gt;
- * @copyright : Yocto SAS, All right reserved
- * @class Utils
- */
-function Utils() {
-  /**
-   * Default unit instance for crypto usage
-   *
-   * @property crypto
-   * @type Crypto
-   */
-  this.crypto   = crypto;
 
-  /**
-   * Default unit instance for date usage
-   *
-   * @property date
-   * @type YDate
-   */
-  this.date     = date;
+</div>
 
-  /**
-   * Default unit instance for date usage
-   *
-   * @property media
-   * @type Media
-   */
-  this.media     = media;
 
-  /**
-   * Default unit instance for request usage
-   *
-   * @property request
-   * @type Request
-   */
-  this.request  = request;
+<div class="box intro">
+    <p>Yocto utilities functions : Module Request<br/>
+Contains utility function for request/http manipulation  </p>
+<p>For more details on these dependencies read links below :</p>
+<ul>
+<li>LodAsh : <a href="https://lodash.com/">https://lodash.com/</a></li>
+</ul>
 
-  /**
-   * Default unit instance for strings usage
-   *
-   * @property strings
-   * @type Strings
-   */
-  this.strings  = strings;
+</div>
 
-  /**
-   * Default unit instance for unit testing usage
-   *
-   * @property unit
-   * @type Unit
-   */
-  this.unit     = unit;
-}
 
-/**
- * Rename key utility function. Parse an object from key and rename this key
- * 
- * @method renameKey
- * @param {Object} object reference to use
- * @param {String} reference key to use on object
- * @param {String} new key to use on current object
- * @return {Object} object to use. empty object if required checking format is invalid
- */
-Utils.prototype.renameKey = function(o, key, newKey) {
+<div id="classdocs" class="tabview">
+    <ul class="api-class-tabs">
+        <li class="api-class-tab index"><a href="#index">Index</a></li>
 
-  // nested check
-  if (!_.isUndefined(o) &amp;&amp; !_.isNull(o) &amp;&amp; _.isObject(o) &amp;&amp;
-    !_.isUndefined(key) &amp;&amp; !_.isNull(key) &amp;&amp; _.isString(key) &amp;&amp;
-    !_.isUndefined(newKey) &amp;&amp; !_.isNull(newKey) &amp;&amp; _.isString(newKey)) {
+            <li class="api-class-tab methods"><a href="#methods">Methods</a></li>
+    </ul>
 
-    // clone object
-    var c     = _.clone(o);
-    var value = c[key];
-  
-    // remove non needed key
-    delete c[key];    
-  
-    // set new key
-    _.set(c, newKey, value);
-  
-    // return object 
-    return c;        
-  }
+    <div>
+        <div id="index" class="api-class-tabpanel index">
+            <h2 class="off-left">Item Index</h2>
 
-  // return a default object
-  return {};  
-};
+                <div class="index-section methods">
+                    <h3>Methods</h3>
 
-/**
- * Default get function
- *
- * @method get
- * @return {Mixed} wanted property
- */
-Utils.prototype.get = function(name) {
-  return this[name];
-};
+                    <ul class="index-list methods">
+                            <li class="index-item method">
+                                <a href="#method_getHost">getHost</a>
 
-/**
-* Export Utils
-*/
-module.exports = new (Utils)();
+                            </li>
+                    </ul>
+                </div>
 
-    </pre>
+
+
+        </div>
+
+            <div id="methods" class="api-class-tabpanel">
+                <h2 class="off-left">Methods</h2>
+
+<div id="method_getHost" class="method item">
+    <h3 class="name"><code>getHost</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>HTTP</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Mixed</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/src_modules_request_index.js.html#l19"><code>src&#x2F;modules&#x2F;request&#x2F;index.js:19</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Return the correct host from a request header. Implement x-forwarded rules</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">HTTP</code>
+                        <span class="type">Object</span>
+
+
+                    <div class="param-description">
+                        <p>request object</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Mixed</span>:
+                    <p>Return the correct host from a request header, null if request is undefined</p>
+
+            </div>
+        </div>
+
+
+</div>
+            </div>
+
+
+
+    </div>
 </div>
                     </div>
                 </div>

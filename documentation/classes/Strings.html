@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>example/test.js - yocto-utils</title>
+    <title>Strings - yocto-utils</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -38,7 +38,13 @@
                 
                         <div id="api-tabview-panel">
                             <ul id="api-classes" class="apis classes">
+                                <li><a href="../classes/Crypto.html">Crypto</a></li>
+                                <li><a href="../classes/Media.html">Media</a></li>
+                                <li><a href="../classes/Request.html">Request</a></li>
+                                <li><a href="../classes/Strings.html">Strings</a></li>
+                                <li><a href="../classes/UnitTests.html">UnitTests</a></li>
                                 <li><a href="../classes/Utils.html">Utils</a></li>
+                                <li><a href="../classes/YDate.html">YDate</a></li>
                             </ul>
                 
                             <ul id="api-modules" class="apis modules">
@@ -75,63 +81,45 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-<h1 class="file-heading">File: example/test.js</h1>
-
-<div class="file">
-    <pre class="code prettyprint linenums">
-/**
- * Class that just test utils function
- *
- * add test for :
- * -forceRelodRequire
- * -getCorrectHost
- *
- */
-
-var utils       = require(&quot;../src/index.js&quot;);
-
-var objA = {
-    &quot;A&quot; : &quot;aaa&quot;,
-    &quot;B&quot; : &quot;bbb&quot;
-};
-
-var objB = {
-    &quot;A&quot; : &quot;ccc&quot;,
-    &quot;B&quot; : &quot;ddd&quot;
-};
-
-var objC = {
-    &quot;A&quot; : &quot;eee&quot;,
-    &quot;C&quot; : &quot;fff&quot;
-};
-
-console.log( &quot;allItemIsInList( objA, objB) : &quot;, utils.allItemIsInList( objA, objB) );
-console.log( &quot;allItemIsInList( objA, objC) : &quot;, utils.allItemIsInList( objA, objC) );
+<h1>Strings Class</h1>
+<div class="box meta">
 
 
-console.log( &quot;randomizedPassword( 10, &#x27;totoMdp&#x27;) : &quot;, utils.randomizedPassword( 10, &#x27;totoMdp&#x27;)  );
-console.log( &quot;randomizedPassword( 10, &#x27;&#x27;) : &quot;, utils.randomizedPassword( 10, &#x27;&#x27;)  );
-
-var encryptedData = utils.encrypt( &#x27;Yocto&#x27;, &#x27;dataToEncrypt&#x27;);
-console.log( &quot;encryptedData = encrypt( &#x27;totoYocto&#x27;, &#x27;mdpDeTest&#x27;) : &quot;, encryptedData  );
-
-console.log ( &quot;decrypt(&#x27;Yocto&#x27;, encryptedData ) = &quot; , utils.decrypt(&#x27;Yocto&#x27;, encryptedData ));
+        <div class="foundat">
+            Defined in: <a href="../files/src_modules_strings_index.js.html#l3"><code>src&#x2F;modules&#x2F;strings&#x2F;index.js:3</code></a>
+        </div>
 
 
-console.log ( &quot; utils.geberateSearchDateList(0, 5, &#x27;min&#x27;, &#x27;max&#x27;, false) :&quot; , utils.generateDateList(0, 5, &#x27;min&#x27;, &#x27;max&#x27;, false) );
+</div>
 
 
-console.log( &#x27;getCorrectHost : &#x27;, utils.getCorrectHost());
+<div class="box intro">
+    <p>Yocto utilities functions : Module String<br/>
+Contains utility function to manipulate strings </p>
+<p>For more details on these dependencies read links below :</p>
 
-console.log( &#x27;isValidImageFormat(\&#x27;jpeg\&#x27;): &#x27; +  utils.isValidImageFormat(&#x27;jpeg&#x27;));
+</div>
 
 
-var rename = { a : 1 };
+<div id="classdocs" class="tabview">
+    <ul class="api-class-tabs">
+        <li class="api-class-tab index"><a href="#index">Index</a></li>
 
-var r = utils.renameKey(rename, &#x27;a&#x27;, &#x27;a.b.c&#x27;);
+    </ul>
 
-console.log(rename, r);
-    </pre>
+    <div>
+        <div id="index" class="api-class-tabpanel index">
+            <h2 class="off-left">Item Index</h2>
+
+
+
+
+        </div>
+
+
+
+
+    </div>
 </div>
                     </div>
                 </div>

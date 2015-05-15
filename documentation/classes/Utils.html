@@ -38,7 +38,13 @@
                 
                         <div id="api-tabview-panel">
                             <ul id="api-classes" class="apis classes">
+                                <li><a href="../classes/Crypto.html">Crypto</a></li>
+                                <li><a href="../classes/Media.html">Media</a></li>
+                                <li><a href="../classes/Request.html">Request</a></li>
+                                <li><a href="../classes/Strings.html">Strings</a></li>
+                                <li><a href="../classes/UnitTests.html">UnitTests</a></li>
                                 <li><a href="../classes/Utils.html">Utils</a></li>
+                                <li><a href="../classes/YDate.html">YDate</a></li>
                             </ul>
                 
                             <ul id="api-modules" class="apis modules">
@@ -80,7 +86,7 @@
 
 
         <div class="foundat">
-            Defined in: <a href="../files/src_index.js.html#l7"><code>src&#x2F;index.js:7</code></a>
+            Defined in: <a href="../files/src_index.js.html#l11"><code>src&#x2F;index.js:11</code></a>
         </div>
 
 
@@ -88,14 +94,10 @@
 
 
 <div class="box intro">
-    <p>Yocto utilities functions.<br/>
-Utils contains all utilities functions for yocto core stack</p>
+    <p>Yocto utilities functions</p>
 <p>For more details on these dependencies read links below :</p>
 <ul>
-<li>yocto-logger : git+ssh://lab.yocto.digital:yocto-node-modules/yocto-utils.git</li>
 <li>LodAsh : <a href="https://lodash.com/">https://lodash.com/</a></li>
-<li>crypto : <a href="https://nodejs.org/api/crypto.html">https://nodejs.org/api/crypto.html</a></li>
-<li>path : <a href="https://nodejs.org/api/path.html">https://nodejs.org/api/path.html</a></li>
 </ul>
 
 </div>
@@ -106,6 +108,7 @@ Utils contains all utilities functions for yocto core stack</p>
         <li class="api-class-tab index"><a href="#index">Index</a></li>
 
             <li class="api-class-tab methods"><a href="#methods">Methods</a></li>
+            <li class="api-class-tab properties"><a href="#properties">Properties</a></li>
     </ul>
 
     <div>
@@ -117,35 +120,7 @@ Utils contains all utilities functions for yocto core stack</p>
 
                     <ul class="index-list methods">
                             <li class="index-item method">
-                                <a href="#method_allItemIsInList">allItemIsInList</a>
-
-                            </li>
-                            <li class="index-item method">
-                                <a href="#method_decrypt">decrypt</a>
-
-                            </li>
-                            <li class="index-item method">
-                                <a href="#method_encrypt">encrypt</a>
-
-                            </li>
-                            <li class="index-item method">
-                                <a href="#method_forceReloadRequire">forceReloadRequire</a>
-
-                            </li>
-                            <li class="index-item method">
-                                <a href="#method_generateDateList">generateDateList</a>
-
-                            </li>
-                            <li class="index-item method">
-                                <a href="#method_getCorrectHost">getCorrectHost</a>
-
-                            </li>
-                            <li class="index-item method">
-                                <a href="#method_isValidImageFormat">isValidImageFormat</a>
-
-                            </li>
-                            <li class="index-item method">
-                                <a href="#method_randomizedPassword">randomizedPassword</a>
+                                <a href="#method_get">get</a>
 
                             </li>
                             <li class="index-item method">
@@ -155,6 +130,36 @@ Utils contains all utilities functions for yocto core stack</p>
                     </ul>
                 </div>
 
+                <div class="index-section properties">
+                    <h3>Properties</h3>
+
+                    <ul class="index-list properties">
+                            <li class="index-item property">
+                                <a href="#property_crypto">crypto</a>
+
+                            </li>
+                            <li class="index-item property">
+                                <a href="#property_date">date</a>
+
+                            </li>
+                            <li class="index-item property">
+                                <a href="#property_media">media</a>
+
+                            </li>
+                            <li class="index-item property">
+                                <a href="#property_request">request</a>
+
+                            </li>
+                            <li class="index-item property">
+                                <a href="#property_strings">strings</a>
+
+                            </li>
+                            <li class="index-item property">
+                                <a href="#property_unit">unit</a>
+
+                            </li>
+                    </ul>
+                </div>
 
 
         </div>
@@ -162,22 +167,13 @@ Utils contains all utilities functions for yocto core stack</p>
             <div id="methods" class="api-class-tabpanel">
                 <h2 class="off-left">Methods</h2>
 
-<div id="method_allItemIsInList" class="method item">
-    <h3 class="name"><code>allItemIsInList</code></h3>
+<div id="method_get" class="method item">
+    <h3 class="name"><code>get</code></h3>
 
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-                <li class="arg">
-                        <code>source</code>
-                </li>
-                <li class="arg">
-                        <code>compare</code>
-                </li>
-            </ul><span class="paren">)</span>
-        </div>
+        <span class="paren">()</span>
 
         <span class="returns-inline">
-            <span class="type">Boolean</span>
+            <span class="type">Mixed</span>
         </span>
 
 
@@ -189,7 +185,7 @@ Utils contains all utilities functions for yocto core stack</p>
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/src_index.js.html#l72"><code>src&#x2F;index.js:72</code></a>
+        <a href="../files/src_index.js.html#l107"><code>src&#x2F;index.js:107</code></a>
         </p>
 
 
@@ -197,605 +193,17 @@ Utils contains all utilities functions for yocto core stack</p>
     </div>
 
     <div class="description">
-        <p>Return true if has no difference between source and compare list</p>
+        <p>Default get function</p>
 
     </div>
 
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-                <li class="param">
-                        <code class="param-name">source</code>
-                        <span class="type">Array | Object</span>
-
-
-                    <div class="param-description">
-                        <p>list of item</p>
-
-                    </div>
-
-                </li>
-                <li class="param">
-                        <code class="param-name">compare</code>
-                        <span class="type">Array | Object</span>
-
-
-                    <div class="param-description">
-                        <p>list of item</p>
-
-                    </div>
-
-                </li>
-            </ul>
-        </div>
 
         <div class="returns">
             <h4>Returns:</h4>
 
             <div class="returns-description">
-                        <span class="type">Boolean</span>:
-                    <p>true is no difference, false otherwise</p>
-
-            </div>
-        </div>
-
-
-</div>
-<div id="method_decrypt" class="method item">
-    <h3 class="name"><code>decrypt</code></h3>
-
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-                <li class="arg">
-                        <code>key</code>
-                </li>
-                <li class="arg">
-                        <code>data</code>
-                </li>
-            </ul><span class="paren">)</span>
-        </div>
-
-        <span class="returns-inline">
-            <span class="type">String</span>
-        </span>
-
-
-
-
-
-
-
-    <div class="meta">
-                <p>
-                Defined in
-        <a href="../files/src_index.js.html#l137"><code>src&#x2F;index.js:137</code></a>
-        </p>
-
-
-
-    </div>
-
-    <div class="description">
-        <p>Utility function to decrypt data</p>
-
-    </div>
-
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-                <li class="param">
-                        <code class="param-name">key</code>
-                        <span class="type">String</span>
-
-
-                    <div class="param-description">
-                        <p>key to use for encryption</p>
-
-                    </div>
-
-                </li>
-                <li class="param">
-                        <code class="param-name">data</code>
-                        <span class="type">Mixed</span>
-
-
-                    <div class="param-description">
-                        <p>data to encrypt</p>
-
-                    </div>
-
-                </li>
-            </ul>
-        </div>
-
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                        <span class="type">String</span>:
-                    <p>decrypted data</p>
-
-            </div>
-        </div>
-
-
-</div>
-<div id="method_encrypt" class="method item">
-    <h3 class="name"><code>encrypt</code></h3>
-
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-                <li class="arg">
-                        <code>key</code>
-                </li>
-                <li class="arg">
-                        <code>data</code>
-                </li>
-            </ul><span class="paren">)</span>
-        </div>
-
-        <span class="returns-inline">
-            <span class="type">String</span>
-        </span>
-
-
-
-
-
-
-
-    <div class="meta">
-                <p>
-                Defined in
-        <a href="../files/src_index.js.html#l118"><code>src&#x2F;index.js:118</code></a>
-        </p>
-
-
-
-    </div>
-
-    <div class="description">
-        <p>Utility function to encrypt data</p>
-
-    </div>
-
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-                <li class="param">
-                        <code class="param-name">key</code>
-                        <span class="type">String</span>
-
-
-                    <div class="param-description">
-                        <p>key to use for encryption</p>
-
-                    </div>
-
-                </li>
-                <li class="param">
-                        <code class="param-name">data</code>
-                        <span class="type">Mixed</span>
-
-
-                    <div class="param-description">
-                        <p>data to encrypt</p>
-
-                    </div>
-
-                </li>
-            </ul>
-        </div>
-
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                        <span class="type">String</span>:
-                    <p>crypted data</p>
-
-            </div>
-        </div>
-
-
-</div>
-<div id="method_forceReloadRequire" class="method item">
-    <h3 class="name"><code>forceReloadRequire</code></h3>
-
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-                <li class="arg">
-                        <code>path</code>
-                </li>
-            </ul><span class="paren">)</span>
-        </div>
-
-        <span class="returns-inline">
-            <span class="type">String</span>
-        </span>
-
-
-
-
-
-
-
-    <div class="meta">
-                <p>
-                Defined in
-        <a href="../files/src_index.js.html#l60"><code>src&#x2F;index.js:60</code></a>
-        </p>
-
-
-
-    </div>
-
-    <div class="description">
-        <p>Force a require file to be reload from root path of the app</p>
-
-    </div>
-
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-                <li class="param">
-                        <code class="param-name">path</code>
-                        <span class="type">String</span>
-
-
-                    <div class="param-description">
-                        <p>the current path to use</p>
-
-                    </div>
-
-                </li>
-            </ul>
-        </div>
-
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                        <span class="type">String</span>:
-                    <p>path</p>
-
-            </div>
-        </div>
-
-
-</div>
-<div id="method_generateDateList" class="method item">
-    <h3 class="name"><code>generateDateList</code></h3>
-
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-                <li class="arg">
-                        <code>min</code>
-                </li>
-                <li class="arg">
-                        <code>max</code>
-                </li>
-                <li class="arg">
-                        <code>prefixMin</code>
-                </li>
-                <li class="arg">
-                        <code>prefixMax</code>
-                </li>
-                <li class="arg">
-                        <code>reverse</code>
-                </li>
-            </ul><span class="paren">)</span>
-        </div>
-
-        <span class="returns-inline">
-            <span class="type">Array</span>
-        </span>
-
-
-
-
-
-
-
-    <div class="meta">
-                <p>
-                Defined in
-        <a href="../files/src_index.js.html#l153"><code>src&#x2F;index.js:153</code></a>
-        </p>
-
-
-
-    </div>
-
-    <div class="description">
-        <p>Utility function to build date list for search view</p>
-
-    </div>
-
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-                <li class="param">
-                        <code class="param-name">min</code>
-                        <span class="type">Integer</span>
-
-
-                    <div class="param-description">
-                        <p>start value</p>
-
-                    </div>
-
-                </li>
-                <li class="param">
-                        <code class="param-name">max</code>
-                        <span class="type">Integer</span>
-
-
-                    <div class="param-description">
-                        <p>end value</p>
-
-                    </div>
-
-                </li>
-                <li class="param">
-                        <code class="param-name">prefixMin</code>
-                        <span class="type">String</span>
-
-
-                    <div class="param-description">
-                        <p>prefix to use on min value</p>
-
-                    </div>
-
-                </li>
-                <li class="param">
-                        <code class="param-name">prefixMax</code>
-                        <span class="type">String</span>
-
-
-                    <div class="param-description">
-                        <p>prefix to use on max value</p>
-
-                    </div>
-
-                </li>
-                <li class="param">
-                        <code class="param-name">reverse</code>
-                        <span class="type">Boolean</span>
-
-
-                    <div class="param-description">
-                        <p>true if we need to reverse array</p>
-
-                    </div>
-
-                </li>
-            </ul>
-        </div>
-
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                        <span class="type">Array</span>:
-                    <p>list of date</p>
-
-            </div>
-        </div>
-
-
-</div>
-<div id="method_getCorrectHost" class="method item">
-    <h3 class="name"><code>getCorrectHost</code></h3>
-
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-                <li class="arg">
-                        <code>HTTP</code>
-                </li>
-            </ul><span class="paren">)</span>
-        </div>
-
-        <span class="returns-inline">
-            <span class="type">String</span>
-        </span>
-
-
-
-
-
-
-
-    <div class="meta">
-                <p>
-                Defined in
-        <a href="../files/src_index.js.html#l195"><code>src&#x2F;index.js:195</code></a>
-        </p>
-
-
-
-    </div>
-
-    <div class="description">
-        <p>Return the correct host from a request header. Implement x-forwarded data</p>
-
-    </div>
-
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-                <li class="param">
-                        <code class="param-name">HTTP</code>
-                        <span class="type">Object</span>
-
-
-                    <div class="param-description">
-                        <p>request object</p>
-
-                    </div>
-
-                </li>
-            </ul>
-        </div>
-
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                        <span class="type">String</span>:
-                    <p>Return the correct host from a request header, null if request is undefined</p>
-
-            </div>
-        </div>
-
-
-</div>
-<div id="method_isValidImageFormat" class="method item">
-    <h3 class="name"><code>isValidImageFormat</code></h3>
-
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-                <li class="arg">
-                        <code>type</code>
-                </li>
-            </ul><span class="paren">)</span>
-        </div>
-
-        <span class="returns-inline">
-            <span class="type">Boolean</span>
-        </span>
-
-
-
-
-
-
-
-    <div class="meta">
-                <p>
-                Defined in
-        <a href="../files/src_index.js.html#l209"><code>src&#x2F;index.js:209</code></a>
-        </p>
-
-
-
-    </div>
-
-    <div class="description">
-        <p>Check if is an allowed image type format</p>
-
-    </div>
-
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-                <li class="param">
-                        <code class="param-name">type</code>
-                        <span class="type">String</span>
-
-
-                    <div class="param-description">
-                        <p>to check</p>
-
-                    </div>
-
-                </li>
-            </ul>
-        </div>
-
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                        <span class="type">Boolean</span>:
-                    <p>true if is correct false otherwise</p>
-
-            </div>
-        </div>
-
-
-</div>
-<div id="method_randomizedPassword" class="method item">
-    <h3 class="name"><code>randomizedPassword</code></h3>
-
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-                <li class="arg">
-                        <code>n</code>
-                </li>
-                <li class="arg">
-                        <code>a</code>
-                </li>
-            </ul><span class="paren">)</span>
-        </div>
-
-        <span class="returns-inline">
-            <span class="type">String</span>
-        </span>
-
-
-
-
-
-
-
-    <div class="meta">
-                <p>
-                Defined in
-        <a href="../files/src_index.js.html#l101"><code>src&#x2F;index.js:101</code></a>
-        </p>
-
-
-
-    </div>
-
-    <div class="description">
-        <p>Return a password from two rules</p>
-
-    </div>
-
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-                <li class="param">
-                        <code class="param-name">n</code>
-                        <span class="type">Integer</span>
-
-
-                    <div class="param-description">
-                        <p>password length</p>
-
-                    </div>
-
-                </li>
-                <li class="param">
-                        <code class="param-name">a</code>
-                        <span class="type">String</span>
-
-
-                    <div class="param-description">
-                        <p>chars to use</p>
-
-                    </div>
-
-                </li>
-            </ul>
-        </div>
-
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                        <span class="type">String</span>:
-                    <p>a randomized password</p>
+                        <span class="type">Mixed</span>:
+                    <p>wanted property</p>
 
             </div>
         </div>
@@ -832,7 +240,7 @@ Utils contains all utilities functions for yocto core stack</p>
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/src_index.js.html#l26"><code>src&#x2F;index.js:26</code></a>
+        <a href="../files/src_index.js.html#l73"><code>src&#x2F;index.js:73</code></a>
         </p>
 
 
@@ -898,6 +306,160 @@ Utils contains all utilities functions for yocto core stack</p>
 </div>
             </div>
 
+            <div id="properties" class="api-class-tabpanel">
+                <h2 class="off-left">Properties</h2>
+
+                    <div id="property_crypto" class="property item">
+                        <h3 class="name"><code>crypto</code></h3>
+                        <span class="type"><a href="../classes/Crypto.html" class="crosslink">Crypto</a></span>
+                    
+                    
+                    
+                    
+                    
+                        <div class="meta">
+                                    <p>
+                                    Defined in
+                            <a href="../files/src_index.js.html#l24"><code>src&#x2F;index.js:24</code></a>
+                            </p>
+                    
+                    
+                        </div>
+                    
+                        <div class="description">
+                            <p>Default unit instance for crypto usage</p>
+                    
+                        </div>
+                    
+                    
+                    
+                    </div>
+                    <div id="property_date" class="property item">
+                        <h3 class="name"><code>date</code></h3>
+                        <span class="type"><a href="../classes/YDate.html" class="crosslink">YDate</a></span>
+                    
+                    
+                    
+                    
+                    
+                        <div class="meta">
+                                    <p>
+                                    Defined in
+                            <a href="../files/src_index.js.html#l32"><code>src&#x2F;index.js:32</code></a>
+                            </p>
+                    
+                    
+                        </div>
+                    
+                        <div class="description">
+                            <p>Default unit instance for date usage</p>
+                    
+                        </div>
+                    
+                    
+                    
+                    </div>
+                    <div id="property_media" class="property item">
+                        <h3 class="name"><code>media</code></h3>
+                        <span class="type"><a href="../classes/Media.html" class="crosslink">Media</a></span>
+                    
+                    
+                    
+                    
+                    
+                        <div class="meta">
+                                    <p>
+                                    Defined in
+                            <a href="../files/src_index.js.html#l40"><code>src&#x2F;index.js:40</code></a>
+                            </p>
+                    
+                    
+                        </div>
+                    
+                        <div class="description">
+                            <p>Default unit instance for date usage</p>
+                    
+                        </div>
+                    
+                    
+                    
+                    </div>
+                    <div id="property_request" class="property item">
+                        <h3 class="name"><code>request</code></h3>
+                        <span class="type"><a href="../classes/Request.html" class="crosslink">Request</a></span>
+                    
+                    
+                    
+                    
+                    
+                        <div class="meta">
+                                    <p>
+                                    Defined in
+                            <a href="../files/src_index.js.html#l48"><code>src&#x2F;index.js:48</code></a>
+                            </p>
+                    
+                    
+                        </div>
+                    
+                        <div class="description">
+                            <p>Default unit instance for request usage</p>
+                    
+                        </div>
+                    
+                    
+                    
+                    </div>
+                    <div id="property_strings" class="property item">
+                        <h3 class="name"><code>strings</code></h3>
+                        <span class="type"><a href="../classes/Strings.html" class="crosslink">Strings</a></span>
+                    
+                    
+                    
+                    
+                    
+                        <div class="meta">
+                                    <p>
+                                    Defined in
+                            <a href="../files/src_index.js.html#l56"><code>src&#x2F;index.js:56</code></a>
+                            </p>
+                    
+                    
+                        </div>
+                    
+                        <div class="description">
+                            <p>Default unit instance for strings usage</p>
+                    
+                        </div>
+                    
+                    
+                    
+                    </div>
+                    <div id="property_unit" class="property item">
+                        <h3 class="name"><code>unit</code></h3>
+                        <span class="type">Unit</span>
+                    
+                    
+                    
+                    
+                    
+                        <div class="meta">
+                                    <p>
+                                    Defined in
+                            <a href="../files/src_index.js.html#l64"><code>src&#x2F;index.js:64</code></a>
+                            </p>
+                    
+                    
+                        </div>
+                    
+                        <div class="description">
+                            <p>Default unit instance for unit testing usage</p>
+                    
+                        </div>
+                    
+                    
+                    
+                    </div>
+            </div>
 
 
     </div>
