@@ -1,6 +1,6 @@
 {
   "name": "yocto-utils",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Utils contains utils function for multiple usage (Crypto / Date / Media / Request / Strings / Unit Tests)",
   "private": true,
   "scripts": {},
