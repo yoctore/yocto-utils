@@ -19,6 +19,7 @@ var unit    = require('./modules/unit-tests');
  * @author : Cédric BALARD <cedric@yocto.re>
  * @copyright : Yocto SAS, All right reserved
  * @class Utils
+ * @module Utils
  */
 function Utils() {
   /**

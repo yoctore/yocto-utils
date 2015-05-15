@@ -62,7 +62,9 @@
         },
         "src/index.js": {
             "name": "src/index.js",
-            "modules": {},
+            "modules": {
+                "Utils": 1
+            },
             "classes": {
                 "Utils": 1
             },
@@ -70,7 +72,124 @@
             "namespaces": {}
         }
     },
-    "modules": {},
+    "modules": {
+        "Utils": {
+            "name": "Utils",
+            "submodules": {
+                "Crypto": 1,
+                "YDate": 1,
+                "Media": 1,
+                "Request": 1,
+                "Strings": 1,
+                "UnitTests": 1
+            },
+            "classes": {
+                "Crypto": 1,
+                "YDate": 1,
+                "Media": 1,
+                "Request": 1,
+                "Strings": 1,
+                "UnitTests": 1,
+                "Utils": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "src/index.js",
+            "line": 11,
+            "description": "Yocto utilities functions\n\nFor more details on these dependencies read links below :\n- LodAsh : https://lodash.com/"
+        },
+        "Crypto": {
+            "name": "Crypto",
+            "submodules": {},
+            "classes": {
+                "Crypto": 1
+            },
+            "fors": {},
+            "is_submodule": 1,
+            "namespaces": {},
+            "module": "Utils",
+            "namespace": "",
+            "description": "Yocto utilities functions : Module Crypto<br/>\nContains utility function for cryptography action \n\nFor more details on these dependencies read links below :\n- LodAsh : https://lodash.com/\n- Crypto : https://nodejs.org/api/crypto.html",
+            "file": "src/modules/crypto/index.js",
+            "line": 6
+        },
+        "YDate": {
+            "name": "YDate",
+            "submodules": {},
+            "classes": {
+                "YDate": 1
+            },
+            "fors": {},
+            "is_submodule": 1,
+            "namespaces": {},
+            "module": "Utils",
+            "namespace": "",
+            "description": "Yocto utilities functions : Module YDate<br/>\nContains utility function for date manipulation  \n\nFor more details on these dependencies read links below :\n- LodAsh : https://lodash.com/",
+            "file": "src/modules/date/index.js",
+            "line": 5
+        },
+        "Media": {
+            "name": "Media",
+            "submodules": {},
+            "classes": {
+                "Media": 1
+            },
+            "fors": {},
+            "is_submodule": 1,
+            "namespaces": {},
+            "module": "Utils",
+            "namespace": "",
+            "description": "Yocto utilities functions : Module Multimedia<br/>\nContains utility function to manage multimedia process \n\nFor more details on these dependencies read links below :",
+            "file": "src/modules/media/index.js",
+            "line": 5
+        },
+        "Request": {
+            "name": "Request",
+            "submodules": {},
+            "classes": {
+                "Request": 1
+            },
+            "fors": {},
+            "is_submodule": 1,
+            "namespaces": {},
+            "module": "Utils",
+            "namespace": "",
+            "description": "Yocto utilities functions : Module Request<br/>\nContains utility function for request/http manipulation  \n\nFor more details on these dependencies read links below :\n- LodAsh : https://lodash.com/",
+            "file": "src/modules/request/index.js",
+            "line": 5
+        },
+        "Strings": {
+            "name": "Strings",
+            "submodules": {},
+            "classes": {
+                "Strings": 1
+            },
+            "fors": {},
+            "is_submodule": 1,
+            "namespaces": {},
+            "module": "Utils",
+            "namespace": "",
+            "description": "Yocto utilities functions : Module String<br/>\nContains utility function to manipulate strings \n\nFor more details on these dependencies read links below :",
+            "file": "src/modules/strings/index.js",
+            "line": 3
+        },
+        "UnitTests": {
+            "name": "UnitTests",
+            "submodules": {},
+            "classes": {
+                "UnitTests": 1
+            },
+            "fors": {},
+            "is_submodule": 1,
+            "namespaces": {},
+            "module": "Utils",
+            "namespace": "",
+            "description": "Yocto utilities functions : Module UnitTests<br/>\nContains utility function to use during unit testing \n\nFor more details on these dependencies read links below :\n- LodAsh : https://lodash.com/",
+            "file": "src/modules/unit-tests/index.js",
+            "line": 5
+        }
+    },
     "classes": {
         "Crypto": {
             "name": "Crypto",
@@ -80,12 +199,14 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
+            "module": "Utils",
             "file": "src/modules/crypto/index.js",
             "line": 6,
             "description": "Yocto utilities functions : Module Crypto<br/>\nContains utility function for cryptography action \n\nFor more details on these dependencies read links below :\n- LodAsh : https://lodash.com/\n- Crypto : https://nodejs.org/api/crypto.html",
             "date": ": 15/05/2015",
             "author": ": Mathieu ROBERT <mathieu@yocto.re>",
-            "copyright": ": Yocto SAS, All right reserved"
+            "copyright": ": Yocto SAS, All right reserved",
+            "submodule": "Crypto"
         },
         "YDate": {
             "name": "YDate",
@@ -95,12 +216,15 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
+            "module": "Utils",
+            "namespace": "",
             "file": "src/modules/date/index.js",
             "line": 5,
             "description": "Yocto utilities functions : Module YDate<br/>\nContains utility function for date manipulation  \n\nFor more details on these dependencies read links below :\n- LodAsh : https://lodash.com/",
             "date": ": 15/05/2015",
             "author": ": Mathieu ROBERT <mathieu@yocto.re>",
-            "copyright": ": Yocto SAS, All right reserved"
+            "copyright": ": Yocto SAS, All right reserved",
+            "submodule": "YDate"
         },
         "Media": {
             "name": "Media",
@@ -110,12 +234,15 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
+            "module": "Utils",
+            "namespace": "",
             "file": "src/modules/media/index.js",
             "line": 5,
             "description": "Yocto utilities functions : Module Multimedia<br/>\nContains utility function to manage multimedia process \n\nFor more details on these dependencies read links below :",
             "date": ": 15/05/2015",
             "author": ": Mathieu ROBERT <mathieu@yocto.re>",
-            "copyright": ": Yocto SAS, All right reserved"
+            "copyright": ": Yocto SAS, All right reserved",
+            "submodule": "Media"
         },
         "Request": {
             "name": "Request",
@@ -125,12 +252,15 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
+            "module": "Utils",
+            "namespace": "",
             "file": "src/modules/request/index.js",
             "line": 5,
             "description": "Yocto utilities functions : Module Request<br/>\nContains utility function for request/http manipulation  \n\nFor more details on these dependencies read links below :\n- LodAsh : https://lodash.com/",
             "date": ": 15/05/2015",
             "author": ": Mathieu ROBERT <mathieu@yocto.re>",
-            "copyright": ": Yocto SAS, All right reserved"
+            "copyright": ": Yocto SAS, All right reserved",
+            "submodule": "Request"
         },
         "Strings": {
             "name": "Strings",
@@ -140,12 +270,15 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
+            "module": "Utils",
+            "namespace": "",
             "file": "src/modules/strings/index.js",
             "line": 3,
             "description": "Yocto utilities functions : Module String<br/>\nContains utility function to manipulate strings \n\nFor more details on these dependencies read links below :",
             "date": ": 15/05/2015",
             "author": ": Mathieu ROBERT <mathieu@yocto.re>",
-            "copyright": ": Yocto SAS, All right reserved"
+            "copyright": ": Yocto SAS, All right reserved",
+            "submodule": "Strings"
         },
         "UnitTests": {
             "name": "UnitTests",
@@ -155,12 +288,15 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
+            "module": "Utils",
+            "namespace": "",
             "file": "src/modules/unit-tests/index.js",
             "line": 5,
             "description": "Yocto utilities functions : Module UnitTests<br/>\nContains utility function to use during unit testing \n\nFor more details on these dependencies read links below :\n- LodAsh : https://lodash.com/",
             "date": ": 15/05/2015",
             "author": ": Mathieu ROBERT <mathieu@yocto.re>",
-            "copyright": ": Yocto SAS, All right reserved"
+            "copyright": ": Yocto SAS, All right reserved",
+            "submodule": "UnitTests"
         },
         "Utils": {
             "name": "Utils",
@@ -170,6 +306,8 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
+            "module": "Utils",
+            "namespace": "",
             "file": "src/index.js",
             "line": 11,
             "description": "Yocto utilities functions\n\nFor more details on these dependencies read links below :\n- LodAsh : https://lodash.com/",
@@ -181,7 +319,7 @@
     "classitems": [
         {
             "file": "src/modules/crypto/index.js",
-            "line": 21,
+            "line": 23,
             "description": "Return a password from two rules",
             "itemtype": "method",
             "name": "randomizedPassword",
@@ -201,11 +339,13 @@
                 "description": "a randomized password",
                 "type": "String"
             },
-            "class": "Crypto"
+            "class": "Crypto",
+            "module": "Utils",
+            "submodule": "Crypto"
         },
         {
             "file": "src/modules/crypto/index.js",
-            "line": 44,
+            "line": 46,
             "description": "Utility function to encrypt data",
             "itemtype": "method",
             "name": "encrypt",
@@ -225,11 +365,13 @@
                 "description": "crypted data",
                 "type": "String"
             },
-            "class": "Crypto"
+            "class": "Crypto",
+            "module": "Utils",
+            "submodule": "Crypto"
         },
         {
             "file": "src/modules/crypto/index.js",
-            "line": 66,
+            "line": 68,
             "description": "Utility function to decrypt data",
             "itemtype": "method",
             "name": "decrypt",
@@ -249,17 +391,21 @@
                 "description": "decrypted data",
                 "type": "String"
             },
-            "class": "Crypto"
+            "class": "Crypto",
+            "module": "Utils",
+            "submodule": "Crypto"
         },
         {
             "file": "src/modules/crypto/index.js",
-            "line": 84,
+            "line": 86,
             "description": "Export Crypto",
-            "class": "Crypto"
+            "class": "Crypto",
+            "module": "Utils",
+            "submodule": "Crypto"
         },
         {
             "file": "src/modules/date/index.js",
-            "line": 19,
+            "line": 21,
             "description": "Utility function to build date list",
             "itemtype": "method",
             "name": "generateList",
@@ -294,17 +440,21 @@
                 "description": "list of date",
                 "type": "Array"
             },
-            "class": "YDate"
+            "class": "YDate",
+            "module": "Utils",
+            "submodule": "YDate"
         },
         {
             "file": "src/modules/date/index.js",
-            "line": 62,
+            "line": 64,
             "description": "Export YDate",
-            "class": "YDate"
+            "class": "YDate",
+            "module": "Utils",
+            "submodule": "YDate"
         },
         {
             "file": "src/modules/media/index.js",
-            "line": 18,
+            "line": 20,
             "description": "Check if is an allowed image type format<br/>\nThis Function only check file extention it's not checking file format metadata",
             "itemtype": "method",
             "name": "isValidImageFormat",
@@ -319,17 +469,21 @@
                 "description": "true if is correct false otherwise",
                 "type": "Boolean"
             },
-            "class": "Media"
+            "class": "Media",
+            "module": "Utils",
+            "submodule": "Media"
         },
         {
             "file": "src/modules/media/index.js",
-            "line": 34,
+            "line": 36,
             "description": "Export Strings",
-            "class": "Media"
+            "class": "Media",
+            "module": "Utils",
+            "submodule": "Media"
         },
         {
             "file": "src/modules/request/index.js",
-            "line": 19,
+            "line": 21,
             "description": "Return the correct host from a request header. Implement x-forwarded rules",
             "itemtype": "method",
             "name": "getHost",
@@ -344,23 +498,29 @@
                 "description": "Return the correct host from a request header, null if request is undefined",
                 "type": "Mixed"
             },
-            "class": "Request"
+            "class": "Request",
+            "module": "Utils",
+            "submodule": "Request"
         },
         {
             "file": "src/modules/request/index.js",
-            "line": 36,
+            "line": 38,
             "description": "Export YDate",
-            "class": "Request"
+            "class": "Request",
+            "module": "Utils",
+            "submodule": "Request"
         },
         {
             "file": "src/modules/strings/index.js",
-            "line": 16,
+            "line": 18,
             "description": "Export Strings",
-            "class": "Strings"
+            "class": "Strings",
+            "module": "Utils",
+            "submodule": "Strings"
         },
         {
             "file": "src/modules/unit-tests/index.js",
-            "line": 19,
+            "line": 21,
             "description": "Generate type for unit tests",
             "itemtype": "method",
             "name": "generateTypeForUnitTests",
@@ -380,71 +540,81 @@
                 "description": "array of type to use on calling function",
                 "type": "Array"
             },
-            "class": "UnitTests"
+            "class": "UnitTests",
+            "module": "Utils",
+            "submodule": "UnitTests"
         },
         {
             "file": "src/modules/unit-tests/index.js",
-            "line": 51,
+            "line": 53,
             "description": "Export UnitTests",
-            "class": "UnitTests"
+            "class": "UnitTests",
+            "module": "Utils",
+            "submodule": "UnitTests"
         },
         {
             "file": "src/index.js",
-            "line": 24,
+            "line": 25,
             "description": "Default unit instance for crypto usage",
             "itemtype": "property",
             "name": "crypto",
             "type": "Crypto",
-            "class": "Utils"
+            "class": "Utils",
+            "module": "Utils"
         },
         {
             "file": "src/index.js",
-            "line": 32,
+            "line": 33,
             "description": "Default unit instance for date usage",
             "itemtype": "property",
             "name": "date",
             "type": "YDate",
-            "class": "Utils"
+            "class": "Utils",
+            "module": "Utils"
         },
         {
             "file": "src/index.js",
-            "line": 40,
+            "line": 41,
             "description": "Default unit instance for date usage",
             "itemtype": "property",
             "name": "media",
             "type": "Media",
-            "class": "Utils"
+            "class": "Utils",
+            "module": "Utils"
         },
         {
             "file": "src/index.js",
-            "line": 48,
+            "line": 49,
             "description": "Default unit instance for request usage",
             "itemtype": "property",
             "name": "request",
             "type": "Request",
-            "class": "Utils"
+            "class": "Utils",
+            "module": "Utils"
         },
         {
             "file": "src/index.js",
-            "line": 56,
+            "line": 57,
             "description": "Default unit instance for strings usage",
             "itemtype": "property",
             "name": "strings",
             "type": "Strings",
-            "class": "Utils"
+            "class": "Utils",
+            "module": "Utils"
         },
         {
             "file": "src/index.js",
-            "line": 64,
+            "line": 65,
             "description": "Default unit instance for unit testing usage",
             "itemtype": "property",
             "name": "unit",
             "type": "Unit",
-            "class": "Utils"
+            "class": "Utils",
+            "module": "Utils"
         },
         {
             "file": "src/index.js",
-            "line": 73,
+            "line": 74,
             "description": "Rename key utility function. Parse an object from key and rename this key",
             "itemtype": "method",
             "name": "renameKey",
@@ -469,11 +639,12 @@
                 "description": "object to use. empty object if required checking format is invalid",
                 "type": "Object"
             },
-            "class": "Utils"
+            "class": "Utils",
+            "module": "Utils"
         },
         {
             "file": "src/index.js",
-            "line": 107,
+            "line": 108,
             "description": "Default get function",
             "itemtype": "method",
             "name": "get",
@@ -481,13 +652,15 @@
                 "description": "wanted property",
                 "type": "Mixed"
             },
-            "class": "Utils"
+            "class": "Utils",
+            "module": "Utils"
         },
         {
             "file": "src/index.js",
-            "line": 117,
+            "line": 118,
             "description": "Export Utils",
-            "class": "Utils"
+            "class": "Utils",
+            "module": "Utils"
         }
     ],
     "warnings": [
@@ -549,31 +722,31 @@
         },
         {
             "message": "Missing item type\nExport Crypto",
-            "line": " src/modules/crypto/index.js:84"
+            "line": " src/modules/crypto/index.js:86"
         },
         {
             "message": "Missing item type\nExport YDate",
-            "line": " src/modules/date/index.js:62"
+            "line": " src/modules/date/index.js:64"
         },
         {
             "message": "Missing item type\nExport Strings",
-            "line": " src/modules/media/index.js:34"
+            "line": " src/modules/media/index.js:36"
         },
         {
             "message": "Missing item type\nExport YDate",
-            "line": " src/modules/request/index.js:36"
+            "line": " src/modules/request/index.js:38"
         },
         {
             "message": "Missing item type\nExport Strings",
-            "line": " src/modules/strings/index.js:16"
+            "line": " src/modules/strings/index.js:18"
         },
         {
             "message": "Missing item type\nExport UnitTests",
-            "line": " src/modules/unit-tests/index.js:51"
+            "line": " src/modules/unit-tests/index.js:53"
         },
         {
             "message": "Missing item type\nExport Utils",
-            "line": " src/index.js:117"
+            "line": " src/index.js:118"
         }
     ]
 }

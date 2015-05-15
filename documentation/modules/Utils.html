@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Request - yocto-utils</title>
+    <title>Utils - yocto-utils</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -88,23 +88,19 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-<h1>Request Class</h1>
-<div class="box meta">
+<h1>Utils Module</h1>
+<div class="box clearfix meta">
 
 
         <div class="foundat">
-            Defined in: <a href="../files/src_modules_request_index.js.html#l5"><code>src&#x2F;modules&#x2F;request&#x2F;index.js:5</code></a>
+            Defined in: <a href="../files/src_index.js.html#l11"><code>src&#x2F;index.js:11</code></a>
         </div>
-
-            Module: <a href="../modules/Request.html">Request</a><br>
-            Parent Module: <a href="../modules/Utils.html">Utils</a>
 
 </div>
 
 
 <div class="box intro">
-    <p>Yocto utilities functions : Module Request<br/>
-Contains utility function for request/http manipulation  </p>
+    <p>Yocto utilities functions</p>
 <p>For more details on these dependencies read links below :</p>
 <ul>
 <li>LodAsh : <a href="https://lodash.com/">https://lodash.com/</a></li>
@@ -113,105 +109,131 @@ Contains utility function for request/http manipulation  </p>
 </div>
 
 
-<div id="classdocs" class="tabview">
-    <ul class="api-class-tabs">
-        <li class="api-class-tab index"><a href="#index">Index</a></li>
+<div class="yui3-g">
+    <div class="yui3-u-1-2">
+            <p>This module provides the following classes:</p>
 
-            <li class="api-class-tab methods"><a href="#methods">Methods</a></li>
-    </ul>
-
-    <div>
-        <div id="index" class="api-class-tabpanel index">
-            <h2 class="off-left">Item Index</h2>
-
-                <div class="index-section methods">
-                    <h3>Methods</h3>
-
-                    <ul class="index-list methods">
-                            <li class="index-item method">
-                                <a href="#method_getHost">getHost</a>
-
-                            </li>
-                    </ul>
-                </div>
-
-
-
-        </div>
-
-            <div id="methods" class="api-class-tabpanel">
-                <h2 class="off-left">Methods</h2>
-
-<div id="method_getHost" class="method item">
-    <h3 class="name"><code>getHost</code></h3>
-
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-                <li class="arg">
-                        <code>HTTP</code>
+            <ul class="module-classes">
+                <li class="module-class">
+                    <a href="../classes/Crypto.html">
+                        Crypto
+                    </a>
                 </li>
-            </ul><span class="paren">)</span>
-        </div>
-
-        <span class="returns-inline">
-            <span class="type">Mixed</span>
-        </span>
-
-
-
-
-
-
-
-    <div class="meta">
-                <p>
-                Defined in
-        <a href="../files/src_modules_request_index.js.html#l21"><code>src&#x2F;modules&#x2F;request&#x2F;index.js:21</code></a>
-        </p>
-
-
-
-    </div>
-
-    <div class="description">
-        <p>Return the correct host from a request header. Implement x-forwarded rules</p>
-
-    </div>
-
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-                <li class="param">
-                        <code class="param-name">HTTP</code>
-                        <span class="type">Object</span>
-
-
-                    <div class="param-description">
-                        <p>request object</p>
-
-                    </div>
-
+                <li class="module-class">
+                    <a href="../classes/Media.html">
+                        Media
+                    </a>
+                </li>
+                <li class="module-class">
+                    <a href="../classes/Request.html">
+                        Request
+                    </a>
+                </li>
+                <li class="module-class">
+                    <a href="../classes/Strings.html">
+                        Strings
+                    </a>
+                </li>
+                <li class="module-class">
+                    <a href="../classes/UnitTests.html">
+                        UnitTests
+                    </a>
+                </li>
+                <li class="module-class">
+                    <a href="../classes/Utils.html">
+                        Utils
+                    </a>
+                </li>
+                <li class="module-class">
+                    <a href="../classes/YDate.html">
+                        YDate
+                    </a>
                 </li>
             </ul>
-        </div>
+    </div>
 
-        <div class="returns">
-            <h4>Returns:</h4>
+    <div class="yui3-u-1-2">
+            <p>This module is a rollup of the following modules:</p>
 
-            <div class="returns-description">
-                        <span class="type">Mixed</span>:
-                    <p>Return the correct host from a request header, null if request is undefined</p>
+            <ul class="module-submodules">
+                <li class="module-submodule">
+                    <a href="../modules/Crypto.html">
+                        Crypto
+                    </a>
 
-            </div>
-        </div>
+                    <div class="module-submodule-description">
+                        Yocto utilities functions : Module Crypto<br/>
+Contains utility function for cryptography action 
 
+For more details on these dependencies read links below :
+- LodAsh : https://lodash.com/
+- Crypto : https://nodejs.org/api/crypto.html
+                    </div>
+                </li>
+                <li class="module-submodule">
+                    <a href="../modules/Media.html">
+                        Media
+                    </a>
 
-</div>
-            </div>
+                    <div class="module-submodule-description">
+                        Yocto utilities functions : Module Multimedia<br/>
+Contains utility function to manage multimedia process 
 
+For more details on these dependencies read links below :
+                    </div>
+                </li>
+                <li class="module-submodule">
+                    <a href="../modules/Request.html">
+                        Request
+                    </a>
 
+                    <div class="module-submodule-description">
+                        Yocto utilities functions : Module Request<br/>
+Contains utility function for request/http manipulation  
 
+For more details on these dependencies read links below :
+- LodAsh : https://lodash.com/
+                    </div>
+                </li>
+                <li class="module-submodule">
+                    <a href="../modules/Strings.html">
+                        Strings
+                    </a>
+
+                    <div class="module-submodule-description">
+                        Yocto utilities functions : Module String<br/>
+Contains utility function to manipulate strings 
+
+For more details on these dependencies read links below :
+                    </div>
+                </li>
+                <li class="module-submodule">
+                    <a href="../modules/UnitTests.html">
+                        UnitTests
+                    </a>
+
+                    <div class="module-submodule-description">
+                        Yocto utilities functions : Module UnitTests<br/>
+Contains utility function to use during unit testing 
+
+For more details on these dependencies read links below :
+- LodAsh : https://lodash.com/
+                    </div>
+                </li>
+                <li class="module-submodule">
+                    <a href="../modules/YDate.html">
+                        YDate
+                    </a>
+
+                    <div class="module-submodule-description">
+                        Yocto utilities functions : Module YDate<br/>
+Contains utility function for date manipulation  
+
+For more details on these dependencies read links below :
+- LodAsh : https://lodash.com/
+                    </div>
+                </li>
+            </ul>
     </div>
 </div>
                     </div>

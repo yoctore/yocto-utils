@@ -12,6 +12,8 @@ var _ = require('lodash');
  * @author : Mathieu ROBERT <mathieu@yocto.re>
  * @copyright : Yocto SAS, All right reserved
  * @class Media
+ * @module Utils
+ * @submodule Media 
  */
 function Media() {}
 

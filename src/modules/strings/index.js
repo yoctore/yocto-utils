@@ -10,6 +10,8 @@
  * @author : Mathieu ROBERT <mathieu@yocto.re>
  * @copyright : Yocto SAS, All right reserved
  * @class Strings
+ * @module Utils
+ * @submodule Strings 
  */
 function Strings() {}
 

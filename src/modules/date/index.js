@@ -13,6 +13,8 @@ var _ = require('lodash');
  * @author : Mathieu ROBERT <mathieu@yocto.re>
  * @copyright : Yocto SAS, All right reserved
  * @class YDate
+ * @module Utils
+ * @submodule YDate 
  */
 function YDate() {}
 

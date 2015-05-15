@@ -15,6 +15,8 @@ var crypto    = require('crypto');
  * @author : Mathieu ROBERT <mathieu@yocto.re>
  * @copyright : Yocto SAS, All right reserved
  * @class Crypto
+ * @module Utils
+ * @submodule Crypto 
  */
 function Crypto() {}
 
