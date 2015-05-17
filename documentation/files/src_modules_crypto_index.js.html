@@ -96,6 +96,7 @@
 
 var _         = require(&#x27;lodash&#x27;);
 var crypto    = require(&#x27;crypto&#x27;);
+var logger    = require(&#x27;yocto-logger&#x27;);
 
 /**
  * Yocto utilities functions : Module Crypto&lt;br/&gt;
@@ -112,7 +113,15 @@ var crypto    = require(&#x27;crypto&#x27;);
  * @module Utils
  * @submodule Crypto 
  */
-function Crypto() {}
+function Crypto() {
+  /**
+   * Default logger
+   *
+   * @property logger
+   * @type object
+   */
+  this.logger = logger;
+}
 
 /**
  * Return a password from two rules
@@ -128,7 +137,7 @@ Crypto.prototype.randomizedPassword = function(n, a) {
   a = (!_.isUndefined(a) &amp;&amp; !_.isNull(a) &amp;&amp; _.isString(a) &amp;&amp; !_.isEmpty(a)) ? a : &#x27;qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890&amp;(!-_%&lt;&gt;&#x27;;
 
   // process n to a correct value
-  n = (_.isNumber(n) &amp;&amp; !_.isNaN(n) &amp;&amp; n &gt;= 0) ? n : 0;
+  n = (!_.isUndefined(a) &amp;&amp; !_.isNull(a) &amp;&amp; _.isNumber(n) &amp;&amp; !_.isNaN(n) &amp;&amp; n &gt;= 0) ? n : 0;
 
   // get correct index
   var index = (Math.random() * (a.length - 1)).toFixed(0);
@@ -146,15 +155,31 @@ Crypto.prototype.randomizedPassword = function(n, a) {
  * @return {String} crypted data
  */
 Crypto.prototype.encrypt = function(key, data) {
-  // stringify data
-  data = JSON.stringify(data);
+  
+  // default value
+  var crypted = false;
+  
+  try {
+    
+    // checking key value
+    if (_.isEmpty(key) || key.length &lt; 32) {
+      throw &#x27;Key cannot be empty and must be 32 chars length min&#x27;;  
+    }
+    
+    // stringify data
+    data = JSON.stringify(data);
+  
+    // manage cypher
+    var cipher  = crypto.createCipher(&#x27;aes256&#x27;, key);
+    crypted     = cipher.update(data, &#x27;utf-8&#x27;, &#x27;hex&#x27;);
+    crypted     += cipher.final(&#x27;hex&#x27;);
+      
+  } catch (e) {
+      // error too bad so log it
+      this.logger.warning([ &#x27;[ Utils.Crypto.encrypt ] -&#x27;, e ].join(&#x27; &#x27;));
+  }
 
-  // manage cypher
-  var cipher  = crypto.createCipher(&#x27;aes256&#x27;, key);
-  var crypted = cipher.update(data, &#x27;utf-8&#x27;, &#x27;hex&#x27;);
-  crypted     += cipher.final(&#x27;hex&#x27;);
-
-  // return crypted data
+  // return false if errors occured
   return crypted;
 };
 
@@ -168,13 +193,31 @@ Crypto.prototype.encrypt = function(key, data) {
  * @return {String} decrypted data
  */
 Crypto.prototype.decrypt = function(key, data) {
-  // manage crypher
-  var decipher  = crypto.createDecipher(&#x27;aes256&#x27;, key);
-  var decrypted = decipher.update(data, &#x27;hex&#x27;, &#x27;utf-8&#x27;);
-  decrypted     += decipher.final(&#x27;utf-8&#x27;);
 
-  // return decrypted data
-  return JSON.parse(decrypted);
+  // default value
+  var decrypted = false;
+
+  try {
+    
+    // test empty key
+    if (_.isEmpty(key)) {
+      throw &#x27;Key cannot be empty and must be a cypher key&#x27;;
+    }
+    
+    // manage crypher
+    var decipher  = crypto.createDecipher(&#x27;aes256&#x27;, key);
+    decrypted     = decipher.update(data, &#x27;hex&#x27;, &#x27;utf-8&#x27;);
+    decrypted     += decipher.final(&#x27;utf-8&#x27;);
+  
+    // return decrypted data
+    decrypted = JSON.parse(decrypted);    
+  } catch (e) {
+      // error too bad so log it
+      this.logger.warning([ &#x27;[ Utils.Crypto.decrypt ] -&#x27;, e ].join(&#x27; &#x27;));
+  }
+
+  // return false if errors occured
+  return decrypted;
 };
 
 /**

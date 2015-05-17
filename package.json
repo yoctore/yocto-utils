@@ -33,7 +33,8 @@
     "Utilities"
   ],
   "dependencies": {
-    "lodash": "^3.8.0"
+    "lodash": "^3.8.0",
+    "yocto-logger": "git+ssh://git@lab.yocto.digital:yocto-node-modules/yocto-logger.git"
   },
   "devDependencies": {
     "grunt": "~0.4.5",

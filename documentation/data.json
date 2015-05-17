@@ -70,6 +70,13 @@
             },
             "fors": {},
             "namespaces": {}
+        },
+        "test/crypto-test.js": {
+            "name": "test/crypto-test.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
         }
     },
     "modules": {
@@ -112,7 +119,7 @@
             "namespace": "",
             "description": "Yocto utilities functions : Module Crypto<br/>\nContains utility function for cryptography action \n\nFor more details on these dependencies read links below :\n- LodAsh : https://lodash.com/\n- Crypto : https://nodejs.org/api/crypto.html",
             "file": "src/modules/crypto/index.js",
-            "line": 6
+            "line": 7
         },
         "YDate": {
             "name": "YDate",
@@ -201,7 +208,7 @@
             "extension_for": [],
             "module": "Utils",
             "file": "src/modules/crypto/index.js",
-            "line": 6,
+            "line": 7,
             "description": "Yocto utilities functions : Module Crypto<br/>\nContains utility function for cryptography action \n\nFor more details on these dependencies read links below :\n- LodAsh : https://lodash.com/\n- Crypto : https://nodejs.org/api/crypto.html",
             "date": ": 15/05/2015",
             "author": ": Mathieu ROBERT <mathieu@yocto.re>",
@@ -320,6 +327,17 @@
         {
             "file": "src/modules/crypto/index.js",
             "line": 23,
+            "description": "Default logger",
+            "itemtype": "property",
+            "name": "logger",
+            "type": "object",
+            "class": "Crypto",
+            "module": "Utils",
+            "submodule": "Crypto"
+        },
+        {
+            "file": "src/modules/crypto/index.js",
+            "line": 32,
             "description": "Return a password from two rules",
             "itemtype": "method",
             "name": "randomizedPassword",
@@ -345,7 +363,7 @@
         },
         {
             "file": "src/modules/crypto/index.js",
-            "line": 46,
+            "line": 55,
             "description": "Utility function to encrypt data",
             "itemtype": "method",
             "name": "encrypt",
@@ -371,7 +389,7 @@
         },
         {
             "file": "src/modules/crypto/index.js",
-            "line": 68,
+            "line": 93,
             "description": "Utility function to decrypt data",
             "itemtype": "method",
             "name": "decrypt",
@@ -397,7 +415,7 @@
         },
         {
             "file": "src/modules/crypto/index.js",
-            "line": 86,
+            "line": 129,
             "description": "Export Crypto",
             "class": "Crypto",
             "module": "Utils",
@@ -661,16 +679,23 @@
             "description": "Export Utils",
             "class": "Utils",
             "module": "Utils"
+        },
+        {
+            "file": "test/crypto-test.js",
+            "line": 1,
+            "description": "Unit tests",
+            "class": "",
+            "module": "Utils"
         }
     ],
     "warnings": [
         {
             "message": "unknown tag: date",
-            "line": " src/modules/crypto/index.js:6"
+            "line": " src/modules/crypto/index.js:7"
         },
         {
             "message": "unknown tag: copyright",
-            "line": " src/modules/crypto/index.js:6"
+            "line": " src/modules/crypto/index.js:7"
         },
         {
             "message": "unknown tag: date",
@@ -722,7 +747,7 @@
         },
         {
             "message": "Missing item type\nExport Crypto",
-            "line": " src/modules/crypto/index.js:86"
+            "line": " src/modules/crypto/index.js:129"
         },
         {
             "message": "Missing item type\nExport YDate",
@@ -747,6 +772,10 @@
         {
             "message": "Missing item type\nExport Utils",
             "line": " src/index.js:118"
+        },
+        {
+            "message": "Missing item type\nUnit tests",
+            "line": " test/crypto-test.js:1"
         }
     ]
 }

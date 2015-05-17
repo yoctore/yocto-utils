@@ -1,32 +1,37 @@
-
 # Yocto Utils
 
- Yocto utilities functions.
+This modules manage utilities functions.
 
- Utils contains all utilities functions for yocto core stack
+This main module has 6 submodules. Those modules are : 
 
- For more details on these dependencies read links below :
+- Crypto : Manage All crypt function
+- Media : Manage all media utilities function (valid extension, images, etc ...)
+- Request : Manage all utilities for request usage (http info - host - x-forwarded, etc ...)
+- Strings : Manage all utilities for string usage
+- UnitTests : Manage all utilities for unit testing usage
+- YDate : Manage all utilities for date
 
-- yocto-logger : lab.yocto.digital:yocto-node-modules/yocto-utils.git
-- LodAsh : https://lodash.com/
-- crypto : https://nodejs.org/api/crypto.html
-- path : https://nodejs.org/api/path.html
-
-
-### Examples :
-
-
-##### For Encrypt data
+## Usage
 
 ```javascript
-var utils           = require("../src/index.js");
-var encryptedData   = utils.encrypt( 'Yocto', 'dataToEncrypt');
+// Require can be set like this
+var utils   = require("yocto-utils");
+var crypto  = require("yocto-utils").crypto;
+var date    = require("yocto-utils").date;
+var request = require("yocto-utils").request;
+var media   = require("yocto-utils").media;
+
+// OR get accessor is available
+var utils   = require("yocto-utils");
+var crypto  =  utils.get('crypto');
+
+// Calling 
+// normal calling
+var rename = { a : 1 };
+utils.renameKey(rename, 'a', 'a.b.c');
+
+// Accessor calling
+utils.get('crypto').randomizedPassword( 10, 'totoMdp');
 ```
 
-
-##### For decrrypt data
-
-```javascript
-var utils       = require("../src/index.js");
-var decryptedData = utils.decrypt( 'Yocto', 'dataToDecrypt');
-```
+For more example see class documentation or example directory.
