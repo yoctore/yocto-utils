@@ -1,6 +1,9 @@
 'use strict';
 
-var _ = require('lodash');
+var _       = require('lodash');
+var joi     = require('joi');
+var logger  = require('yocto-logger');
+var util    = require('util');
 
 /**
  * Yocto utilities functions : Module YDate<br/>
@@ -16,7 +19,15 @@ var _ = require('lodash');
  * @module Utils
  * @submodule YDate 
  */
-function YDate() {}
+function YDate() {
+  /**
+   * Default logger
+   *
+   * @property logger
+   * @type object
+   */
+  this.logger = logger;
+}
 
 /**
  * Utility function to build date list
@@ -30,35 +41,70 @@ function YDate() {}
  * @return {Array} list of date
  */
 YDate.prototype.generateList = function(min, max, prefixMin, prefixMax, reverse) {
-  var list  = [];
-  var date  = new Date();
-
-  // process correcty reverse and prefixs
-  reverse   = !_.isNull(reverse) && _.isBoolean(reverse) ? reverse : false;
-  prefixMin = !_.isUndefined(prefixMin) && !_.isNull(prefixMin) && _.isString(prefixMin) && !_.isEmpty(prefixMin) ? prefixMin : '';
-  prefixMax = !_.isUndefined(prefixMax) && !_.isNull(prefixMax) && _.isString(prefixMax) && !_.isEmpty(prefixMax) ? prefixMax : '';
+  // default list
+  var list = [];
   
-  // init with default value to prevent infinite loop
-  max = max || date.getFullYear();
-  min = min || 0;
+  try {
+    // default date
+    var date        = new Date();
 
-  // process number
-  for(var i = min; i <= max; i++) {
-    list.push(i.toString());
+    // validation schema
+    var minSchema   = joi.number().required().min(1970);
+    var maxSchema   = joi.number().required().min(1970).max(date.getFullYear());
+    
+    // validate
+    var minValidation = joi.validate(min, minSchema);
+    var maxValidation = joi.validate(max, maxSchema);
+
+    // has errors throw it !!!
+    if (!_.isNull(minValidation.error)) {
+      throw util.inspect(minValidation.error.details, { depth : null } );
+    }
+
+    if (!_.isNull(maxValidation.error)) {
+      throw util.inspect(maxValidation.error.details, { depth : null } );
+    }
+     
+    // process correcty reverse and prefixs
+    reverse   = !_.isNull(reverse) && _.isBoolean(reverse) ? reverse : false;
+    prefixMin = !_.isUndefined(prefixMin) && !_.isNull(prefixMin) && _.isString(prefixMin) && !_.isEmpty(prefixMin) ? prefixMin : '';
+    prefixMax = !_.isUndefined(prefixMax) && !_.isNull(prefixMax) && _.isString(prefixMax) && !_.isEmpty(prefixMax) ? prefixMax : '';
+    
+    // init with default value to prevent infinite loop
+    max = max || date.getFullYear();
+    min = min || date.getFullYear();
+  
+    // process number
+    for(var i = min; i <= max; i++) {
+      var mI = i;
+
+      // if we had prefix we must transform date to a correction string value
+      if (!_.isEmpty(prefixMin) || !_.isEmpty(prefixMax)) {
+        mI = mI.toString();
+      }
+      
+      // push it
+      list.push(mI);
+    }
+  
+    // check is prefix is needed on list
+    if (!_.isEmpty(prefixMin)) {
+      list[0] = _([ prefixMin, list[0] ]).join(' ');
+    }
+  
+    // check is prefix is needed on list
+    if (!_.isEmpty(prefixMax)) {
+      list[list.length - 1] = _([ prefixMax, list[list.length - 1] ] ).join(' ');
+    }
+  
+    // return statement
+    return reverse ? list.reverse() : list;    
+  } catch (e) {
+      this.logger.warning([ '[ YDate.generateList ] - An occured, and error is :', e ].join(' '));
   }
 
-  // check is prefix is needed on list
-  if (!_.isEmpty(prefixMin)) {
-    list[0] = _([ prefixMin, list[0] ]).join(' ');
-  }
-
-  // check is prefix is needed on list
-  if (!_.isEmpty(prefixMax)) {
-    list[list.length - 1] = _([ prefixMax, list[list.length - 1] ] ).join(' ');
-  }
-
-  // return statement
-  return reverse ? list.reverse() : list;
+  // return default array
+  return list;
 };
 
 /**

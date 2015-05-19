@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>src/modules/date/index.js - yocto-utils</title>
+    <title>test/date-test.js - yocto-utils</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -88,123 +88,54 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-<h1 class="file-heading">File: src/modules/date/index.js</h1>
+<h1 class="file-heading">File: test/date-test.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
-&#x27;use strict&#x27;;
-
-var _       = require(&#x27;lodash&#x27;);
-var joi     = require(&#x27;joi&#x27;);
-var logger  = require(&#x27;yocto-logger&#x27;);
-var util    = require(&#x27;util&#x27;);
-
 /**
- * Yocto utilities functions : Module YDate&lt;br/&gt;
- * Contains utility function for date manipulation  
- *
- * For more details on these dependencies read links below :
- * - LodAsh : https://lodash.com/
- *
- * @date : 15/05/2015
- * @author : Mathieu ROBERT &lt;mathieu@yocto.re&gt;
- * @copyright : Yocto SAS, All right reserved
- * @class YDate
- * @module Utils
- * @submodule YDate 
+ * Unit tests
  */
-function YDate() {
-  /**
-   * Default logger
-   *
-   * @property logger
-   * @type object
-   */
-  this.logger = logger;
-}
+var utils  = require(&#x27;../dist/index.js&#x27;);
+var unit   = utils.get(&#x27;unit&#x27;);
+var date   = utils.get(&#x27;date&#x27;);
+var chai   = require(&#x27;chai&#x27;).assert;
+var expect = require(&#x27;chai&#x27;).expect;
+var util   = require(&#x27;util&#x27;);
+var _      = require(&#x27;lodash&#x27;);
 
-/**
- * Utility function to build date list
- *
- * @method generateList
- * @param {Integer} min start value
- * @param {Integer} max end value
- * @param {String} prefixMin prefix to use on min value
- * @param {String} prefixMax prefix to use on max value
- * @param {Boolean} reverse true if we need to reverse array
- * @return {Array} list of date
- */
-YDate.prototype.generateList = function(min, max, prefixMin, prefixMax, reverse) {
-  // default list
-  var list = [];
+date.logger.enableConsole(false);
+
+describe(&#x27;Date()&#x27;, function() {
   
-  try {
-    // default date
-    var date        = new Date();
-
-    // validation schema
-    var minSchema   = joi.number().required().min(1970);
-    var maxSchema   = joi.number().required().min(1970).max(date.getFullYear());
+  describe(&#x27;generateList() must be an empty array with these params :  &#x27;, function() {
+    var types = unit.generateTypeForUnitTests(undefined, 5);
     
-    // validate
-    var minValidation = joi.validate(min, minSchema);
-    var maxValidation = joi.validate(max, maxSchema);
+    types.forEach(function(t) {
+      it(&#x27;Using type : &#x27; + util.inspect(t, { depth : null }), function() { 
+        var p = date.generateList.apply(date, t);
+                
+        chai.typeOf(p, &#x27;array&#x27;);
+        expect(p).to.be.empty;    
+      });
+    });
+  });
 
-    // has errors throw it !!!
-    if (!_.isNull(minValidation.error)) {
-      throw util.inspect(minValidation.error.details, { depth : null } );
-    }
-
-    if (!_.isNull(maxValidation.error)) {
-      throw util.inspect(maxValidation.error.details, { depth : null } );
-    }
-     
-    // process correcty reverse and prefixs
-    reverse   = !_.isNull(reverse) &amp;&amp; _.isBoolean(reverse) ? reverse : false;
-    prefixMin = !_.isUndefined(prefixMin) &amp;&amp; !_.isNull(prefixMin) &amp;&amp; _.isString(prefixMin) &amp;&amp; !_.isEmpty(prefixMin) ? prefixMin : &#x27;&#x27;;
-    prefixMax = !_.isUndefined(prefixMax) &amp;&amp; !_.isNull(prefixMax) &amp;&amp; _.isString(prefixMax) &amp;&amp; !_.isEmpty(prefixMax) ? prefixMax : &#x27;&#x27;;
-    
-    // init with default value to prevent infinite loop
-    max = max || date.getFullYear();
-    min = min || date.getFullYear();
+  var d = [
+    { keys : [ 1970, 1975  ], value : [ 1970, 1971, 1972, 1973, 1974, 1975 ] }
+  ];
   
-    // process number
-    for(var i = min; i &lt;= max; i++) {
-      var mI = i;
-
-      // if we had prefix we must transform date to a correction string value
-      if (!_.isEmpty(prefixMin) || !_.isEmpty(prefixMax)) {
-        mI = mI.toString();
-      }
-      
-      // push it
-      list.push(mI);
-    }
-  
-    // check is prefix is needed on list
-    if (!_.isEmpty(prefixMin)) {
-      list[0] = _([ prefixMin, list[0] ]).join(&#x27; &#x27;);
-    }
-  
-    // check is prefix is needed on list
-    if (!_.isEmpty(prefixMax)) {
-      list[list.length - 1] = _([ prefixMax, list[list.length - 1] ] ).join(&#x27; &#x27;);
-    }
-  
-    // return statement
-    return reverse ? list.reverse() : list;    
-  } catch (e) {
-      this.logger.warning([ &#x27;[ YDate.generateList ] - An occured, and error is :&#x27;, e ].join(&#x27; &#x27;));
-  }
-
-  // return default array
-  return list;
-};
-
-/**
- * Export YDate
- */
-module.exports = new (YDate)();
+  d.forEach(function(data) {
+    describe([ &#x27;generateList() must be an array equals to&#x27;, util.inspect(data.value, { depth : null }), &#x27;with these params :&#x27; ].join(&#x27; &#x27;), function() {
+      it(&#x27;Using type : &#x27; + util.inspect(data.keys, { depth : null }), function() { 
+        var p = date.generateList.apply(date, data.keys);
+        
+        chai.typeOf(p, &#x27;array&#x27;);
+        expect(p).to.be.not.empty;
+        expect(p).to.eql(data.value);
+      });   
+    }); 
+  });
+});
     </pre>
 </div>
                     </div>
