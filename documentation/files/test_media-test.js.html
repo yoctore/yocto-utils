@@ -103,22 +103,40 @@ var expect = require(&#x27;chai&#x27;).expect;
 var util   = require(&#x27;util&#x27;);
 var _      = require(&#x27;lodash&#x27;);
 
-media.logger.enableConsole(true);
+media.logger.enableConsole(false);
 
 describe(&#x27;Media()&#x27;, function() {
   
   describe(&#x27;isValidImageFormat() must return false with this data  &#x27;, function() {
     var types = unit.generateTypeForUnitTests(undefined, 1);
     
+    // adding specific type
+    types.push([&#x27;x-photoshop&#x27;]);
+    types.push([&#x27;tiff&#x27;]);    
+    types.push([&#x27;vnd.microsoft.icon&#x27;]);   
+    
     types.forEach(function(t) {
       it(&#x27;Using type : &#x27; + util.inspect(t, { depth : null }), function() { 
         var p = media.isValidImageFormat.apply(media, t);
                 
         chai.typeOf(p, &#x27;boolean&#x27;);
-        chai.equals(p, false);    
+        chai.equal(p, false);    
       });
     });
   });
+  
+  describe(&#x27;isValidImageFormat() must return true with this data  &#x27;, function() {
+    var types = [ &#x27;jpg&#x27;, &#x27;png&#x27;, &#x27;jpeg&#x27;, &#x27;gif&#x27; ];
+    
+    types.forEach(function(t) {
+      it(&#x27;Using type : &#x27; + util.inspect(t, { depth : null }), function() { 
+        var p = media.isValidImageFormat(t);
+                
+        chai.typeOf(p, &#x27;boolean&#x27;);
+        chai.equal(p, true);    
+      });
+    });
+  });  
 });
     </pre>
 </div>

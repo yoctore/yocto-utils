@@ -91,6 +91,13 @@
             "classes": {},
             "fors": {},
             "namespaces": {}
+        },
+        "test/request-test.js": {
+            "name": "test/request-test.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
         }
     },
     "modules": {
@@ -178,7 +185,7 @@
             "namespace": "",
             "description": "Yocto utilities functions : Module Request<br/>\nContains utility function for request/http manipulation  \n\nFor more details on these dependencies read links below :\n- LodAsh : https://lodash.com/",
             "file": "src/modules/request/index.js",
-            "line": 5
+            "line": 6
         },
         "Strings": {
             "name": "Strings",
@@ -276,7 +283,7 @@
             "module": "Utils",
             "namespace": "",
             "file": "src/modules/request/index.js",
-            "line": 5,
+            "line": 6,
             "description": "Yocto utilities functions : Module Request<br/>\nContains utility function for request/http manipulation  \n\nFor more details on these dependencies read links below :\n- LodAsh : https://lodash.com/",
             "date": ": 15/05/2015",
             "author": ": Mathieu ROBERT <mathieu@yocto.re>",
@@ -538,6 +545,17 @@
         {
             "file": "src/modules/request/index.js",
             "line": 21,
+            "description": "Default logger",
+            "itemtype": "property",
+            "name": "logger",
+            "type": "object",
+            "class": "Request",
+            "module": "Utils",
+            "submodule": "Request"
+        },
+        {
+            "file": "src/modules/request/index.js",
+            "line": 30,
             "description": "Return the correct host from a request header. Implement x-forwarded rules",
             "itemtype": "method",
             "name": "getHost",
@@ -558,7 +576,7 @@
         },
         {
             "file": "src/modules/request/index.js",
-            "line": 38,
+            "line": 66,
             "description": "Export YDate",
             "class": "Request",
             "module": "Utils",
@@ -736,6 +754,13 @@
             "description": "Unit tests",
             "class": "",
             "module": "Utils"
+        },
+        {
+            "file": "test/request-test.js",
+            "line": 1,
+            "description": "Unit tests",
+            "class": "",
+            "module": "Utils"
         }
     ],
     "warnings": [
@@ -765,11 +790,11 @@
         },
         {
             "message": "unknown tag: date",
-            "line": " src/modules/request/index.js:5"
+            "line": " src/modules/request/index.js:6"
         },
         {
             "message": "unknown tag: copyright",
-            "line": " src/modules/request/index.js:5"
+            "line": " src/modules/request/index.js:6"
         },
         {
             "message": "unknown tag: date",
@@ -809,7 +834,7 @@
         },
         {
             "message": "Missing item type\nExport YDate",
-            "line": " src/modules/request/index.js:38"
+            "line": " src/modules/request/index.js:66"
         },
         {
             "message": "Missing item type\nExport Strings",
@@ -834,6 +859,10 @@
         {
             "message": "Missing item type\nUnit tests",
             "line": " test/media-test.js:1"
+        },
+        {
+            "message": "Missing item type\nUnit tests",
+            "line": " test/request-test.js:1"
         }
     ]
 }

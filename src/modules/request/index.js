@@ -1,6 +1,7 @@
 'use strict';
 
-var _ = require('lodash');
+var _       = require('lodash');
+var logger  = require('yocto-logger');
 
 /**
  * Yocto utilities functions : Module Request<br/>
@@ -16,7 +17,15 @@ var _ = require('lodash');
  * @module Utils
  * @submodule Request 
  */
-function Request() {}
+function Request() {
+  /**
+   * Default logger
+   *
+   * @property logger
+   * @type object
+   */
+  this.logger = logger;
+}
 
 /**
  * Return the correct host from a request header. Implement x-forwarded rules
@@ -28,11 +37,30 @@ function Request() {}
 Request.prototype.getHost = function(request) {
   // check request
   if (!_.isUndefined(request) && _.has(request, 'protocol') && _.has(request, 'host')) {
-    return _( [request.protocol,  (request.get('x-forwarded-host') || request.get('x-forwarded-server') || request.get('host') || 'localhost') ] ).join('://');
+
+    // default host
+    var host      = 'localhost';
+
+    // default protocol
+    var protocol  = 'http';
+
+    // has get function ?
+    if (_.has(request, 'get') && _.isFunction(request.get)) {
+      // build protocol
+      protocol  = [ request.get('protocol') || protocol, '' ].join('://');
+      host      = (request.get('x-forwarded-host') || request.get('x-forwarded-server') || request.get('host') || host);     
+    } else {
+      // has no get function ?? try to access data from property name
+      protocol  = [ request.protocol || protocol, '' ].join('://');
+      host      = (request['x-forwarded-host'] || request['x-forwarded-server'] || request.host || host);           
+    }
+
+    // return correct builded host
+    return _( [ protocol, host ] ).join('');
   }
   
-  // return null if no data was founded
-  return null;
+  // return false if no data was founded
+  return false;
 };
 
 /**

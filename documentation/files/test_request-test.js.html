@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>src/modules/request/index.js - yocto-utils</title>
+    <title>test/request-test.js - yocto-utils</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -88,79 +88,60 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-<h1 class="file-heading">File: src/modules/request/index.js</h1>
+<h1 class="file-heading">File: test/request-test.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
-&#x27;use strict&#x27;;
-
+/**
+ * Unit tests
+ */
+var utils   = require(&#x27;../dist/index.js&#x27;);
+var unit    = utils.get(&#x27;unit&#x27;);
+var request = utils.get(&#x27;request&#x27;);
+var chai    = require(&#x27;chai&#x27;).assert;
+var expect  = require(&#x27;chai&#x27;).expect;
+var util    = require(&#x27;util&#x27;);
 var _       = require(&#x27;lodash&#x27;);
-var logger  = require(&#x27;yocto-logger&#x27;);
 
-/**
- * Yocto utilities functions : Module Request&lt;br/&gt;
- * Contains utility function for request/http manipulation  
- *
- * For more details on these dependencies read links below :
- * - LodAsh : https://lodash.com/
- *
- * @date : 15/05/2015
- * @author : Mathieu ROBERT &lt;mathieu@yocto.re&gt;
- * @copyright : Yocto SAS, All right reserved
- * @class Request
- * @module Utils
- * @submodule Request 
- */
-function Request() {
-  /**
-   * Default logger
-   *
-   * @property logger
-   * @type object
-   */
-  this.logger = logger;
-}
+request.logger.enableConsole(false);
 
-/**
- * Return the correct host from a request header. Implement x-forwarded rules
- * 
- * @method getHost
- * @param {Object} HTTP request object
- * @return {Mixed} Return the correct host from a request header, null if request is undefined
- */
-Request.prototype.getHost = function(request) {
-  // check request
-  if (!_.isUndefined(request) &amp;&amp; _.has(request, &#x27;protocol&#x27;) &amp;&amp; _.has(request, &#x27;host&#x27;)) {
-
-    // default host
-    var host      = &#x27;localhost&#x27;;
-
-    // default protocol
-    var protocol  = &#x27;http&#x27;;
-
-    // has get function ?
-    if (_.has(request, &#x27;get&#x27;) &amp;&amp; _.isFunction(request.get)) {
-      // build protocol
-      protocol  = [ request.get(&#x27;protocol&#x27;) || protocol, &#x27;&#x27; ].join(&#x27;://&#x27;);
-      host      = (request.get(&#x27;x-forwarded-host&#x27;) || request.get(&#x27;x-forwarded-server&#x27;) || request.get(&#x27;host&#x27;) || host);     
-    } else {
-      // has no get function ?? try to access data from property name
-      protocol  = [ request.protocol || protocol, &#x27;&#x27; ].join(&#x27;://&#x27;);
-      host      = (request[&#x27;x-forwarded-host&#x27;] || request[&#x27;x-forwarded-server&#x27;] || request.host || host);           
-    }
-
-    // return correct builded host
-    return _( [ protocol, host ] ).join(&#x27;&#x27;);
-  }
+describe(&#x27;Request()&#x27;, function() {
   
-  // return false if no data was founded
-  return false;
-};
-
-/**
- * Export YDate
- */
-module.exports = new (Request)();
+  describe(&#x27;getHost() must return false with this data  &#x27;, function() {
+    var types = unit.generateTypeForUnitTests(undefined, 1);
+    
+    types.forEach(function(t) {
+      it(&#x27;Using type : &#x27; + util.inspect(t, { depth : null }), function() { 
+        var p = request.getHost.apply(request, t);
+                
+        chai.typeOf(p, &#x27;boolean&#x27;);
+        chai.equal(p, false);    
+      });
+    });
+  });
+  
+  var datas = [
+    { keys : [ { protocol : &#x27;http&#x27;, host : &#x27;&#x27;, &#x27;x-forwarded-host&#x27; : &#x27;&#x27;, &#x27;x-forwarded-server&#x27; : &#x27;&#x27; } ], value : &#x27;http://localhost&#x27; },
+    { keys : [ { protocol : &#x27;https&#x27;, host : &#x27;127.0.0.1&#x27;, &#x27;x-forwarded-host&#x27; : &#x27;&#x27;, &#x27;x-forwarded-server&#x27; : &#x27;&#x27; } ], value : &#x27;https://127.0.0.1&#x27; },
+    { keys : [ { protocol : &#x27;https&#x27;, host : &#x27;127.0.0.1&#x27;, &#x27;x-forwarded-host&#x27; : &#x27;my-x-forwarded-host&#x27;, &#x27;x-forwarded-server&#x27; : &#x27;&#x27; } ], value : &#x27;https://my-x-forwarded-host&#x27; },
+    { keys : [ { protocol : &#x27;http&#x27;, host : &#x27;127.0.0.1&#x27;, &#x27;x-forwarded-host&#x27; : &#x27;&#x27;, &#x27;x-forwarded-server&#x27; : &#x27;my-x-forwarded-server&#x27; } ], value : &#x27;http://my-x-forwarded-server&#x27; },
+    { keys : [ { protocol : &#x27;http&#x27;, host : &#x27;127.0.0.1&#x27;, &#x27;x-forwarded-host&#x27; : &#x27;my-x-forwarded-host&#x27;, &#x27;x-forwarded-server&#x27; : &#x27;my-x-forwarded-server&#x27; } ], value : &#x27;http://my-x-forwarded-host&#x27; }         
+  ];
+  
+  datas.forEach(function(data) {
+    describe([ &#x27;getHost() must return&#x27;, data.value, &#x27;with this data&#x27; ].join(&#x27; &#x27;), function() {
+      it(&#x27;Using type : &#x27; + util.inspect(data.keys, { depth : null }), function() { 
+        var p = request.getHost.apply(request, data.keys);
+                  
+        chai.typeOf(p, &#x27;string&#x27;);
+        chai.equal(p, data.value);    
+      });
+    });
+  });
+  
+  
+   
+});
     </pre>
 </div>
                     </div>
