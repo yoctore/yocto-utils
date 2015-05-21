@@ -1,6 +1,7 @@
 'use strict';
 
-var _ = require('lodash');
+var _      = require('lodash');
+var logger = require('yocto-logger'); 
 
 /**
  * Yocto utilities functions : Module Multimedia<br/>
@@ -15,7 +16,15 @@ var _ = require('lodash');
  * @module Utils
  * @submodule Media 
  */
-function Media() {}
+function Media() {
+  /**
+   * Default logger
+   *
+   * @property logger
+   * @type object
+   */
+  this.logger = logger;
+}
 
 /**
  * Check if is an allowed image type format<br/>
@@ -26,11 +35,18 @@ function Media() {}
  * @return {Boolean} true if is correct false otherwise
  */
 Media.prototype.isValidImageFormat = function(type) {
-  // process correct type
-  type = _(['', type.toLowerCase(), '']).join('|');
 
-  // return statement
-  return '|jpg|png|jpeg|gif|'.indexOf(type) !== -1;
+  // is valid type format ?
+  if (!_.isUndefined(type) && !_.isNull(type) && _.isString(type)) {
+    // process correct type
+    type = _(['', type.toLowerCase(), '']).join('|');
+  
+    // return statement
+    return '|jpg|png|jpeg|gif|'.indexOf(type) !== -1;
+  }
+
+  // returning false if type is an invalid type 
+  return false;
 };
 
 /**

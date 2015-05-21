@@ -84,6 +84,13 @@
             "classes": {},
             "fors": {},
             "namespaces": {}
+        },
+        "test/media-test.js": {
+            "name": "test/media-test.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
         }
     },
     "modules": {
@@ -156,7 +163,7 @@
             "namespace": "",
             "description": "Yocto utilities functions : Module Multimedia<br/>\nContains utility function to manage multimedia process \n\nFor more details on these dependencies read links below :",
             "file": "src/modules/media/index.js",
-            "line": 5
+            "line": 6
         },
         "Request": {
             "name": "Request",
@@ -251,7 +258,7 @@
             "module": "Utils",
             "namespace": "",
             "file": "src/modules/media/index.js",
-            "line": 5,
+            "line": 6,
             "description": "Yocto utilities functions : Module Multimedia<br/>\nContains utility function to manage multimedia process \n\nFor more details on these dependencies read links below :",
             "date": ": 15/05/2015",
             "author": ": Mathieu ROBERT <mathieu@yocto.re>",
@@ -491,6 +498,17 @@
         {
             "file": "src/modules/media/index.js",
             "line": 20,
+            "description": "Default logger",
+            "itemtype": "property",
+            "name": "logger",
+            "type": "object",
+            "class": "Media",
+            "module": "Utils",
+            "submodule": "Media"
+        },
+        {
+            "file": "src/modules/media/index.js",
+            "line": 29,
             "description": "Check if is an allowed image type format<br/>\nThis Function only check file extention it's not checking file format metadata",
             "itemtype": "method",
             "name": "isValidImageFormat",
@@ -511,7 +529,7 @@
         },
         {
             "file": "src/modules/media/index.js",
-            "line": 36,
+            "line": 52,
             "description": "Export Strings",
             "class": "Media",
             "module": "Utils",
@@ -711,6 +729,13 @@
             "description": "Unit tests",
             "class": "",
             "module": "Utils"
+        },
+        {
+            "file": "test/media-test.js",
+            "line": 1,
+            "description": "Unit tests",
+            "class": "",
+            "module": "Utils"
         }
     ],
     "warnings": [
@@ -732,11 +757,11 @@
         },
         {
             "message": "unknown tag: date",
-            "line": " src/modules/media/index.js:5"
+            "line": " src/modules/media/index.js:6"
         },
         {
             "message": "unknown tag: copyright",
-            "line": " src/modules/media/index.js:5"
+            "line": " src/modules/media/index.js:6"
         },
         {
             "message": "unknown tag: date",
@@ -780,7 +805,7 @@
         },
         {
             "message": "Missing item type\nExport Strings",
-            "line": " src/modules/media/index.js:36"
+            "line": " src/modules/media/index.js:52"
         },
         {
             "message": "Missing item type\nExport YDate",
@@ -805,6 +830,10 @@
         {
             "message": "Missing item type\nUnit tests",
             "line": " test/date-test.js:1"
+        },
+        {
+            "message": "Missing item type\nUnit tests",
+            "line": " test/media-test.js:1"
         }
     ]
 }

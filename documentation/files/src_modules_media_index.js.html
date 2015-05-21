@@ -94,7 +94,8 @@
     <pre class="code prettyprint linenums">
 &#x27;use strict&#x27;;
 
-var _ = require(&#x27;lodash&#x27;);
+var _      = require(&#x27;lodash&#x27;);
+var logger = require(&#x27;yocto-logger&#x27;); 
 
 /**
  * Yocto utilities functions : Module Multimedia&lt;br/&gt;
@@ -109,7 +110,15 @@ var _ = require(&#x27;lodash&#x27;);
  * @module Utils
  * @submodule Media 
  */
-function Media() {}
+function Media() {
+  /**
+   * Default logger
+   *
+   * @property logger
+   * @type object
+   */
+  this.logger = logger;
+}
 
 /**
  * Check if is an allowed image type format&lt;br/&gt;
@@ -120,11 +129,18 @@ function Media() {}
  * @return {Boolean} true if is correct false otherwise
  */
 Media.prototype.isValidImageFormat = function(type) {
-  // process correct type
-  type = _([&#x27;&#x27;, type.toLowerCase(), &#x27;&#x27;]).join(&#x27;|&#x27;);
 
-  // return statement
-  return &#x27;|jpg|png|jpeg|gif|&#x27;.indexOf(type) !== -1;
+  // is valid type format ?
+  if (!_.isUndefined(type) &amp;&amp; !_.isNull(type) &amp;&amp; _.isString(type)) {
+    // process correct type
+    type = _([&#x27;&#x27;, type.toLowerCase(), &#x27;&#x27;]).join(&#x27;|&#x27;);
+  
+    // return statement
+    return &#x27;|jpg|png|jpeg|gif|&#x27;.indexOf(type) !== -1;
+  }
+
+  // returning false if type is an invalid type 
+  return false;
 };
 
 /**
