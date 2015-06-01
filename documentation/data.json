@@ -2,7 +2,7 @@
     "project": {
         "name": "yocto-utils",
         "description": "Utils contains utils function for multiple usage (Crypto / Date / Media / Request / Strings / Unit Tests)",
-        "version": "0.1.1",
+        "version": "0.1.2",
         "url": "http://www.yocto.re"
     },
     "files": {
@@ -200,7 +200,7 @@
             "namespace": "",
             "description": "Yocto utilities functions : Module String<br/>\nContains utility function to manipulate strings \n\nFor more details on these dependencies read links below :",
             "file": "src/modules/strings/index.js",
-            "line": 3
+            "line": 7
         },
         "UnitTests": {
             "name": "UnitTests",
@@ -301,7 +301,7 @@
             "module": "Utils",
             "namespace": "",
             "file": "src/modules/strings/index.js",
-            "line": 3,
+            "line": 7,
             "description": "Yocto utilities functions : Module String<br/>\nContains utility function to manipulate strings \n\nFor more details on these dependencies read links below :",
             "date": ": 15/05/2015",
             "author": ": Mathieu ROBERT <mathieu@yocto.re>",
@@ -584,7 +584,42 @@
         },
         {
             "file": "src/modules/strings/index.js",
-            "line": 18,
+            "line": 21,
+            "description": "Default logger",
+            "itemtype": "property",
+            "name": "logger",
+            "type": "object",
+            "class": "Strings",
+            "module": "Utils",
+            "submodule": "Strings"
+        },
+        {
+            "file": "src/modules/strings/index.js",
+            "line": 30,
+            "description": "Default inspect function, to wrap node util",
+            "params": [
+                {
+                    "name": "value",
+                    "description": "mixed value to process",
+                    "type": "Mixed"
+                },
+                {
+                    "name": "colorize",
+                    "description": "true if we need color false otherwise",
+                    "type": "Boolean"
+                }
+            ],
+            "return": {
+                "description": "data to a string reprsentation",
+                "type": "String"
+            },
+            "class": "Strings",
+            "module": "Utils",
+            "submodule": "Strings"
+        },
+        {
+            "file": "src/modules/strings/index.js",
+            "line": 46,
             "description": "Export Strings",
             "class": "Strings",
             "module": "Utils",
@@ -798,11 +833,11 @@
         },
         {
             "message": "unknown tag: date",
-            "line": " src/modules/strings/index.js:3"
+            "line": " src/modules/strings/index.js:7"
         },
         {
             "message": "unknown tag: copyright",
-            "line": " src/modules/strings/index.js:3"
+            "line": " src/modules/strings/index.js:7"
         },
         {
             "message": "unknown tag: date",
@@ -837,8 +872,12 @@
             "line": " src/modules/request/index.js:66"
         },
         {
+            "message": "Missing item type\nDefault inspect function, to wrap node util",
+            "line": " src/modules/strings/index.js:30"
+        },
+        {
             "message": "Missing item type\nExport Strings",
-            "line": " src/modules/strings/index.js:18"
+            "line": " src/modules/strings/index.js:46"
         },
         {
             "message": "Missing item type\nExport UnitTests",

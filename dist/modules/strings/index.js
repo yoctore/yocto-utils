@@ -1,1 +1,1 @@
-"use strict";function Strings(){}module.exports=new Strings;
+"use strict";function Strings(){this.logger=logger}var logger=require("yocto-logger"),_=require("lodash"),util=require("util");Strings.prototype.inspect=function(a,b){return b=!_.isUndefined(b)&&_.isBoolean(b)?b:!0,util.inspect(a,!1,null,b)},module.exports=new Strings;
