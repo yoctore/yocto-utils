@@ -1,7 +1,7 @@
 {
   "name": "yocto-utils",
-  "version": "0.1.2",
-  "description": "Utils contains utils function for multiple usage (Crypto / Date / Media / Request / Strings / Unit Tests)",
+  "version": "1.0.0",
+  "description": "Utily tools for : cryptography, date, media, object, strings, unit-tests",
   "private": true,
   "scripts": {},
   "homepage": "http://www.yocto.re",
@@ -33,16 +33,19 @@
     "Utilities"
   ],
   "dependencies": {
-    "joi": "^6.4.1",
-    "lodash": "^3.8.0",
-    "yocto-logger": "git+ssh://git@lab.yocto.digital:yocto-node-modules/yocto-logger.git"
+    "crypto": "0.0.3",
+    "joi": "^6.7.1",
+    "lodash": "^3.10.1",
+    "yocto-logger": "^1.0.0"
   },
   "devDependencies": {
-    "grunt": "~0.4.5",
-    "grunt-contrib-jshint": "~0.10.0",
+    "chai": "^3.2.0",
+    "grunt": "^0.4.5",
+    "grunt-contrib-jshint": "^0.11.3",
     "grunt-contrib-nodeunit": "~0.4.1",
-    "grunt-contrib-uglify": "~0.5.0",
-    "grunt-contrib-yuidoc": "^0.7.0",
-    "grunt-mocha-cli": "^1.13.0"
+    "grunt-contrib-uglify": "^0.9.2",
+    "grunt-jscs": "^2.1.0",
+    "grunt-mocha-cli": "^1.14.0",
+    "yocto-hint": "^1.1.5"
   }
 }
