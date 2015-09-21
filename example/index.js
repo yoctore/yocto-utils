@@ -4,20 +4,23 @@ var date    = utils.date;
 var request = utils.request;
 var media   = utils.media;
 
+console.log('============ RANDOMIZED PASSWORD =========');
 console.log( "randomizedPassword : ", crypto.randomizedPassword(10, 1)  );
 console.log( "randomizedPassword : ", crypto.randomizedPassword(10, 1)  );
 console.log( "randomizedPassword: ", crypto.randomizedPassword(10, 2)  );
 console.log( "randomizedPassword: ", crypto.randomizedPassword(10, 3)  );
 console.log( "randomizedPassword: ", crypto.randomizedPassword(15, 3)  );  
 
+console.log('============ ENCRYPT =========');
+var b = '6e67ae372ad6d85cfad1abc366823e28';
+console.log(b);
 
-return false;
-var encryptedData = crypto.encrypt( 'Yocto', 'dataToEncrypt');
-console.log( "encryptedData = encrypt( 'totoYocto', 'mdpDeTest') : ", encryptedData  );
+var encryptedData = crypto.encrypt( b, 'dataToEncrypt');
+console.log( "Encrypt => ", encryptedData);
 
-console.log ( "decrypt('Yocto', encryptedData ) = " , crypto.decrypt('Yocto', encryptedData ));
+console.log ( "decrypt('Yocto', encryptedData ) = " , crypto.decrypt(b, encryptedData ));
 
-console.log ( " utils.geberateSearchDateList(0, 5, 'min', 'max', false) :" , date.generateList(0, 5, 'min', 'max', false) );
+console.log ( " utils.generateList(0, 5, 'min', 'max', false) :" , date.generateList(1970, 5, 'min', 'max', false) );
 
 console.log( 'getCorrectHost : ', request.getHost());
 
@@ -28,6 +31,7 @@ var rename = { a : 1 };
 
 var r = utils.obj.renameKey(rename, 'a', 'a.b.c');
 
+console.log('======== RENAME ========');
 console.log(rename, r);
 
 var ma = { fromName: 'EXPE NAME',

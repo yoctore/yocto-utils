@@ -112,6 +112,9 @@ Crypto.prototype.encrypt = function (key, data) {
       throw 'Key cannot be empty and must be 32 chars length min';
     }
 
+    // default buffer
+    var buffer = new Buffer(key, 'hex').toString();
+
     // stringify data
     data = JSON.stringify(data);
 
@@ -148,6 +151,9 @@ Crypto.prototype.decrypt = function (key, data) {
     if (_.isEmpty(key)) {
       throw 'Key cannot be empty and must be a cypher key';
     }
+
+    // default buffer
+    var buffer = new Buffer(key, 'hex').toString();
 
     // manage crypher
     var decipher  = crypto.createDecipher('aes256', key);
