@@ -45,7 +45,7 @@ YDate.prototype.generateList = function (min, max, prefixMin, prefixMax, reverse
 
     // validation schema
     var minSchema   = joi.number().required().min(1970);
-    var maxSchema   = joi.number().required().min(1970).max(date.getFullYear());
+    var maxSchema   = joi.number().required().min((min + 1)).max(date.getFullYear());
 
     // validate
     var minValidation = joi.validate(min, minSchema);

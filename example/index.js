@@ -20,7 +20,9 @@ console.log( "Encrypt => ", encryptedData);
 
 console.log ( "decrypt('Yocto', encryptedData ) = " , crypto.decrypt(b, encryptedData ));
 
-console.log ( " utils.generateList(0, 5, 'min', 'max', false) :" , date.generateList(1970, 5, 'min', 'max', false) );
+console.log('========= DATE ===========');
+console.log ( " utils.generateList(1970, 1990, 'min', 'max', false) :" , date.generateList(1970, 1990));
+console.log ( " utils.generateList(1970, 1990, 'Prefix', 'suffix', true) :" , date.generateList(1970, 1990, 'prefix', 'suffix', true));
 
 console.log('========= REQUEST ===========');
 console.log( 'getCorrectHost : ', request.getHost());
