@@ -1,36 +1,51 @@
 {
   "name": "yocto-utils",
   "version": "1.0.0",
-  "description": "Utily tools for : cryptography, date, media, object, strings, unit-tests",
-  "private": true,
+  "description": "Utily tools for : cryptography, date, media, object, strings",
   "scripts": {},
-  "homepage": "http://www.yocto.re",
-  "author": "Yocto SAS <http://www.yocto.re>",
-  "repository": {
-    "type": "git",
-    "url": "git+ssh:://git@lab.yocto.digital:yocto-node-modules/yocto-utils.git"
+  "author": {
+    "name": "Yocto SAS",
+    "email": "technique@yocto.re",
+    "url": "http://www.yocto.re"
   },
   "contributors": [
     {
-      "name": "ROBERT Mathieu",
-      "email": "mathieu@yocto.re"
-    },
-    {
-      "name": "BALARD Cédric",
-      "email": "cedric@yocto.re"
+      "name" : "ROBERT Mathieu",
+      "email" : "mathieu@yocto.re"
     }
   ],
+  "maintainers" : [
+    {
+      "name" : "ROBERT Mathieu",
+      "email" : "mathieu@yocto.re"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.com:yocto-node-modules/yocto-utils.git"
+  },
+  "bugs": "https://gitlab.com:yocto-node-modules/yocto-utils/issues",
+  "license" : "Apache-2.0",
   "main": "dist/index.js",
   "engines": {
     "node": ">=0.12.2"
   },
+  "keywords": [
+    "utility",
+    "crypto",
+    "encode",
+    "decode",
+    "util",
+    "tool",
+    "date",
+    "string",
+    "object"
+  ],
   "files": [
     "dist",
-    "documentation",
-    "example"
-  ],
-  "keywords": [
-    "Utilities"
+    "CHANGELOG.md",
+    "LICENSE-2.0.txt",
+    "README.md"
   ],
   "dependencies": {
     "crypto": "0.0.3",
