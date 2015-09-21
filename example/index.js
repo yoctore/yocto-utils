@@ -22,16 +22,16 @@ console.log ( "decrypt('Yocto', encryptedData ) = " , crypto.decrypt(b, encrypte
 
 console.log ( " utils.generateList(0, 5, 'min', 'max', false) :" , date.generateList(1970, 5, 'min', 'max', false) );
 
+console.log('========= REQUEST ===========');
 console.log( 'getCorrectHost : ', request.getHost());
 
+console.log('========= MULTIMEDIA ===========');
 console.log( 'isValidImageFormat(\'jpeg\'): ' +  media.isValidImageFormat('jpeg'));
 
-
+console.log('========= OBJECT ===========');
 var rename = { a : 1 };
 
 var r = utils.obj.renameKey(rename, 'a', 'a.b.c');
-
-console.log('======== RENAME ========');
 console.log(rename, r);
 
 var ma = { fromName: 'EXPE NAME',
