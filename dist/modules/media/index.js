@@ -1,1 +1,1 @@
-"use strict";function Media(){this.logger=logger}var _=require("lodash"),logger=require("yocto-logger");Media.prototype.isValidImageFormat=function(a){return _.isUndefined(a)||_.isNull(a)||!_.isString(a)?!1:(a=_(["",a.toLowerCase(),""]).join("|"),-1!=="|jpg|png|jpeg|gif|".indexOf(a))},module.exports=new Media;
+"use strict";function Media(){}var _=require("lodash");Media.prototype.isValidImageFormat=function(a){return _.isUndefined(a)||_.isNull(a)||!_.isString(a)?!1:(a=_(["",a.toLowerCase(),""]).join("|"),-1!=="|jpg|png|jpeg|gif|".indexOf(a))},module.exports=new Media;

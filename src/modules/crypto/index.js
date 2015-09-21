@@ -119,7 +119,7 @@ Crypto.prototype.encrypt = function (key, data) {
     data = JSON.stringify(data);
 
     // manage cypher
-    var cipher  = crypto.createCipher('aes256', key);
+    var cipher  = crypto.createCipher('aes256', buffer);
     crypted     = cipher.update(data, 'utf-8', 'hex');
     crypted     += cipher.final('hex');
 
@@ -156,7 +156,7 @@ Crypto.prototype.decrypt = function (key, data) {
     var buffer = new Buffer(key, 'hex').toString();
 
     // manage crypher
-    var decipher  = crypto.createDecipher('aes256', key);
+    var decipher  = crypto.createDecipher('aes256', buffer);
     decrypted     = decipher.update(data, 'hex', 'utf-8');
     decrypted     += decipher.final('utf-8');
 
