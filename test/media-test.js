@@ -9,8 +9,6 @@ var expect = require('chai').expect;
 var util   = require('util');
 var _      = require('lodash');
 
-media.logger.enableConsole(false);
-
 describe('Media()', function() {
   
   describe('isValidImageFormat() must return false with this data  ', function() {

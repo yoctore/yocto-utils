@@ -13,27 +13,27 @@ crypto.logger.enableConsole(false);
 
 describe('Crypto()', function() {
   describe('randomizedPassword() must return a string and must be a empty value with these params :  ', function() {
-    var types = unit.generateTypeForUnitTests(undefined, 1);
+    var types = unit.generateTypeForUnitTests(null, 2);
     
     types.forEach(function(t) {
       it('Using type : ' + util.inspect(t, { depth : null }), function() { 
         var p = crypto.randomizedPassword(t);
                 
-        chai.typeOf(p, 'string');      
-        expect(p).to.be.empty;
+        chai.typeOf(p, 'string');
+        expect(p).to.be.not.empty;
       });
     });
   });
   
   describe('randomizedPassword() must return a string and must not be a empty value with these params :  ', function() {
-    var types = unit.generateTypeForUnitTests(undefined, 1);
+    var types = unit.generateTypeForUnitTests(null, 2);
     
     types.forEach(function(t) {
       it('Using type : ' + util.inspect(t, { depth : null }), function() { 
         var p = crypto.randomizedPassword(10, t);
                 
         chai.typeOf(p, 'string');      
-        expect(p).to.be.not.empty;
+        expect(p).to.be.not.not.empty;
       });
     });
   });

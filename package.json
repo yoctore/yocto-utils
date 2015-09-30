@@ -1,7 +1,7 @@
 {
   "name": "yocto-utils",
   "version": "1.0.0",
-  "description": "Utily tools for : cryptography, date, media, object, strings",
+  "description": "Utility tools for : cryptography, date, media, object, strings",
   "scripts": {},
   "author": {
     "name": "Yocto SAS",
@@ -10,14 +10,14 @@
   },
   "contributors": [
     {
-      "name" : "ROBERT Mathieu",
-      "email" : "mathieu@yocto.re"
+      "name": "ROBERT Mathieu",
+      "email": "mathieu@yocto.re"
     }
   ],
-  "maintainers" : [
+  "maintainers": [
     {
-      "name" : "ROBERT Mathieu",
-      "email" : "mathieu@yocto.re"
+      "name": "ROBERT Mathieu",
+      "email": "mathieu@yocto.re"
     }
   ],
   "repository": {
@@ -25,7 +25,7 @@
     "url": "https://gitlab.com:yocto-node-modules/yocto-utils.git"
   },
   "bugs": "https://gitlab.com:yocto-node-modules/yocto-utils/issues",
-  "license" : "Apache-2.0",
+  "license": "Apache-2.0",
   "main": "dist/index.js",
   "engines": {
     "node": ">=0.12.2"
@@ -49,6 +49,7 @@
   ],
   "dependencies": {
     "crypto": "0.0.3",
+    "i": "^0.3.3",
     "joi": "^6.7.1",
     "lodash": "^3.10.1",
     "yocto-logger": "^1.0.0"

@@ -9,8 +9,6 @@ var expect  = require('chai').expect;
 var util    = require('util');
 var _       = require('lodash');
 
-request.logger.enableConsole(false);
-
 describe('Request()', function() {
   
   describe('getHost() must return false with this data  ', function() {

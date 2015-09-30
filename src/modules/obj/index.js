@@ -2,6 +2,7 @@
 
 var _       = require('lodash');
 var util    = require('util');
+var i       = require('i');
 
 /**
  * Yocto utilities functions : Module String<br/>
@@ -28,10 +29,7 @@ function Obj () {}
  */
 Obj.prototype.renameKey = function (o, key, newKey) {
   // nested check
-  if (!_.isUndefined(o) && !_.isNull(o) && _.isObject(o) &&
-    !_.isUndefined(key) && !_.isNull(key) && _.isString(key) &&
-    !_.isUndefined(newKey) && !_.isNull(newKey) && _.isString(newKey)) {
-
+  if (_.isObject(o) && _.isString(key) && _.isString(newKey)) {
     // clone object
     var c     = _.clone(o);
 
@@ -48,6 +46,27 @@ Obj.prototype.renameKey = function (o, key, newKey) {
   }
 
   // return a default object
+  return {};
+};
+
+/**
+ * Change object key given to a key name underscored
+ *
+ * @param {Object} o object reference to use
+ * @return {Object} object to use. empty object if required checking format is invalid
+ */
+Obj.prototype.underscoreKeys = function (o) {
+  // nested check
+  if (_.isObject(o)) {
+    _.each(Object.keys(o), function (k) {
+      o = this.renameKey(o, k, i.underscore(k));
+    }, this);
+
+    // return obj
+    return o;
+  }
+
+  // default statement
   return {};
 };
 
