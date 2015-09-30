@@ -1,3 +1,7 @@
+## 0.7.1 & 0.7.2 (2015-09-21)
+
+- Minor fixes & Change readme.md content & removing old documentation
+
 ## 0.7.0 (2015-09-21)
 
 Adding renameKeys function in object module.

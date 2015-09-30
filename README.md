@@ -2,7 +2,7 @@
 
 This module is a part of yocto node modules for NodeJS.
 
-Please see https://www.npmjs.com/~yocto for complete list of available module (completed day after day).
+Please see [our NPM repository](https://www.npmjs.com/~yocto) for complete list of available tools (completed day after day).
 
 This module provide utility function for various domains (encryption, media, string, date, object and more others)
 
@@ -43,6 +43,59 @@ After each development, conclusion is the same : we need to create an utility to
   - generateAsciiCharsList(alpha, num, special, toLower) : Generate an list of chars from ascii table
   - isUppercase(char) : test if a given char is to uppercase
   - isLowercase(char) : test if a given char is to lowercase
+
+## Logging in tool
+
+By Default this module include [yocto-logger](https://www.npmjs.com/package/yocto-logger) for logging.
+
+## How to use
+
+> Each module is available like : utils.<MODULE_NAME>.<WANTED_METHOD_NAME>(PARAMS, ...)
+
+```javascript
+var utils = require('yocto-utils')();
+
+// For Crypto module
+utils.crypto.<METHOD_NAME>
+
+// For Date module
+utils.date.<METHOD_NAME>
+
+// For Media module
+utils.media.<METHOD_NAME>
+
+// For Object module
+utils.obj.<METHOD_NAME>
+
+// For Request module
+utils.request.<METHOD_NAME>
+
+// For Strings module
+utils.str.<METHOD_NAME>
+```
+
+> Or you can retreive module by getter method : utils.get('module_name')
+
+```javascript
+
+// For Crypto module
+utils.get('crypto').<METHOD_NAME>
+
+// For Date module
+utils.get('.date.')<METHOD_NAME>
+
+// For Media module
+utils.get('.media.')<METHOD_NAME>
+
+// For Object module
+utils.get('.obj.')<METHOD_NAME>
+
+// For Request module
+utils.get('.request.')<METHOD_NAME>
+
+// For Strings module
+utils.get('.str.')<METHOD_NAME>
+```
 
 ## Examples
 
