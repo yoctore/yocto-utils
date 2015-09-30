@@ -82,19 +82,19 @@ utils.str.<METHOD_NAME>
 utils.get('crypto').<METHOD_NAME>
 
 // For Date module
-utils.get('.date.')<METHOD_NAME>
+utils.get('date')<METHOD_NAME>
 
 // For Media module
-utils.get('.media.')<METHOD_NAME>
+utils.get('media')<METHOD_NAME>
 
 // For Object module
-utils.get('.obj.')<METHOD_NAME>
+utils.get('obj')<METHOD_NAME>
 
 // For Request module
-utils.get('.request.')<METHOD_NAME>
+utils.get('request')<METHOD_NAME>
 
 // For Strings module
-utils.get('.str.')<METHOD_NAME>
+utils.get('str')<METHOD_NAME>
 ```
 
 ## Examples
