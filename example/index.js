@@ -5,24 +5,23 @@ var request = utils.request;
 var media   = utils.media;
 
 console.log('============ RANDOMIZED PASSWORD =========');
-console.log( "randomizedPassword : ", crypto.randomizedPassword(10, 1)  );
-console.log( "randomizedPassword : ", crypto.randomizedPassword(10, 1)  );
-console.log( "randomizedPassword: ", crypto.randomizedPassword(10, 2)  );
-console.log( "randomizedPassword: ", crypto.randomizedPassword(10, 3)  );
-console.log( "randomizedPassword: ", crypto.randomizedPassword(15, 3)  );  
+console.log("SIMPLE PASSWORD (10 CHARS LENGTH) :", crypto.randomizedPassword(10, 1));
+console.log("MEDIUM PASSWORD (10 CHARS LENGTH) :", crypto.randomizedPassword(10, 2));
+console.log("COMPLEX PASSWORD (10 CHARS LENGTH) :", crypto.randomizedPassword(10, 3));
+console.log("COMPLEX PASSWORD (15 CHARS LENGTH) :", crypto.randomizedPassword(15, 3));
 
 console.log('============ ENCRYPT =========');
-var b = '6e67ae372ad6d85cfad1abc366823e28';
-console.log(b);
+var key = '6e67ae372ad6d85cfad1abc366823e28';
 
-var encryptedData = crypto.encrypt( b, 'dataToEncrypt');
-console.log( "Encrypt => ", encryptedData);
+var dToEncrypt = { a : 1, b : 'dataToEncrypt' };
+var encryptedData = crypto.encrypt(key, dToEncrypt);
+console.log("Encrypt [ " + dToEncrypt + "] =>", encryptedData);
 
-console.log ( "decrypt('Yocto', encryptedData ) = " , crypto.decrypt(b, encryptedData ));
+console.log("Decrypt =>" , crypto.decrypt(key, encryptedData));
 
 console.log('========= DATE ===========');
-console.log ( " utils.generateList(1970, 1990, 'min', 'max', false) :" , date.generateList(1970, 1990));
-console.log ( " utils.generateList(1970, 1990, 'Prefix', 'suffix', true) :" , date.generateList(1970, 1990, 'prefix', 'suffix', true));
+console.log("Date list from 1970 to 1990 with no prefix and suffix and no reversed" , date.generateList(1970, 1990));
+console.log("Date list from 1970 to 1990 with prefix and suffix and reversed" , date.generateList(1970, 1990, 'prefix', 'suffix', true));
 
 console.log('========= REQUEST ===========');
 console.log( 'getCorrectHost : ', request.getHost());
@@ -33,22 +32,29 @@ console.log( 'isValidImageFormat(\'jpeg\'): ' +  media.isValidImageFormat('jpeg'
 console.log('========= OBJECT ===========');
 var rename = { a : 1 };
 
+console.log('== OBJECT : SIMPLE RENAME ==');
 var r = utils.obj.renameKey(rename, 'a', 'a.b.c');
 console.log(rename, r);
 
+console.log('== OBJECT : MORE COMPLEX RENAME ==');
 var ma = { fromName: 'EXPE NAME',
-  fromEmail: 'mathieu@yocto.re',
+  fromEmail: 'from@email.com',
   to: 
-   [ { email: 'contact@yocto.re',
-       name: 'Mathieu ROBERT',
+   [ { email: 'to@email.com',
+       name: 'MY NAME',
        type: 'bcc' } ],
   subject: 'MY-TEST2',
   html: '<b>MY-MESSAGE2</b>',
   text: 'MY-MESSAGE2' };
-  
+
+var ma2 = ma;
+
 var r = utils.obj.renameKey(ma, 'fromName', 'from_name');
-var r = utils.obj.renameKey(r, 'fromEmail', 'from_email');
-var r = utils.obj.renameKey(r, 'to', 'b.d.e');
+r = utils.obj.renameKey(r, 'fromEmail', 'from_email');
+r = utils.obj.renameKey(r, 'to', 'b.d.e');
 
 console.log(ma);
 console.log(utils.obj.inspect(r));
+console.log('== OBJECT : UNDERSCORE KEYS ==');
+console.log(utils.obj.underscoreKeys(ma2));
+

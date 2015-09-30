@@ -2,7 +2,7 @@
 
 var _       = require('lodash');
 var util    = require('util');
-var i       = require('i');
+var i       = require('i')();
 
 /**
  * Yocto utilities functions : Module String<br/>

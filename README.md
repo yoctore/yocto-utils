@@ -1,12 +1,14 @@
-# Overwiew
+## Overview
 
-This module is a part of yocto modules for NodeJS.
+This module is a part of yocto node modules for NodeJS.
 
 Please see https://www.npmjs.com/~yocto for complete list of available module (completed day after day).
 
+This module provide utility function for various domains (encryption, media, string, date, object and more others)
+
 ## Motivation
 
-After each development, conclusion is the same : we need to create an utility tools with all our utility method to be able to reuse them in other tools. That's why we create this utility tools.
+After each development, conclusion is the same : we need to create an utility tools with all our utility method to be able to reuse them in other program. That's why we create this utility tools.
 
 *Although this module was completed day after day.*
 
