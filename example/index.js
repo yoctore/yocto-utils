@@ -57,4 +57,5 @@ console.log(ma);
 console.log(utils.obj.inspect(r));
 console.log('== OBJECT : UNDERSCORE KEYS ==');
 console.log(utils.obj.underscoreKeys(ma2));
-
+console.log('== OBJECT : CAMELIZE KEYS ==');
+console.log(utils.obj.camelizeKeys(ma2));

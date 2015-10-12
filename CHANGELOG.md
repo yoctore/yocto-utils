@@ -1,3 +1,7 @@
+## 0.8.0 (2015-10-12)
+
+- Add camelizeKeys method on object module : rename first depth level key to camelize style
+
 ## 0.7.1 & 0.7.3 (2015-09-21)
 
 - Change readme.md content

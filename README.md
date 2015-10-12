@@ -35,8 +35,9 @@ After each development, conclusion is the same : we need to create an utility to
   - isValidImageFormat(type) : Test is given image format is valid (only string extension for the moment)
 - Module Object : 
   - renameKey(obj, key, newKey) : rename a given key for another given
-  - underscoreKeys(o) : rewrite all base object key name to an underscore key name 
+  - underscoreKeys(o) : rewrite all base object key name to an underscore key name (only on first depth level)
   - inspect(value, colorize : get the current object to a string representation with a full depth
+  - camelizeKeys(o) : rewrite all base object key name to an underscore key name (only on first depth level)
 - Module Request : 
   - getHost(request) : Get current host name from express request object
 - Module Strings : 
@@ -101,4 +102,7 @@ utils.get('str')<METHOD_NAME>
 
 Examples are available in example directory in git repository.
 
+## Next step
 
+- Other utilities function
+- Add full depth process on camelizeKeys / underscoreKeys Function on object module.

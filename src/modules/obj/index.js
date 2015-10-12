@@ -71,6 +71,27 @@ Obj.prototype.underscoreKeys = function (o) {
 };
 
 /**
+ * Change object key given to a key name camelized
+ *
+ * @param {Object} o object reference to use
+ * @return {Object} object to use. empty object if required checking format is invalid
+ */
+Obj.prototype.camelizeKeys = function (o) {
+  // nested check
+  if (_.isObject(o)) {
+    _.each(Object.keys(o), function (k) {
+      o = this.renameKey(o, k, i.camelize(k, false));
+    }, this);
+
+    // return obj
+    return o;
+  }
+
+  // default statement
+  return {};
+};
+
+/**
  * A wrapper function to use node util inspect function with infine depth
  *
  * @param {Object} value mixed value to process
