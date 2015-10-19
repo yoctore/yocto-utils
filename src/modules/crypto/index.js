@@ -126,6 +126,8 @@ Crypto.prototype.encrypt = function (key, data) {
   } catch (e) {
     // error too bad so log it
     this.logger.warning([ '[ Utils.Crypto.encrypt ] -', e ].join(' '));
+    // set to false when error
+    crypted = false;
   }
 
   // return false if errors occured
@@ -165,6 +167,8 @@ Crypto.prototype.decrypt = function (key, data) {
   } catch (e) {
     // error too bad so log it
     this.logger.warning([ '[ Utils.Crypto.decrypt ] -', e ].join(' '));
+    // set to false when error
+    decrypted = false;
   }
 
   // return false if errors occured

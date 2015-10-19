@@ -1,3 +1,7 @@
+## 0.8.1 (2015-10-19)
+
+- Return false on encrypt / decrypt fn
+
 ## 0.8.0 (2015-10-12)
 
 - Add camelizeKeys method on object module : rename first depth level key to camelize style
