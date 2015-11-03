@@ -1,4 +1,4 @@
-var utils   = require("../dist/index.js");
+var utils   = require("../src/index.js");
 var crypto  = utils.crypto;
 var date    = utils.date;
 var request = utils.request;
@@ -40,14 +40,32 @@ console.log('== OBJECT : MORE COMPLEX RENAME ==');
 var ma = { fromName: 'EXPE NAME',
   fromEmail: 'from@email.com',
   to: 
-   [ { email: 'to@email.com',
+   [ { emailTAAA: 'to@email.com',
        name: 'MY NAME',
        type: 'bcc' } ],
   subject: 'MY-TEST2',
   html: '<b>MY-MESSAGE2</b>',
-  text: 'MY-MESSAGE2' };
+  text: 'MY-MESSAGE2' }
 
-var ma2 = ma;
+var ma2 = {
+  fooBar : {
+    fooBar2 : {
+      fooBar3 : {
+        fooBar : 'foo'
+      }
+    }
+  }
+};
+
+var ma3 = {
+  foo_bar : {
+    foo_bar2 : {
+      foo_bar3 : {
+        foo_bar : 'foo'
+      }
+    }
+  }
+};
 
 var r = utils.obj.renameKey(ma, 'fromName', 'from_name');
 r = utils.obj.renameKey(r, 'fromEmail', 'from_email');
@@ -56,6 +74,6 @@ r = utils.obj.renameKey(r, 'to', 'b.d.e');
 console.log(ma);
 console.log(utils.obj.inspect(r));
 console.log('== OBJECT : UNDERSCORE KEYS ==');
-console.log(utils.obj.underscoreKeys(ma2));
+console.log(utils.obj.inspect(utils.obj.underscoreKeys(ma2)));
 console.log('== OBJECT : CAMELIZE KEYS ==');
-console.log(utils.obj.camelizeKeys(ma2));
+console.log(utils.obj.inspect(utils.obj.camelizeKeys(ma3)));

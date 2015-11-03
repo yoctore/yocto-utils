@@ -35,15 +35,17 @@ After each development, conclusion is the same : we need to create an utility to
   - isValidImageFormat(type) : Test is given image format is valid (only string extension for the moment)
 - Module Object : 
   - renameKey(obj, key, newKey) : rename a given key for another given
-  - underscoreKeys(o) : rewrite all base object key name to an underscore key name (only on first depth level)
+  - underscoreKeys(o) : rewrite all base object key name to an underscore key name (FULL depth level)
   - inspect(value, colorize : get the current object to a string representation with a full depth
-  - camelizeKeys(o) : rewrite all base object key name to an underscore key name (only on first depth level)
+  - camelizeKeys(o) : rewrite all base object key name to an underscore key name (FULL depth level)
 - Module Request : 
   - getHost(request) : Get current host name from express request object
 - Module Strings : 
   - generateAsciiCharsList(alpha, num, special, toLower) : Generate an list of chars from ascii table
   - isUppercase(char) : test if a given char is to uppercase
   - isLowercase(char) : test if a given char is to lowercase
+  - camelCase(string) : camelize a string
+  - underscore(string) : underscore a string
 
 ## Logging in tool
 

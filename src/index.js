@@ -7,7 +7,7 @@ var date    = require('./modules/date')(logger);
 var media   = require('./modules/media');
 var request = require('./modules/request');
 var unit    = require('./modules/unit-tests');
-var obj     = require('./modules/obj');
+var obj     = require('./modules/obj')(strings);
 
 /**
  * Yocto utils manager. This tool manage utility function for these list of modules :

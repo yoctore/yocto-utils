@@ -1,3 +1,8 @@
+## 1.0.0 (2015-11-03)
+
+- Add a camelize / underscore string function 
+- Change underscoreKeys and camelizeKeys method to process full deph of current object
+
 ## 0.8.1 (2015-10-19)
 
 - Return false on encrypt / decrypt fn

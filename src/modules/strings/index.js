@@ -87,6 +87,26 @@ Str.prototype.isLowercase = function (value) {
           value.length === 1 && value.charCodeAt(0) >= 97 && value.charCodeAt(0) <= 122);
 };
 
+/*
+ * Camelize a string
+ *
+ * @param {String} value string to camelize
+ * @return {String} string to camelized
+ */
+Str.prototype.camelCase = function (value) {
+  return _.camelCase(value);
+};
+
+/*
+ * Underscore a string
+ *
+ * @param {String} value string to underscore
+ * @return {String} string to underscored
+ */
+Str.prototype.underscore = function (value) {
+  return _.snakeCase(value);
+};
+
 /**
  * Export Strings
  */

@@ -1,8 +1,7 @@
 'use strict';
 
-var _       = require('lodash');
-var util    = require('util');
-var i       = require('i')();
+var _         = require('lodash');
+var util      = require('util');
 
 /**
  * Yocto utilities functions : Module String<br/>
@@ -14,10 +13,15 @@ var i       = require('i')();
  * @author : Mathieu ROBERT <mathieu@yocto.re>
  * @copyright : Yocto SAS, All right reserved
  *
- * @class Strings
+ * @class Object
  * @module Utils
  */
-function Obj () {}
+function Obj (string) {
+  /**
+   * Default obj util
+   */
+  this.objUtil = require('./objutil')(string);
+}
 
 /**
  * Rename key utility function. Parse an object from key and rename this key
@@ -56,18 +60,8 @@ Obj.prototype.renameKey = function (o, key, newKey) {
  * @return {Object} object to use. empty object if required checking format is invalid
  */
 Obj.prototype.underscoreKeys = function (o) {
-  // nested check
-  if (_.isObject(o)) {
-    _.each(Object.keys(o), function (k) {
-      o = this.renameKey(o, k, i.underscore(k));
-    }, this);
-
-    // return obj
-    return o;
-  }
-
   // default statement
-  return {};
+  return this.objUtil.underscoreKeys(o);
 };
 
 /**
@@ -77,18 +71,8 @@ Obj.prototype.underscoreKeys = function (o) {
  * @return {Object} object to use. empty object if required checking format is invalid
  */
 Obj.prototype.camelizeKeys = function (o) {
-  // nested check
-  if (_.isObject(o)) {
-    _.each(Object.keys(o), function (k) {
-      o = this.renameKey(o, k, i.camelize(k, false));
-    }, this);
-
-    // return obj
-    return o;
-  }
-
   // default statement
-  return {};
+  return this.objUtil.camelizeKeys(o);
 };
 
 /**
@@ -110,5 +94,7 @@ Obj.prototype.inspect = function (value, colorize) {
 /**
  * Export Strings
  */
-module.exports = new (Obj)();
-
+module.exports = function (string) {
+  // default statement
+  return new (Obj)(string);
+};
