@@ -1,3 +1,7 @@
+## 1.0.1 (2015-11-04)
+
+- Add isJoi test on object before process full depth key
+
 ## 1.0.0 (2015-11-03)
 
 - Add a camelize / underscore string function 

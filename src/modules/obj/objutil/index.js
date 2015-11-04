@@ -82,12 +82,18 @@ ObjUtil.prototype.walk = function (obj) {
     return _.map(obj, this.walk);
   }
 
+  // is Joi object ?
+  if (_.has(obj, 'isJoi')) {
+    return obj;
+  }
+
   // default statement
   return _.reduce(Object.keys(obj), function (acc, key) {
     // camelcase
     var state = (this.camelize ? this.str.camelCase(key) : this.str.underscore(key));
     // assign
     acc[state] = this.walk(obj[key]);
+
     // return item
     return acc;
   }.bind(this), {});
