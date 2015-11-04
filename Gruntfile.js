@@ -30,7 +30,7 @@ module.exports = function (grunt) {
     },
     // hint code
     yoctohint : {
-      all : [ 'Gruntfile.js', 'src/*/*/*.js' ]
+      all : [ 'Gruntfile.js', 'src/*/*/*/*.js' ]
     }
   });
 

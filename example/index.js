@@ -1,4 +1,4 @@
-var utils   = require("../src/index.js");
+var utils   = require("../dist/index.js");
 var crypto  = utils.crypto;
 var date    = utils.date;
 var request = utils.request;

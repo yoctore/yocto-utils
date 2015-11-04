@@ -29,12 +29,12 @@ function ObjUtil (string) {
    */
   this.underscorize = true;
 }
- 
+
 /**
  * Camelize keys (full depth)
- * 
+ *
  * @param {Object} obj default object to process
- * @return object camelized
+ * @return {Object} object camelized
  */
 ObjUtil.prototype.camelizeKeys = function (obj) {
   // change state
@@ -46,9 +46,9 @@ ObjUtil.prototype.camelizeKeys = function (obj) {
 
 /**
  * Undersore keys (full depth)
- * 
+ *
  * @param {Object} obj default object to process
- * @return object camelized
+ * @return {Object} object camelized
  */
 ObjUtil.prototype.underscoreKeys = function (obj) {
   // change state
@@ -56,7 +56,7 @@ ObjUtil.prototype.underscoreKeys = function (obj) {
   this.underscorize = !this.camelize;
   // default statement
   return this.walk(obj);
-}
+};
 
 /**
  * Default function to parse and object recursivly
@@ -67,13 +67,14 @@ ObjUtil.prototype.underscoreKeys = function (obj) {
 ObjUtil.prototype.walk = function (obj) {
   // first test
   if (!obj || !_.isObject(obj)) {
-     return obj;
+    // default statement
+    return obj;
   }
 
   // second test
   if (_.isDate(obj) || _.isRegExp(obj)) {
     return obj;
-  };
+  }
 
   // third test
   if (_.isArray(obj)) {
@@ -90,7 +91,7 @@ ObjUtil.prototype.walk = function (obj) {
     // return item
     return acc;
   }.bind(this), {});
-}
+};
 
 /**
  * Default export
