@@ -1,3 +1,8 @@
+## 1.1.0 (2015-11-04)
+
+- Update Str.underscoreKeys and Str.camelizeKeys to keep safe first char of given key if is a special char
+- Add a new method `isSpecilaChar` in Str module : to check if a given char is a special char
+
 ## 1.0.1 (2015-11-04)
 
 - Add isJoi test on object before process full depth key

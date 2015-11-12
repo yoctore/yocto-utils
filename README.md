@@ -46,6 +46,7 @@ After each development, conclusion is the same : we need to create an utility to
   - isLowercase(char) : test if a given char is to lowercase
   - camelCase(string) : camelize a string
   - underscore(string) : underscore a string
+  - isSpecialChar(char) : check is a given char is a special char
 
 ## Logging in tool
 

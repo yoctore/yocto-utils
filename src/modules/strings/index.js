@@ -72,8 +72,9 @@ Str.prototype.generateAsciiCharsList = function (alpha, num, special, toLower) {
  * @return {Boolean} true if is uppercase char false otherwise
  */
 Str.prototype.isUppercase = function (value) {
-  return (!_.isUndefined(value) && _.isString(value) &&
-          value.length === 1 && value.charCodeAt(0) >= 65 && value.charCodeAt(0) <= 90);
+  // default statement
+  return !_.isUndefined(value) && _.isString(value) &&
+          value.length === 1 && value.charCodeAt(0) >= 65 && value.charCodeAt(0) <= 90;
 };
 
 /**
@@ -83,8 +84,25 @@ Str.prototype.isUppercase = function (value) {
  * @return {Boolean} true if is lowercase char false otherwise
  */
 Str.prototype.isLowercase = function (value) {
-  return (!_.isUndefined(value) && _.isString(value) &&
-          value.length === 1 && value.charCodeAt(0) >= 97 && value.charCodeAt(0) <= 122);
+  // default statement
+  return !_.isUndefined(value) && _.isString(value) &&
+          value.length === 1 && value.charCodeAt(0) >= 97 && value.charCodeAt(0) <= 122;
+};
+
+/**
+ * Check if given char is a special chars
+ *
+ * @param {String} value char to test
+ * @return {Boolean} true if is special char false otherwise
+ */
+Str.prototype.isSpecialChar = function (value) {
+  // char At zero
+  var zero = value.charCodeAt(0);
+
+  // default statement
+  return !_.isUndefined(value) && _.isString(value) &&
+         value.length === 1 && (zero >= 33 && zero <= 47 || zero >= 58 && zero <= 64 ||
+                                zero >= 91 && zero <= 96 || zero >= 123 && zero <= 126);
 };
 
 /*
@@ -94,7 +112,17 @@ Str.prototype.isLowercase = function (value) {
  * @return {String} string to camelized
  */
 Str.prototype.camelCase = function (value) {
-  return _.camelCase(value);
+  // save camelize
+  var camelize = _.camelCase(value);
+  var zero     = _.first(value);
+
+  // keep safe first chars
+  if (this.isSpecialChar(zero)) {
+    camelize = [ zero, camelize ].join('');
+  }
+
+  // default statement
+  return camelize;
 };
 
 /*
@@ -104,7 +132,17 @@ Str.prototype.camelCase = function (value) {
  * @return {String} string to underscored
  */
 Str.prototype.underscore = function (value) {
-  return _.snakeCase(value);
+  // save camelize
+  var snake   = _.snakeCase(value);
+  var zero    = _.first(value);
+
+  // keep safe first chars
+  if (this.isSpecialChar(zero)) {
+    snake = [ zero, snake ].join('');
+  }
+
+  // default statement
+  return snake;
 };
 
 /**

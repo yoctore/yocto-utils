@@ -51,7 +51,10 @@ var ma2 = {
   fooBar : {
     fooBar2 : {
       fooBar3 : {
-        fooBar : 'foo'
+        fooBar : 'foo',
+        foo_bar5 : {
+          $push : 'a'
+        }
       }
     }
   }
@@ -61,7 +64,10 @@ var ma3 = {
   foo_bar : {
     foo_bar2 : {
       foo_bar3 : {
-        foo_bar : 'foo'
+        foo_bar : 'foo',
+        foo_bar4 : {
+          $pull : 'a'
+        }
       }
     }
   }
