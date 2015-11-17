@@ -1,3 +1,7 @@
+## 1.1.1 & 1.1.2 (2015-11-17)
+
+- Fix a bug on camelize and underscore for complex object
+
 ## 1.1.0 (2015-11-04)
 
 - Update Str.underscoreKeys and Str.camelizeKeys to keep safe first char of given key if is a special char

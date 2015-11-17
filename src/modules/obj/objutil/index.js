@@ -79,7 +79,7 @@ ObjUtil.prototype.walk = function (obj) {
   // third test
   if (_.isArray(obj)) {
     // map
-    return _.map(obj, this.walk);
+    return _.map(obj, this.walk.bind(this));
   }
 
   // is Joi object ?
