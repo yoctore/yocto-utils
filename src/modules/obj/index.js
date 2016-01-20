@@ -76,6 +76,28 @@ Obj.prototype.camelizeKeys = function (o) {
 };
 
 /**
+ * Camelize full level of an object from mongoose request
+ *
+ * @param  {Object} data  Object to camelized keys
+ * @return {Object}       the object camelized
+ */
+Obj.prototype.camelizeKeysMongoose = function (data) {
+
+  return this.objUtil.camelizeKeys(JSON.parse(JSON.stringify(data.toObject())));
+};
+
+/**
+ * Underscorize full level of an object from mongoose request
+ *
+ * @param  {Object} data  Object to Underscorized keys
+ * @return {Object}       the object Underscorized
+ */
+Obj.prototype.underscorizeKeysMongoose = function (data) {
+
+  return this.objUtil.underscoreKeys(JSON.parse(JSON.stringify(data.toObject())));
+};
+
+/**
  * A wrapper function to use node util inspect function with infine depth
  *
  * @param {Object} value mixed value to process

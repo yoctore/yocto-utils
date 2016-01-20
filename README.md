@@ -29,18 +29,20 @@ After each development, conclusion is the same : we need to create an utility to
   - randomizedPassword(length, complexity) : generate a random password with a specific complexity
   - encrypt(key, value) : encrypt given string to an AES-256 representation with given key
   - decrypt(key, value) : decrypt given AES-256 representation string value with given key
-- Module Date : 
+- Module Date :
   - generateList(min, max, prefixMin, prefixMax, reverse) : Generate a list of date between two given index
-- Module Media : 
+- Module Media :
   - isValidImageFormat(type) : Test is given image format is valid (only string extension for the moment)
-- Module Object : 
+- Module Object :
   - renameKey(obj, key, newKey) : rename a given key for another given
   - underscoreKeys(o) : rewrite all base object key name to an underscore key name (FULL depth level)
+  - underscorizeKeysMongoose(o) : rewrite all base object key name to an underscore key name (FULL depth level) of an Mongoose object
   - inspect(value, colorize : get the current object to a string representation with a full depth
   - camelizeKeys(o) : rewrite all base object key name to an underscore key name (FULL depth level)
-- Module Request : 
+  - camelizeKeysMongoose(o) : rewrite all base object key name to an underscore key name (FULL depth level) of an Mongoose object
+- Module Request :
   - getHost(request) : Get current host name from express request object
-- Module Strings : 
+- Module Strings :
   - generateAsciiCharsList(alpha, num, special, toLower) : Generate an list of chars from ascii table
   - isUppercase(char) : test if a given char is to uppercase
   - isLowercase(char) : test if a given char is to lowercase
