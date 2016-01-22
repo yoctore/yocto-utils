@@ -76,25 +76,27 @@ Obj.prototype.camelizeKeys = function (o) {
 };
 
 /**
- * Camelize full level of an object from mongoose request
+ * Change object key given to a key name underscored for an Mongoose object
  *
- * @param  {Object} data  Object to camelized keys
- * @return {Object}       the object camelized
+ * @param  {Object} o object reference to use
+ * @return {Object} object to use. empty object if required checking format is invalid
  */
-Obj.prototype.camelizeKeysMongoose = function (data) {
+Obj.prototype.camelizeKeysMongoose = function (o) {
 
-  return this.objUtil.camelizeKeys(JSON.parse(JSON.stringify(data.toObject())));
+  // default statement
+  return this.objUtil.camelizeKeys(JSON.parse(JSON.stringify(o.toObject())));
 };
 
 /**
- * Underscorize full level of an object from mongoose request
+ * Change object key given to a key name camelized for an Mongoose object
  *
- * @param  {Object} data  Object to Underscorized keys
- * @return {Object}       the object Underscorized
+ * @param  {Object} o object reference to use
+ * @return {Object} object to use. empty object if required checking format is invalid
  */
-Obj.prototype.underscorizeKeysMongoose = function (data) {
+Obj.prototype.underscorizeKeysMongoose = function (o) {
 
-  return this.objUtil.underscoreKeys(JSON.parse(JSON.stringify(data.toObject())));
+  // default statement
+  return this.objUtil.underscoreKeys(JSON.parse(JSON.stringify(o.toObject())));
 };
 
 /**
