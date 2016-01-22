@@ -76,6 +76,30 @@ Obj.prototype.camelizeKeys = function (o) {
 };
 
 /**
+ * Change object key given to a key name underscored for an Mongoose object
+ *
+ * @param  {Object} o object reference to use
+ * @return {Object} object to use. empty object if required checking format is invalid
+ */
+Obj.prototype.camelizeKeysMongoose = function (o) {
+
+  // default statement
+  return this.objUtil.camelizeKeys(JSON.parse(JSON.stringify(o.toObject())));
+};
+
+/**
+ * Change object key given to a key name camelized for an Mongoose object
+ *
+ * @param  {Object} o object reference to use
+ * @return {Object} object to use. empty object if required checking format is invalid
+ */
+Obj.prototype.underscorizeKeysMongoose = function (o) {
+
+  // default statement
+  return this.objUtil.underscoreKeys(JSON.parse(JSON.stringify(o.toObject())));
+};
+
+/**
  * A wrapper function to use node util inspect function with infine depth
  *
  * @param {Object} value mixed value to process

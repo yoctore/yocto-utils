@@ -1,3 +1,8 @@
+## 1.2.0 (2016-01-20)
+
+- Add function camelizeKeysMongoose that camelize keys of an Mongoose object
+- Add function underscorizeKeysMongoose that underscorize keys of an Mongoose object
+
 ## 1.1.1 & 1.1.2 (2015-11-17)
 
 - Fix a bug on camelize and underscore for complex object
@@ -13,7 +18,7 @@
 
 ## 1.0.0 (2015-11-03)
 
-- Add a camelize / underscore string function 
+- Add a camelize / underscore string function
 - Change underscoreKeys and camelizeKeys method to process full deph of current object
 
 ## 0.8.1 (2015-10-19)
@@ -40,7 +45,7 @@ Adding renameKeys function in object module.
 
 Adding new modules & functions :
 
-Crypto Module : 
+Crypto Module :
 - randomizedPassword : generate a random password
 - encrypt : encrypt given string
 - decrypt : decrypt a value encrypted with encrypt function
@@ -49,7 +54,7 @@ Crypto Module :
 
 Adding new modules & functions :
 
-Date Module : 
+Date Module :
 
 - generateList : Generate a list of date between two given index
 
@@ -57,7 +62,7 @@ Date Module :
 
 Adding new modules & functions :
 
-Media Module : 
+Media Module :
 
 - isValidImageFormat : Test is given image format is valid
 
@@ -65,7 +70,7 @@ Media Module :
 
 Adding new modules & functions :
 
-Object Module : 
+Object Module :
 
 - renameKey : rename a given key for another given
 - inpect : get the current object to a string representation with a full depth
@@ -74,7 +79,7 @@ Object Module :
 
 Adding new modules & functions :
 
-Request Module : 
+Request Module :
 
 - getHost : Get current host name from request object
 
@@ -82,7 +87,7 @@ Request Module :
 
 Adding new modules & functions :
 
-Strings Module : 
+Strings Module :
 - generateAsciiCharsList : Generate an list of chars from ascii table
 - isUppercase : test if a given char is to uppercase
 - isLowercase : test if a given char is to lowercase
