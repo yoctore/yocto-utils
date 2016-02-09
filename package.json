@@ -1,6 +1,6 @@
 {
   "name": "yocto-utils",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Utility tools for : cryptography, date, media, object, strings",
   "scripts": {},
   "author": {
@@ -24,7 +24,7 @@
     "type": "git",
     "url": "https://github.com/yoctore/yocto-utils.git"
   },
-  "bugs": "https://github.com/yoctore/yocto-utils.git/issues",
+  "bugs": "https://github.com/yoctore/yocto-utils/issues",
   "license": "Apache-2.0",
   "main": "dist/index.js",
   "engines": {
