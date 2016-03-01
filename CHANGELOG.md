@@ -1,3 +1,7 @@
+## 1.2.3 (2016-03-01)
+
+- Change request module usage
+
 ## 1.2.0 (2016-01-20)
 
 - Add function camelizeKeysMongoose that camelize keys of an Mongoose object

@@ -23,37 +23,18 @@ function Request () {}
  * @return {String|Boolean} Return the correct host from request ,object false is undefined
  */
 Request.prototype.getHost = function (request) {
-  // check request
-  if (!_.isUndefined(request) && _.has(request, 'protocol') && _.has(request, 'host')) {
+  // default headers
+  var headers = _.has(request, 'headers') && _.isObject(request.headers) ? request.headers : false;
+  // default host
+  var host      = 'localhost';
 
-    // default host
-    var host      = 'localhost';
-
-    // default protocol
-    var protocol  = 'http';
-
-    // has get function ?
-    if (_.has(request, 'get') && _.isFunction(request.get)) {
-      // build protocol
-      protocol  = [ request.get('protocol') || protocol, '' ].join('://');
-      host      = (request.get('x-forwarded-host') ||
-                  request.get('x-forwarded-server') ||
-                  request.get('host') || host);
-    } else {
-      // has no get function ?? try to access data from property name
-      protocol  = [ request.protocol || protocol, '' ].join('://');
-      host      = (request['x-forwarded-host'] ||
-                  request['x-forwarded-server'] ||
-                  request.host ||
-                  host);
-    }
-
-    // return correct builded host
-    return _([ protocol, host ]).join('');
+  if (headers) {
+    // default statement
+    headers = (headers['x-forwarded-host'] || headers['x-forwarded-server']
+                                           || headers.host || host);
   }
-
-  // return false if no data was founded
-  return false;
+  // default statement
+  return headers;
 };
 
 /**

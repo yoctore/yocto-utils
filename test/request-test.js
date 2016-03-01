@@ -25,11 +25,11 @@ describe('Request()', function() {
   });
   
   var datas = [
-    { keys : [ { protocol : 'http', host : '', 'x-forwarded-host' : '', 'x-forwarded-server' : '' } ], value : 'http://localhost' },
-    { keys : [ { protocol : 'https', host : '127.0.0.1', 'x-forwarded-host' : '', 'x-forwarded-server' : '' } ], value : 'https://127.0.0.1' },
-    { keys : [ { protocol : 'https', host : '127.0.0.1', 'x-forwarded-host' : 'my-x-forwarded-host', 'x-forwarded-server' : '' } ], value : 'https://my-x-forwarded-host' },
-    { keys : [ { protocol : 'http', host : '127.0.0.1', 'x-forwarded-host' : '', 'x-forwarded-server' : 'my-x-forwarded-server' } ], value : 'http://my-x-forwarded-server' },
-    { keys : [ { protocol : 'http', host : '127.0.0.1', 'x-forwarded-host' : 'my-x-forwarded-host', 'x-forwarded-server' : 'my-x-forwarded-server' } ], value : 'http://my-x-forwarded-host' }         
+    { keys : [ { headers : { protocol : 'http', host : '', 'x-forwarded-host' : '', 'x-forwarded-server' : '' } } ], value : 'localhost' },
+    { keys : [ { headers : { protocol : 'https', host : '127.0.0.1', 'x-forwarded-host' : '', 'x-forwarded-server' : '' } } ], value : '127.0.0.1' },
+    { keys : [ { headers : { protocol : 'https', host : '127.0.0.1', 'x-forwarded-host' : 'my-x-forwarded-host', 'x-forwarded-server' : '' } } ], value : 'my-x-forwarded-host' },
+    { keys : [ { headers : { protocol : 'http', host : '127.0.0.1', 'x-forwarded-host' : '', 'x-forwarded-server' : 'my-x-forwarded-server' } } ], value : 'my-x-forwarded-server' },
+    { keys : [ { headers : { protocol : 'http', host : '127.0.0.1', 'x-forwarded-host' : 'my-x-forwarded-host', 'x-forwarded-server' : 'my-x-forwarded-server' } } ], value : 'my-x-forwarded-host' }         
   ];
   
   datas.forEach(function(data) {
