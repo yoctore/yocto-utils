@@ -1,3 +1,7 @@
+## 1.2.4  (2016-03-01)
+
+Package update and travis & codeclimage integration
+
 ## 1.2.3 (2016-03-01)
 
 - Change request module usage
