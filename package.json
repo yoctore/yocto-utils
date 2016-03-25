@@ -1,6 +1,6 @@
 {
   "name": "yocto-utils",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "Utility tools for : cryptography, date, media, object, strings",
   "scripts": {},
   "author": {
@@ -49,16 +49,16 @@
   ],
   "dependencies": {
     "crypto": "0.0.3",
-    "joi": "^7.0.0",
+    "joi": "^7.3.0",
     "lodash": "^3.10.1",
     "map-obj": "^1.0.1",
-    "yocto-logger": "^1.1.1"
+    "yocto-logger": "^1.1.2"
   },
   "devDependencies": {
-    "chai": "^3.2.0",
+    "chai": "^3.5.0",
     "grunt": "^0.4.5",
-    "grunt-contrib-uglify": "^0.10.0",
+    "grunt-contrib-uglify": "^1.0.1",
     "grunt-mocha-cli": "^2.0.0",
-    "yocto-hint": "^1.2.6"
+    "yocto-hint": "^1.3.6"
   }
 }
