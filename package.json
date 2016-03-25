@@ -1,6 +1,6 @@
 {
   "name": "yocto-utils",
-  "version": "1.2.6",
+  "version": "1.2.7",
   "description": "Utility tools for : cryptography, date, media, object, strings",
   "scripts": {
     "test": "grunt test"
@@ -51,7 +51,7 @@
   ],
   "dependencies": {
     "crypto": "0.0.3",
-    "joi": "^7.3.0",
+    "joi": "^8.0.5",
     "lodash": "^3.10.1",
     "map-obj": "^1.0.1",
     "yocto-logger": "^1.1.2"
