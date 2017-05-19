@@ -39,6 +39,7 @@ After each development, conclusion is the same : we need to create an utility to
   - decrypt(key, value) : decrypt given AES-256 representation string value with given key
 - Module Date :
   - generateList(min, max, prefixMin, prefixMax, reverse) : Generate a list of date between two given index
+  - getElapsedTime(config, time) : Get elapsedTime between current time to given time 
 - Module Media :
   - isValidImageFormat(type) : Test is given image format is valid (only string extension for the moment)
 - Module Object :

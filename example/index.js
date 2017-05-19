@@ -4,6 +4,45 @@ var date    = utils.date;
 var request = utils.request;
 var media   = utils.media;
 
+var epConfig = {
+  "scheduleOpen" : {
+    "hours"   : 8,
+    "minutes" : 0,
+    "seconds" : 0
+  },
+  "scheduleClose" : {
+    "hours"  : 18,
+    "minutes" : 0,
+    "seconds" : 0
+  },
+  "minResponseDelay" : {
+    "value" : 2,
+    "unit" : "hours"
+  },
+  "maxResponseDelay" : {
+    "value" : 8,
+    "unit" : "hours"
+  },
+  "alertLow" : {
+    "value" : 4,
+    "unit"  : "hours"
+  },
+  "alertMedium" : {
+    "value" : 2,
+    "unit"  : "hours"
+  },
+  "alertHigh" : {
+    "value" : 1,
+    "unit" : "hours"
+  },
+  "closed" : {
+    "date" : [ "24/12", "31/12" ],
+    "day" : [ "6", "7" ]
+  },
+  "beginDayOfWeek" : "1",
+  "endDayOfWeek" : "5"
+};
+
 console.log('============ RANDOMIZED PASSWORD =========');
 console.log("SIMPLE PASSWORD (10 CHARS LENGTH) :", crypto.randomizedPassword(10, 1));
 console.log("MEDIUM PASSWORD (10 CHARS LENGTH) :", crypto.randomizedPassword(10, 2));
@@ -22,6 +61,7 @@ console.log("Decrypt =>" , crypto.decrypt(key, encryptedData));
 console.log('========= DATE ===========');
 console.log("Date list from 1970 to 1990 with no prefix and suffix and no reversed" , date.generateList(1970, 1990));
 console.log("Date list from 1970 to 1990 with prefix and suffix and reversed" , date.generateList(1970, 1990, 'prefix', 'suffix', true));
+console.log('Elapsedtime from config' + utils.obj.inspect(epConfig), date.getElapsedTime(epConfig, '2017/05/03 00:00:00'));
 
 console.log('========= REQUEST ===========');
 console.log( 'getCorrectHost : ', request.getHost());

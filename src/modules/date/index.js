@@ -23,6 +23,11 @@ function YDate (logger) {
    * @type object
    */
   this.logger = logger;
+
+  /**
+   * Default elapsed time sub module
+   */
+  this.elapsed = require('./elapsed');
 }
 
 /**
@@ -102,6 +107,18 @@ YDate.prototype.generateList = function (min, max, prefixMin, prefixMax, reverse
 
   // return default array
   return list;
+};
+
+/**
+ * Get elpased time from a given time and a schedule rules
+ *
+ * @param {Object} config configration needed to process the main process (no working day, etc)
+ * @param {Object} t current date to use for the main process
+ * @return {String} formatted date to string format
+ */
+YDate.prototype.getElapsedTime = function (config, time) {
+  // default statement
+  return this.elapsed.get(config, time);
 };
 
 /**
