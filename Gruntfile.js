@@ -1,36 +1,47 @@
 'use strict';
 
 module.exports = function (grunt) {
-  // init config
+  // Init config
   grunt.initConfig({
-    // default package
-    pkg       : grunt.file.readJSON('package.json'),
+    // Default package
+    pkg : grunt.file.readJSON('package.json'),
+
     // Uglify content
-    uglify    : {
+    uglify : {
       api : {
-        files : [{
-          expand  : true,
-          cwd     : 'src/',
-          src     : '**/*.js',
-          dest    : 'dist/'
-        }]
+        files : [ {
+          expand : true,
+          cwd    : 'src/',
+          src    : '**/*.js',
+          dest   : 'dist/'
+        } ]
       }
     },
+
     // Unit test
-    mochacli  : {
+    mochacli : {
       options : {
-        'reporter'       : 'spec',
-        'inline-diffs'   : false,
-        'no-exit'        : true,
-        'force'          : false,
-        'check-leaks'    : true,
-        'bail'           : false
+        reporter       : 'spec',
+        'inline-diffs' : false,
+        'no-exit'      : true,
+        force          : false,
+        'check-leaks'  : true,
+        bail           : false
       },
-      all     : [ 'test/*.js' ]
+      all : [ 'test/*.js' ]
     },
-    // hint code
+
+    // Hint our app
     yoctohint : {
-      all : [ 'Gruntfile.js', 'src/*/*/*/*.js' ]
+      json : [
+        'package.json'
+      ],
+      node : [
+        'Gruntfile.js', 'src/*/*/*/*.js'
+      ],
+      options : {
+        compatibility : true
+      }
     }
   });
 
@@ -39,7 +50,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-mocha-cli');
   grunt.loadNpmTasks('yocto-hint');
 
-  // register tasks
+  // Register tasks
   grunt.registerTask('hint', 'yoctohint');
   grunt.registerTask('test', 'mochacli');
   grunt.registerTask('build', [ 'hint', 'uglify' ]);

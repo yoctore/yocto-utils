@@ -5,8 +5,13 @@ var _      = require('lodash');
 
 /**
  * Manage process to get elapsedTime from a given date
+ *
+ * @return {Ojbect} this
  */
-function ElapsedTime () {}
+function ElapsedTime () {
+  // Return this
+  return this;
+}
 
 /**
  * Get correct elaptimeTime from current moment
@@ -16,8 +21,7 @@ function ElapsedTime () {}
  * @return {String} formatted date to string format
  */
 ElapsedTime.prototype.get = function (config, t) {
-
-  // check if config a on a valid format
+  // Check if config a on a valid format
   if (_.isUndefined(config) || !_.isObject(config)) {
     throw 'Invalid config given. Config must be an object';
   }
@@ -25,26 +29,28 @@ ElapsedTime.prototype.get = function (config, t) {
   // Set & Save config
   this.config = config;
 
-  // check first is a valid date
+  // Check first is a valid date
   if (!moment(Date.parse(t)).isValid()) {
-    // throw exception on error
+    // Throw exception on error
     throw 'Invalid date given. Cannot continue';
   }
 
-  // set current date with given date
+  // Set current date with given date
   this.current = moment(Date.parse(t));
+
   // Get the limitDate
   var getLimitDate = this.getLimitDate(this.current);
-  // process difference
+
+  // Process difference
   var difference = getLimitDate.diff(moment());
 
   // Check if time is expired time
   if (difference < 0) {
-    // default statement on expired
+    // Default statement on expired
     return 'expired';
   }
 
-  // default statement, get the correct time
+  // Default statement, get the correct time
   return this.calculDifference(moment(), getLimitDate, 0, true);
 };
 
@@ -55,20 +61,21 @@ ElapsedTime.prototype.get = function (config, t) {
  * @return {Boolean} true if is a bank holiday false otherwise
  */
 ElapsedTime.prototype.isBankHoliday = function (value) {
-
-  // is a valid moment date ?
+  // Is a valid moment date ?
   if (!moment.isMoment(value)) {
     throw 'Given value is not a valid moment date in isBankHoliday';
   }
 
-  // get formatted date
+  // Get formatted date
   var formatted = this.current.format('DD/MM');
-  // given date ?
+
+  // Given date ?
+
   if (!_.isUndefined(value)) {
     formatted = value.format('DD/MM');
   }
 
-  // default statement
+  // Default statement
   return _.includes(this.config.closed.date, formatted);
 };
 
@@ -79,19 +86,21 @@ ElapsedTime.prototype.isBankHoliday = function (value) {
  * @return {Boolean} true if is a no working day false otherwise
  */
 ElapsedTime.prototype.isNoWorkingDay = function (value) {
-
-  // is a valid moment date ?
+  // Is a valid moment date ?
   if (!moment.isMoment(value)) {
     throw 'Given value is not a valid moment date in isNotWorkingDay';
   }
 
-  // get formatted date
+  // Get formatted date
   var formatted = this.current.format('E');
-  // given date ?
+
+  // Given date ?
+
   if (!_.isUndefined(value)) {
     formatted = value.format('E');
   }
-  // default statement
+
+  // Default statement
   return _.includes(this.config.closed.day, formatted);
 };
 
@@ -103,25 +112,26 @@ ElapsedTime.prototype.isNoWorkingDay = function (value) {
  * @return {Boolean} true if is given day is the end of the week
  */
 ElapsedTime.prototype.isEndOrBeginOfWeek = function (value, isEnd) {
-
-  // is a valid moment date ?
+  // Is a valid moment date ?
   if (!moment.isMoment(value)) {
     throw 'Given value is not a valid moment date in isEndOrBeginOfWeek';
   }
 
-  // normalize isend valud
+  // Normalize isend valud
   isEnd = _.isBoolean(isEnd) ? isEnd : false;
 
-  // get formatted date
+  // Get formatted date
   var formatted = this.current.format('E');
-  // given date ?
+
+  // Given date ?
+
   if (!_.isUndefined(value)) {
     formatted = value.format('E');
   }
 
-  // default statement
+  // Default statement
   return _.includes(isEnd ? this.config.endDayOfWeek :
-                    this.config.beginDayOfWeek, formatted);
+    this.config.beginDayOfWeek, formatted);
 };
 
 /**
@@ -131,25 +141,24 @@ ElapsedTime.prototype.isEndOrBeginOfWeek = function (value, isEnd) {
  * @return {Object} founded date
  */
 ElapsedTime.prototype.findNextValidDay = function (value) {
-
-  // is a valid moment date ?
+  // Is a valid moment date ?
   if (!moment.isMoment(value)) {
     throw 'Given value is not a valid moment date in findNextValidDay';
   }
 
-  // check and find
+  // Check and find
   if (this.isBankHoliday(value) || this.isNoWorkingDay(value)) {
-    // find & add one day to given date for checking
+    // Find & add one day to given date for checking
     return this.findNextValidDay(value
       .add(1, 'd')
       .hours(this.config.scheduleOpen.hours)
       .minutes(this.config.scheduleOpen.minutes)
       .seconds(this.config.scheduleOpen.seconds)
     );
-  } else {
-    // return founded date
-    return value;
   }
+
+  // Return founded date
+  return value;
 };
 
 /**
@@ -161,7 +170,9 @@ ElapsedTime.prototype.findNextValidDay = function (value) {
 ElapsedTime.prototype.getLimitDate = function (newDate) {
   // Init b var
   var b = '';
+
   // Check if newDate param exist
+
   if (newDate) {
     // Search next valid day
     b = this.findNextValidDay(newDate);
@@ -169,17 +180,15 @@ ElapsedTime.prototype.getLimitDate = function (newDate) {
     // Search next valid day
     b = this.findNextValidDay(moment(this.current));
   }
-  // is between define schedule time ?
+
+  // Is between define schedule time ?
   if (this.isBetweenOpenPlanning(b)) {
-    // has enough time ?
+    // Has enough time ?
     return this.hasEnoughTime(b);
-  } else {
-    // get the limit
-    return this.getLimitDate(this.processCorrectTime(b));
   }
 
-  // default statement
-  return this.current;
+  // Get the limit
+  return this.getLimitDate(this.processCorrectTime(b));
 };
 
 /**
@@ -189,17 +198,17 @@ ElapsedTime.prototype.getLimitDate = function (newDate) {
  * @return {Boolean} true if current time is defined schedule time
  */
 ElapsedTime.prototype.isBetweenOpenPlanning = function (b) {
-  // build begin time
+  // Build begin time
   var begin = moment(b).hours(this.config.scheduleOpen.hours)
     .minutes(this.config.scheduleOpen.minutes)
     .seconds(this.config.scheduleOpen.seconds);
 
-  // build end time
+  // Build end time
   var end = moment(b).hours(this.config.scheduleClose.hours)
     .minutes(this.config.scheduleClose.minutes)
     .seconds(this.config.scheduleClose.seconds);
 
-  // default statement
+  // Default statement
   return b.isSameOrAfter(begin) && b.isSameOrBefore(end);
 };
 
@@ -213,9 +222,12 @@ ElapsedTime.prototype.isBetweenOpenPlanning = function (b) {
 ElapsedTime.prototype.hasEnoughTime = function (initDate, diff) {
   // Assign the newDate to the date var
   var date = initDate;
+
   // Init the end var
   var end = '';
-  // if the params newDate & diff exist
+
+  // If the params newDate & diff exist
+
   if (initDate && diff) {
     // Add the diff to the date & assign to the end var
     end = moment(date)
@@ -226,52 +238,58 @@ ElapsedTime.prototype.hasEnoughTime = function (initDate, diff) {
       .add(this.config.maxResponseDelay.value, this.config.maxResponseDelay.unit);
   }
 
-  // end of the day
+  // End of the day
   var endDay = moment(date).hours(this.config.scheduleClose.hours)
     .minutes(this.config.scheduleClose.minutes)
     .seconds(this.config.scheduleClose.seconds);
 
-  // process difference
+  // Process difference
   var difference = end.diff(endDay);
 
   // If the difference is positive
   if (difference > 0) {
-    // add one day because the time exceed the scheduleClose
+    // Add one day because the time exceed the scheduleClose
     var newDate = moment(date)
       .add(1, 'd')
       .hours(this.config.scheduleOpen.hours)
       .minutes(this.config.scheduleOpen.minutes)
       .seconds(this.config.scheduleOpen.seconds);
+
     // Retrieve a new validDay and reload hasEnoughTime function
     return this.hasEnoughTime(this.findNextValidDay(newDate), difference);
+
   // Else return the value
-  } else {
-    // Return the good value
-    return end;
   }
+
+  // Return the good value
+  return end;
 };
 
 /**
  * Build correct litmit time from given rules
  *
  * @param {Object} b the date to test
+ * @return {Ojbect} the moment time
  */
 ElapsedTime.prototype.processCorrectTime = function (b) {
-  // build begin time
+  // Build begin time
   var begin = moment(b).hours(this.config.scheduleOpen.hours)
     .minutes(this.config.scheduleOpen.minutes)
     .seconds(this.config.scheduleOpen.seconds);
 
-  // build end time
+  // Build end time
   var end = moment(b).hours(this.config.scheduleClose.hours)
     .minutes(this.config.scheduleClose.minutes)
     .seconds(this.config.scheduleClose.seconds);
+
   // Check if the time is before the the begin
+
   if (b.isBefore(begin)) {
     return moment(b).hours(this.config.scheduleOpen.hours)
       .minutes(this.config.scheduleOpen.minutes)
       .seconds(this.config.scheduleOpen.seconds);
   }
+
   // Check if the time is after the the end
   if (b.isAfter(end)) {
     return moment(b)
@@ -294,38 +312,44 @@ ElapsedTime.prototype.processCorrectTime = function (b) {
 ElapsedTime.prototype.calculDifference =
   function (actualDate, limitDate, difference, firstPassage) {
   // Find a valid day from the actualDate
-  var validDate = this.findNextValidDay(actualDate);
+    var validDate = this.findNextValidDay(actualDate);
 
-  // Check if the validDate is not BetweenOpenPlanning & if isBefore the limitDate
-  if (!this.isBetweenOpenPlanning(validDate) && validDate.isBefore(limitDate)) {
+    // Check if the validDate is not BetweenOpenPlanning & if isBefore the limitDate
+    if (!this.isBetweenOpenPlanning(validDate) && validDate.isBefore(limitDate)) {
     // Init the newValiDate var
-    var newValiDate;
-    // Check if the firstPassage is true and if the difference is equal to 0
-    if (firstPassage && difference === 0) {
+      var newValiDate;
+
+      // Check if the firstPassage is true and if the difference is equal to 0
+
+      if (firstPassage && difference === 0) {
       // Set false the firstPassage
-      firstPassage = false;
-      // Add 1h at newValidate and reset the minutes and seconds
-      newValiDate = validDate.add(1,'h').minutes(0).seconds(0);
-    } else {
+        firstPassage = false;
+
+        // Add 1h at newValidate and reset the minutes and seconds
+        newValiDate = validDate.add(1,'h').minutes(0).seconds(0);
+      } else {
       // Add 1h at newValidate
-      newValiDate = validDate.add(1,'h');
+        newValiDate = validDate.add(1,'h');
+      }
+
+      // Reload the function and add 1 hours to the date
+      return this.calculDifference(newValiDate, limitDate, difference, firstPassage);
+
+      // Check if the Date isBefore the limitDate
+    } else if (validDate.isBefore(limitDate)) {
+    // Add + 1 to the difference var
+      difference++;
+
+      // Reload the function and add 1 hours to the date
+      return this.calculDifference(validDate.add(1,'h'), limitDate, difference, firstPassage);
     }
-    // Reload the function and add 1 hours to the date
-    return this.calculDifference(newValiDate, limitDate, difference, firstPassage);
-  // Check if the Date isBefore the limitDate
-  } else if (validDate.isBefore(limitDate)) {
-    // add + 1 to the difference var
-    difference++;
-    // Reload the function and add 1 hours to the date
-    return this.calculDifference(validDate.add(1,'h'), limitDate, difference, firstPassage);
-  } else {
+
     // Subtract the diff of validDate and the limitDate to the difference
     return moment().hour(difference).minutes(0).second(0)
-           .subtract(validDate.diff(limitDate)).format('HH:mm:ss');
-  }
-};
+      .subtract(validDate.diff(limitDate)).format('HH:mm:ss');
+  };
 
 /**
  * Export ElapsedTime
  */
-module.exports = new (ElapsedTime)();
+module.exports = new ElapsedTime();

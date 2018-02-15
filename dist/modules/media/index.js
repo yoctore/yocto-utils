@@ -1,1 +1,1 @@
-"use strict";function Media(){}var _=require("lodash");Media.prototype.isValidImageFormat=function(e){return!(_.isUndefined(e)||_.isNull(e)||!_.isString(e))&&(e=_(["",e.toLowerCase(),""]).join("|"),-1!=="|jpg|png|jpeg|gif|".indexOf(e))},module.exports=new Media;
+"use strict";var _=require("lodash");function Media(){}Media.prototype.isValidImageFormat=function(e){return!(_.isUndefined(e)||_.isNull(e)||!_.isString(e))&&(e=_(["",e.toLowerCase(),""]).join("|"),-1!=="|jpg|png|jpeg|gif|".indexOf(e))},module.exports=new Media;

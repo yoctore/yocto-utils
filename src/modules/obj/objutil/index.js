@@ -14,16 +14,20 @@ var _         = require('lodash');
  *
  * @class ObjUtil
  * @module Utils
+ *
+ * @param {Object} string Default string instance
  */
 function ObjUtil (string) {
   /**
    * Default string instance
    */
   this.str = string;
+
   /**
    * Default camelize state
    */
-  this.camelize     = true;
+  this.camelize = true;
+
   /**
    * Default underscore state
    */
@@ -37,10 +41,11 @@ function ObjUtil (string) {
  * @return {Object} object camelized
  */
 ObjUtil.prototype.camelizeKeys = function (obj) {
-  // change state
-  this.camelize     = true;
+  // Change state
+  this.camelize = true;
   this.underscorize = !this.camelize;
-  // default statement
+
+  // Default statement
   return this.walk(obj);
 };
 
@@ -51,10 +56,11 @@ ObjUtil.prototype.camelizeKeys = function (obj) {
  * @return {Object} object camelized
  */
 ObjUtil.prototype.underscoreKeys = function (obj) {
-  // change state
-  this.camelize     = false;
+  // Change state
+  this.camelize = false;
   this.underscorize = !this.camelize;
-  // default statement
+
+  // Default statement
   return this.walk(obj);
 };
 
@@ -65,44 +71,49 @@ ObjUtil.prototype.underscoreKeys = function (obj) {
  * @return {Object} default object processed
  */
 ObjUtil.prototype.walk = function (obj) {
-  // first test
+  // First test
   if (!obj || !_.isObject(obj)) {
-    // default statement
+    // Default statement
     return obj;
   }
 
-  // second test
+  // Second test
   if (_.isDate(obj) || _.isRegExp(obj)) {
     return obj;
   }
 
-  // third test
+  // Third test
   if (_.isArray(obj)) {
-    // map
+    // Map
     return _.map(obj, this.walk.bind(this));
   }
 
-  // is Joi object ?
+  // Is Joi object ?
   if (_.has(obj, 'isJoi')) {
     return obj;
   }
 
-  // default statement
+  // Default statement
   return _.reduce(Object.keys(obj), function (acc, key) {
-    // camelcase
-    var state = (this.camelize ? this.str.camelCase(key) : this.str.underscore(key));
-    // assign
+    // Camelcase
+    var state = this.camelize ? this.str.camelCase(key) : this.str.underscore(key);
+
+    // Assign
+
     acc[state] = this.walk(obj[key]);
 
-    // return item
+    // Return item
     return acc;
   }.bind(this), {});
 };
 
 /**
  * Default export
+ *
+ * @param {Object} string the default string instance
+ * @return {Object} the instance of Obj utils
  */
 module.exports = function (string) {
-  // default statement
-  return new (ObjUtil)(string);
+  // Default statement
+  return new ObjUtil(string);
 };
