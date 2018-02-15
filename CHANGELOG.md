@@ -1,3 +1,8 @@
+## 2.0.0 (2018-02-15)
+
+- Major update of all dependencies
+- Update node version engine to >= 8.9.4
+
 ## 1.2.4  (2016-03-01)
 
 Package update and travis & codeclimage integration
