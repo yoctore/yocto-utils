@@ -1,6 +1,6 @@
 {
   "name": "yocto-utils",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Utility tools for : cryptography, date, media, object, strings",
   "scripts": {
     "test": "grunt test"

@@ -26,6 +26,9 @@ function UnitTests () {
  * @return {Array} array of type to use on calling function
  */
 UnitTests.prototype.generateTypeForUnitTests = function (types, nbArgs) {
+  // Defined an undefined var here for unit test process and hinter
+  var anUndefinedVar;
+
   // Default type
   var dtypes  = [ null, anUndefinedVar, 1, true, false, NaN, 'a', '', {}, [] ];
 
