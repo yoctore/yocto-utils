@@ -13,7 +13,9 @@ var _ = require('lodash');
  * @class Crypto
  * @module Utils
  */
-function UnitTests () {}
+function UnitTests () {
+  // Nothing to do here
+}
 
 /**
  * Generate type for unit tests
@@ -24,34 +26,34 @@ function UnitTests () {}
  * @return {Array} array of type to use on calling function
  */
 UnitTests.prototype.generateTypeForUnitTests = function (types, nbArgs) {
-  // default type
-  var dtypes  = [ null, undefined, 1, true, false, NaN, 'a', '', {}, [] ];
+  // Default type
+  var dtypes  = [ null, anUndefinedVar, 1, true, false, NaN, 'a', '', {}, [] ];
 
-  types   = _.isArray(types) && !_.isEmpty(types) ? types : dtypes;
-  nbArgs  = _.isNumber(nbArgs) && nbArgs > 0 ? nbArgs : 0;
+  types = _.isArray(types) && !_.isEmpty(types) ? types : dtypes;
+  nbArgs = _.isNumber(nbArgs) && nbArgs > 0 ? nbArgs : 0;
 
-  // define args
+  // Define args
   var args  = [];
 
-  // parse types
+  // Parse types
   _.each(types, function (t) {
     var fo = [];
 
-    // parse args
+    // Parse args
     for (var i = 0; i < nbArgs; i++) {
       fo[i] = t;
     }
 
-    // adding args
+    // Adding args
     args.push(fo);
   });
 
-  // return args
+  // Return args
   return args;
 };
 
 /**
  * Export UnitTests
  */
-module.exports = new (UnitTests)();
+module.exports = new UnitTests();
 

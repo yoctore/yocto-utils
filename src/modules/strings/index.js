@@ -13,7 +13,9 @@ var _ = require('lodash');
  * @class Str
  * @module Utils
  */
-function Str () {}
+function Str () {
+  // Nothing to do here
+}
 
 /**
  * Generate printable ascii chars list (without space)
@@ -25,43 +27,44 @@ function Str () {}
  * @return {String} current ascii chars wanted
  */
 Str.prototype.generateAsciiCharsList = function (alpha, num, special, toLower) {
-  // default chars for appending
+  // Default chars for appending
   var s = '';
 
-  // generate list
+  // Generate list
   for (var i = 33; i < 127; i++) {
-    // need alpha ?
+    // Need alpha ?
     if (!_.isUndefined(alpha) && _.isBoolean(alpha) && alpha) {
-      // generate human char code by default
+      // Generate human char code by default
       if (i >= 65 && i <= 90) {
-        // add uppercase code
+        // Add uppercase code
         s += String.fromCharCode(i);
-        // need lower char item ?
+
+        // Need lower char item ?
         if (!_.isUndefined(toLower) && _.isBoolean(toLower) && toLower) {
-          // add lower case code
+          // Add lower case code
           s += String.fromCharCode(i + 32);
         }
       }
     }
 
-    // need number value ?
+    // Need number value ?
     if (!_.isUndefined(num) && _.isBoolean(num) && num) {
-      // generate human number
+      // Generate human number
       if (i >= 48 && i <= 57) {
         s += String.fromCharCode(i);
       }
     }
 
-    // need special chars value
+    // Need special chars value
     if (!_.isUndefined(special) && _.isBoolean(special) && special) {
-      // generate special chars
+      // Generate special chars
       if (i >= 33 && i <= 47 || i >= 58 && i <= 64 || i >= 91 && i <= 96 || i >= 123 && i <= 126) {
         s += String.fromCharCode(i);
       }
     }
   }
 
-  // default statement
+  // Default statement
   return s;
 };
 
@@ -72,7 +75,7 @@ Str.prototype.generateAsciiCharsList = function (alpha, num, special, toLower) {
  * @return {Boolean} true if is uppercase char false otherwise
  */
 Str.prototype.isUppercase = function (value) {
-  // default statement
+  // Default statement
   return !_.isUndefined(value) && _.isString(value) &&
           value.length === 1 && value.charCodeAt(0) >= 65 && value.charCodeAt(0) <= 90;
 };
@@ -84,7 +87,7 @@ Str.prototype.isUppercase = function (value) {
  * @return {Boolean} true if is lowercase char false otherwise
  */
 Str.prototype.isLowercase = function (value) {
-  // default statement
+  // Default statement
   return !_.isUndefined(value) && _.isString(value) &&
           value.length === 1 && value.charCodeAt(0) >= 97 && value.charCodeAt(0) <= 122;
 };
@@ -96,10 +99,10 @@ Str.prototype.isLowercase = function (value) {
  * @return {Boolean} true if is special char false otherwise
  */
 Str.prototype.isSpecialChar = function (value) {
-  // char At zero
+  // Char At zero
   var zero = value.charCodeAt(0);
 
-  // default statement
+  // Default statement
   return !_.isUndefined(value) && _.isString(value) &&
          value.length === 1 && (zero >= 33 && zero <= 47 || zero >= 58 && zero <= 64 ||
                                 zero >= 91 && zero <= 96 || zero >= 123 && zero <= 126);
@@ -112,16 +115,16 @@ Str.prototype.isSpecialChar = function (value) {
  * @return {String} string to camelized
  */
 Str.prototype.camelCase = function (value) {
-  // save camelize
+  // Save camelize
   var camelize = _.camelCase(value);
   var zero     = _.first(value);
 
-  // keep safe first chars
+  // Keep safe first chars
   if (this.isSpecialChar(zero)) {
     camelize = [ zero, camelize ].join('');
   }
 
-  // default statement
+  // Default statement
   return camelize;
 };
 
@@ -132,21 +135,21 @@ Str.prototype.camelCase = function (value) {
  * @return {String} string to underscored
  */
 Str.prototype.underscore = function (value) {
-  // save camelize
+  // Save camelize
   var snake   = _.snakeCase(value);
   var zero    = _.first(value);
 
-  // keep safe first chars
+  // Keep safe first chars
   if (this.isSpecialChar(zero)) {
     snake = [ zero, snake ].join('');
   }
 
-  // default statement
+  // Default statement
   return snake;
 };
 
 /**
  * Export Strings
  */
-module.exports = new (Str)();
+module.exports = new Str();
 

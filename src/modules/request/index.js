@@ -13,7 +13,9 @@ var _ = require('lodash');
  * @class Crypto
  * @module Utils
  */
-function Request () {}
+function Request () {
+  // Nothing to do here
+}
 
 /**
  * Return the correct host from a request header. Implement x-forwarded rules
@@ -23,21 +25,23 @@ function Request () {}
  * @return {String|Boolean} Return the correct host from request ,object false is undefined
  */
 Request.prototype.getHost = function (request) {
-  // default headers
+  // Default headers
   var headers = _.has(request, 'headers') && _.isObject(request.headers) ? request.headers : false;
-  // default host
+
+  // Default host
   var host      = 'localhost';
 
   if (headers) {
-    // default statement
-    headers = (headers['x-forwarded-host'] || headers['x-forwarded-server']
-                                           || headers.host || host);
+    // Default statement
+    headers = headers['x-forwarded-host'] || headers['x-forwarded-server'] ||
+                                           headers.host || host;
   }
-  // default statement
+
+  // Default statement
   return headers;
 };
 
 /**
  * Export YDate
  */
-module.exports = new (Request)();
+module.exports = new Request();

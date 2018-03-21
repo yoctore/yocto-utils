@@ -13,7 +13,9 @@ var _      = require('lodash');
  * @class Media
  * @module Utils
  */
-function Media () {}
+function Media () {
+  // Nothing to do here
+}
 
 /**
  * Check if is an allowed media type
@@ -22,22 +24,21 @@ function Media () {}
  * @return {Boolean} true if is correct false otherwise
  */
 Media.prototype.isValidImageFormat = function (type) {
-
-  // is valid type format ?
+  // Is valid type format ?
   if (!_.isUndefined(type) && !_.isNull(type) && _.isString(type)) {
-    // process correct type
-    type = _(['', type.toLowerCase(), '']).join('|');
+    // Process correct type
+    type = _([ '', type.toLowerCase(), '' ]).join('|');
 
-    // return statement
+    // Return statement
     return '|jpg|png|jpeg|gif|'.indexOf(type) !== -1;
   }
 
-  // returning false if type is an invalid type
+  // Returning false if type is an invalid type
   return false;
 };
 
 /**
  * Export Strings
  */
-module.exports = new (Media)();
+module.exports = new Media();
 

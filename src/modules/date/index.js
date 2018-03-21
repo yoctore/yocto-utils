@@ -14,6 +14,7 @@ var util    = require('util');
  *
  * @class Crypto
  * @module Utils
+ * @param {Object} logger current logger instance
  */
 function YDate (logger) {
   /**
@@ -41,71 +42,75 @@ function YDate (logger) {
  * @return {Array} list of date
  */
 YDate.prototype.generateList = function (min, max, prefixMin, prefixMax, reverse) {
-  // default list
+  // Default list
   var list = [];
 
   try {
-    // default date
+    // Default date
     var date        = new Date();
 
-    // validation schema
+    // Validation schema
     var minSchema   = joi.number().required().min(1970);
-    var maxSchema   = joi.number().required().min((min + 1)).max(date.getFullYear());
+    var maxSchema   = joi.number().required().min(min + 1).max(date.getFullYear());
 
-    // validate
+    // Validate
     var minValidation = joi.validate(min, minSchema);
     var maxValidation = joi.validate(max, maxSchema);
 
-    // has errors throw it !!!
+    // Has errors throw it !!!
     if (!_.isNull(minValidation.error)) {
-      throw util.inspect(minValidation.error.details, { depth : null });
+      throw util.inspect(minValidation.error.details, {
+        depth : null
+      });
     }
 
     if (!_.isNull(maxValidation.error)) {
-      throw util.inspect(maxValidation.error.details, { depth : null });
+      throw util.inspect(maxValidation.error.details, {
+        depth : null
+      });
     }
 
-    // process correcty reverse and prefixs
-    reverse   = !_.isNull(reverse) && _.isBoolean(reverse) ? reverse : false;
+    // Process correcty reverse and prefixs
+    reverse = !_.isNull(reverse) && _.isBoolean(reverse) ? reverse : false;
     prefixMin = !_.isUndefined(prefixMin) && !_.isNull(prefixMin) &&
                 _.isString(prefixMin) && !_.isEmpty(prefixMin) ? prefixMin : '';
     prefixMax = !_.isUndefined(prefixMax) && !_.isNull(prefixMax) &&
                 _.isString(prefixMax) && !_.isEmpty(prefixMax) ? prefixMax : '';
 
-    // init with default value to prevent infinite loop
+    // Init with default value to prevent infinite loop
     max = max || date.getFullYear();
     min = min || date.getFullYear();
 
-    // process number
+    // Process number
     for (var i = min; i <= max; i++) {
       var mI = i;
 
-      // if we had prefix we must transform date to a correction string value
+      // If we had prefix we must transform date to a correction string value
       if (!_.isEmpty(prefixMin) || !_.isEmpty(prefixMax)) {
         mI = mI.toString();
       }
 
-      // push it
+      // Push it
       list.push(mI);
     }
 
-    // check is prefix is needed on list
+    // Check is prefix is needed on list
     if (!_.isEmpty(prefixMin)) {
       list[0] = _([ prefixMin, list[0] ]).join(' ');
     }
 
-    // check is prefix is needed on list
+    // Check is prefix is needed on list
     if (!_.isEmpty(prefixMax)) {
       list[list.length - 1] = _([ prefixMax, list[list.length - 1] ]).join(' ');
     }
 
-    // return statement
+    // Return statement
     return reverse ? list.reverse() : list;
   } catch (e) {
     this.logger.warning([ '[ YDate.generateList ] - An occured, and error is :', e ].join(' '));
   }
 
-  // return default array
+  // Return default array
   return list;
 };
 
@@ -113,17 +118,20 @@ YDate.prototype.generateList = function (min, max, prefixMin, prefixMax, reverse
  * Get elpased time from a given time and a schedule rules
  *
  * @param {Object} config configration needed to process the main process (no working day, etc)
- * @param {Object} t current date to use for the main process
+ * @param {Object} time current date to use for the main process
  * @return {String} formatted date to string format
  */
 YDate.prototype.getElapsedTime = function (config, time) {
-  // default statement
+  // Default statement
   return this.elapsed.get(config, time);
 };
 
 /**
  * Export YDate
+ *
+ * @param {Object} logger current logger instance
+ * @return {Object} current instance of YDate
  */
 module.exports = function (logger) {
-  return new (YDate)(logger);
+  return new YDate(logger);
 };

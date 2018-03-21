@@ -1,3 +1,7 @@
+## 2.1.0 (2018-03-20)
+
+- Update crypto module to use a specific algorithm as a params if is requested
+
 ## 2.0.0 (2018-02-15)
 
 - Major update of all dependencies

@@ -37,7 +37,7 @@ module.exports = function (grunt) {
         'package.json'
       ],
       node : [
-        'Gruntfile.js', 'src/*/*/*/*.js'
+        'Gruntfile.js', 'src/*/*'
       ],
       options : {
         compatibility : true

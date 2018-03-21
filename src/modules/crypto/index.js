@@ -13,6 +13,8 @@ var crypto    = require('crypto');
  *
  * @class Crypto
  * @module Utils
+ * @param {Object} logger current logger instance
+ * @param {Object} str strings module instance
  */
 function Crypto (logger, str) {
   /**
@@ -40,55 +42,62 @@ function Crypto (logger, str) {
  * @return {String} randomized password
  */
 Crypto.prototype.randomizedPassword = function (n, level) {
-  // choose complexity level of password
+  // Choose complexity level of password
   // 1 : easy - 2 middle - 3 huge
-  level = (!_.isUndefined(level) && _.isNumber(level) && (level >= 1 && level <= 3)) ? level : 3;
+  level = !_.isUndefined(level) && _.isNumber(level) && (level >= 1 && level <= 3) ? level : 3;
 
-  // process n to a correct length value 8 chars is minest possible value
-  n             = _.isNumber(n) && !_.isNaN(n) && n >= 8 ? n : 8;
+  // Process n to a correct length value 8 chars is minest possible value
+  n = _.isNumber(n) && !_.isNaN(n) && n >= 8 ? n : 8;
 
-  // define nb special chars to be 1/3 of chars length
-  var nbSpecial = (level === 3) ? Math.round(n / 4) : 0;
-  var nbNum     = (level >= 2) ? Math.round(n / 4) : 0;
+  // Define nb special chars to be 1/3 of chars length
+  var nbSpecial = level === 3 ? Math.round(n / 4) : 0;
+  var nbNum     = level >= 2 ? Math.round(n / 4) : 0;
   var nbAscii   = n - nbSpecial - nbNum;
 
-  // ascii chars list without special chars
+  // Ascii chars list without special chars
   var ascii   = this.str.generateAsciiCharsList(true, false , false, true);
-  // get only special chars
+
+  // Get only special chars
   var special = this.str.generateAsciiCharsList(false, false , true, false);
-  // get only num chars
+
+  // Get only num chars
   var num     = this.str.generateAsciiCharsList(false, true , false, false);
 
-  // build full ascii value to use
+  // Build full ascii value to use
   var password = {
     ascii   : [],
     special : [],
     num     : []
   };
 
-  // build password
+  // Build password
   for (var i = 0; i < n; i++) {
-    // manage ascii char
+    // Manage ascii char
     if (nbAscii > 0 && password.ascii.length < nbAscii) {
       var aindex = (Math.random() * (ascii.length - 1)).toFixed(0);
+
       password.ascii.push(ascii[aindex]);
     }
-    // manage number char
+
+    // Manage number char
     if (nbNum > 0 && password.num.length < nbNum) {
       var nindex = (Math.random() * (num.length - 1)).toFixed(0);
+
       password.num.push(num[nindex]);
     }
-    // manage special char
+
+    // Manage special char
     if (nbSpecial > 0 && password.special.length < nbSpecial) {
       var sindex = (Math.random() * (special.length - 1)).toFixed(0);
+
       password.special.push(special[sindex]);
     }
   }
 
-  // compact data and shuffle data
+  // Compact data and shuffle data
   password = _.shuffle(_.union(password.ascii, password.special, password.num));
 
-  // default statement
+  // Default statement
   return password.join('');
 };
 
@@ -98,39 +107,39 @@ Crypto.prototype.randomizedPassword = function (n, level) {
  * @method encrypt
  * @param {String} key key to use for encryption
  * @param {Mixed} data data to encrypt
+ * @param {String} algorithm type of algorithm to use on process
  * @return {String|Boolean} crypted data
  */
-Crypto.prototype.encrypt = function (key, data) {
-
-  // default value
+Crypto.prototype.encrypt = function (key, data, algorithm) {
+  // Default value
   var crypted = false;
 
   try {
-
-    // checking key value
+    // Checking key value
     if (_.isEmpty(key) || key.length < 32) {
       throw 'Key cannot be empty and must be 32 chars length min';
     }
 
-    // default buffer
+    // Default buffer
     var buffer = new Buffer(key, 'hex').toString();
 
-    // stringify data
+    // Stringify data
     data = JSON.stringify(data);
 
-    // manage cypher
-    var cipher  = crypto.createCipher('aes256', buffer);
-    crypted     = cipher.update(data, 'utf-8', 'hex');
-    crypted     += cipher.final('hex');
+    // Manage cypher
+    var cipher  = crypto.createCipher(algorithm || 'aes256', buffer);
 
+    crypted = cipher.update(data, 'utf-8', 'hex');
+    crypted += cipher.final('hex');
   } catch (e) {
-    // error too bad so log it
+    // Error too bad so log it
     this.logger.warning([ '[ Utils.Crypto.encrypt ] -', e ].join(' '));
-    // set to false when error
+
+    // Set to false when error
     crypted = false;
   }
 
-  // return false if errors occured
+  // Return false if errors occured
   return crypted;
 };
 
@@ -140,44 +149,49 @@ Crypto.prototype.encrypt = function (key, data) {
  * @method decrypt
  * @param {String} key key to use for encryption
  * @param {Mixed} data data to encrypt
+  * @param {String} algorithm type of algorithm to use on process
  * @return {String|Boolean} decrypted data
  */
-Crypto.prototype.decrypt = function (key, data) {
-
-  // default value
+Crypto.prototype.decrypt = function (key, data, algorithm) {
+  // Default value
   var decrypted = false;
 
   try {
-
-    // test empty key
+    // Test empty key
     if (_.isEmpty(key)) {
       throw 'Key cannot be empty and must be a cypher key';
     }
 
-    // default buffer
+    // Default buffer
     var buffer = new Buffer(key, 'hex').toString();
 
-    // manage crypher
-    var decipher  = crypto.createDecipher('aes256', buffer);
-    decrypted     = decipher.update(data, 'hex', 'utf-8');
-    decrypted     += decipher.final('utf-8');
+    // Manage crypher
+    var decipher  = crypto.createDecipher(algorithm || 'aes256', buffer);
 
-    // return decrypted data
+    decrypted = decipher.update(data, 'hex', 'utf-8');
+    decrypted += decipher.final('utf-8');
+
+    // Return decrypted data
     decrypted = JSON.parse(decrypted);
   } catch (e) {
-    // error too bad so log it
+    // Error too bad so log it
     this.logger.warning([ '[ Utils.Crypto.decrypt ] -', e ].join(' '));
-    // set to false when error
+
+    // Set to false when error
     decrypted = false;
   }
 
-  // return false if errors occured
+  // Return false if errors occured
   return decrypted;
 };
 
 /**
  * Export Crypto
+ *
+ * @param {Object} logger default logger instance to use
+ * @param {Object} strings default string module instance to use
+ * @return {Function} new instance of crypto
  */
 module.exports = function (logger, strings) {
-  return new (Crypto)(logger, strings);
+  return new Crypto(logger, strings);
 };

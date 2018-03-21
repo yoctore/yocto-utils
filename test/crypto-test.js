@@ -56,7 +56,22 @@ describe('Crypto()', function() {
     { keys : [ 'd41d8cd98f00b204e9800998ecf8427e', 'AAAAAAAAA' ] },
     { keys : [ '74be16979710d4c4e7c6647856088456', { a : 2 , b : 3 } ] },
     { keys : [ 'acf7ef943fdeb3cbfed8dd0d8f584731', [ { a : 2 } ] ] },
-    { keys : [ '5a8dccb220de5c6775c873ead6ff2e43', 1 ] }
+    { keys : [ '5a8dccb220de5c6775c873ead6ff2e43', 1 ] },
+    { keys : [ 'azertyazertyazertyazertyazertyazerty', 'machaine', 'aes256' ] },
+    { keys : [ 'd41d8cd98f00b204e9800998ecf8427e', 'AAAAAAAAA',  'aes256'  ] },
+    { keys : [ '74be16979710d4c4e7c6647856088456', { a : 2 , b : 3 },  'aes256' ] },
+    { keys : [ 'acf7ef943fdeb3cbfed8dd0d8f584731', [ { a : 2 } ],  'aes256' ] },
+    { keys : [ '5a8dccb220de5c6775c873ead6ff2e43', 1,  'aes256' ] },
+    { keys : [ 'azertyazertyazertyazertyazertyazerty', 'machaine', 'aes128' ] },
+    { keys : [ 'd41d8cd98f00b204e9800998ecf8427e', 'AAAAAAAAA',  'aes128'  ] },
+    { keys : [ '74be16979710d4c4e7c6647856088456', { a : 2 , b : 3 },  'aes128' ] },
+    { keys : [ 'acf7ef943fdeb3cbfed8dd0d8f584731', [ { a : 2 } ],  'aes128' ] },
+    { keys : [ '5a8dccb220de5c6775c873ead6ff2e43', 1,  'aes128' ] },
+    { keys : [ 'azertyazertyazertyazertyazertyazerty', 'machaine', 'aes192' ] },
+    { keys : [ 'd41d8cd98f00b204e9800998ecf8427e', 'AAAAAAAAA',  'aes192'  ] },
+    { keys : [ '74be16979710d4c4e7c6647856088456', { a : 2 , b : 3 },  'aes192' ] },
+    { keys : [ 'acf7ef943fdeb3cbfed8dd0d8f584731', [ { a : 2 } ],  'aes192' ] },
+    { keys : [ '5a8dccb220de5c6775c873ead6ff2e43', 1,  'aes192' ] }
   ];
 
   d.forEach(function(data) {
@@ -91,8 +106,7 @@ describe('Crypto()', function() {
   d.forEach(function(data) {
     describe([ 'decrypt() must be equals', util.inspect(data.keys[1], { depth : null }), ', not empty / not false with these params :' ].join(' '), function() {
 
-      var d = [ data.keys[0], data.value ];
-
+      var d = [ data.keys[0], data.value, data.keys[2] ];
       it('Using type : ' + util.inspect(d, { depth : null }), function() {
         var p = crypto.decrypt.apply(crypto, d);
 

@@ -15,6 +15,7 @@ var util      = require('util');
  *
  * @class Object
  * @module Utils
+ * @param {Object} string strings module instance
  */
 function Obj (string) {
   /**
@@ -32,24 +33,24 @@ function Obj (string) {
  * @return {Object} object to use. empty object if required checking format is invalid
  */
 Obj.prototype.renameKey = function (o, key, newKey) {
-  // nested check
+  // Nested check
   if (_.isObject(o) && _.isString(key) && _.isString(newKey)) {
-    // clone object
+    // Clone object
     var c     = _.clone(o);
 
     var value = c[key];
 
-    // remove non needed key
+    // Remove non needed key
     delete c[key];
 
-    // set new key
+    // Set new key
     _.set(c, newKey, value);
 
-    // return object
+    // Return object
     return c;
   }
 
-  // return a default object
+  // Return a default object
   return {};
 };
 
@@ -60,7 +61,7 @@ Obj.prototype.renameKey = function (o, key, newKey) {
  * @return {Object} object to use. empty object if required checking format is invalid
  */
 Obj.prototype.underscoreKeys = function (o) {
-  // default statement
+  // Default statement
   return this.objUtil.underscoreKeys(o);
 };
 
@@ -71,7 +72,7 @@ Obj.prototype.underscoreKeys = function (o) {
  * @return {Object} object to use. empty object if required checking format is invalid
  */
 Obj.prototype.camelizeKeys = function (o) {
-  // default statement
+  // Default statement
   return this.objUtil.camelizeKeys(o);
 };
 
@@ -82,8 +83,7 @@ Obj.prototype.camelizeKeys = function (o) {
  * @return {Object} object to use. empty object if required checking format is invalid
  */
 Obj.prototype.camelizeKeysMongoose = function (o) {
-
-  // default statement
+  // Default statement
   return this.objUtil.camelizeKeys(JSON.parse(JSON.stringify(o.toObject())));
 };
 
@@ -94,8 +94,7 @@ Obj.prototype.camelizeKeysMongoose = function (o) {
  * @return {Object} object to use. empty object if required checking format is invalid
  */
 Obj.prototype.underscorizeKeysMongoose = function (o) {
-
-  // default statement
+  // Default statement
   return this.objUtil.underscoreKeys(JSON.parse(JSON.stringify(o.toObject())));
 };
 
@@ -107,18 +106,20 @@ Obj.prototype.underscorizeKeysMongoose = function (o) {
  * @return {String} data to a string reprsentation
  */
 Obj.prototype.inspect = function (value, colorize) {
-
-  // default colorize value
+  // Default colorize value
   colorize = !_.isUndefined(colorize) && _.isBoolean(colorize) ? colorize : true;
 
-  // return value from inpect utilities
+  // Return value from inpect utilities
   return util.inspect(value, false, null, colorize);
 };
 
 /**
  * Export Strings
+ *
+ * @param {Object} string strings module instance
+ * @return {Object} instance of Obj class
  */
 module.exports = function (string) {
-  // default statement
-  return new (Obj)(string);
+  // Default statement
+  return new Obj(string);
 };
