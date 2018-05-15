@@ -133,7 +133,7 @@ Crypto.prototype.encrypt = function (key, data, algorithm) {
     crypted += cipher.final('hex');
   } catch (e) {
     // Error too bad so log it
-    this.logger.warning([ '[ Utils.Crypto.encrypt ] -', e ].join(' '));
+    this.logger.verbose([ '[ Utils.Crypto.encrypt ] -', e ].join(' '));
 
     // Set to false when error
     crypted = false;
@@ -175,7 +175,7 @@ Crypto.prototype.decrypt = function (key, data, algorithm) {
     decrypted = JSON.parse(decrypted);
   } catch (e) {
     // Error too bad so log it
-    this.logger.warning([ '[ Utils.Crypto.decrypt ] -', e ].join(' '));
+    this.logger.verbose([ '[ Utils.Crypto.decrypt ] -', e ].join(' '));
 
     // Set to false when error
     decrypted = false;
