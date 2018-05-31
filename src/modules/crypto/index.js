@@ -159,7 +159,7 @@ Crypto.prototype.cryptDecryptInsideArray = function (key, data, algorithm, isEnc
     // Default process
     return _.map(data, function (d) {
       // Default statement
-      return isEncrypt ? this.encrypt(key, d, algorithm) : this.decrypt(key, d, algorithm)
+      return isEncrypt ? this.encrypt(key, d, algorithm) || d : this.decrypt(key, d, algorithm) || d
     }.bind(this));
   }
 
