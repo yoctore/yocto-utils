@@ -144,6 +144,35 @@ Crypto.prototype.encrypt = function (key, data, algorithm) {
 };
 
 /**
+ * Utility function to encrypt/data in an array with a given key
+ *
+ * @method cryptDecryptInsideArray
+ * @param {String} key key to use for encryption
+ * @param {Mixed} data data to encrypt
+ * @param {String} algorithm type of algorithm to use on process
+ * @param {String} isEncrypt true for an encrypt process false otherwise
+ * @return {Array|Boolean} crypted data
+ */
+Crypto.prototype.cryptDecryptInsideArray = function (key, data, algorithm, isEncrypt) {
+  // Only if is an Array
+  if (_.isArray(data)) {
+    // Default process
+    return _.map(data, function (d) {
+      // Default statement
+      return isEncrypt ? this.encrypt(key, d, algorithm) : this.decrypt(key, d, algorithm)
+    }.bind(this));
+  }
+
+  // A warning message in case not an array used in process
+  this.logger.warning([ '[ Utils.Crypto.cryptDecryptInsideArray ] -',
+    'cryptDecryptInsideArray must be used with an Array. A', typeof data, 'was given.'
+  ].join(' '));
+
+  // In other case we do classic process
+  return isEncrypt ? this.encrypt(key, data, algorithm) : this.decrypt(key, data, algorithm);
+};
+
+/**
  * Utility function to decrypt data by a given key
  *
  * @method decrypt

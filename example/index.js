@@ -58,6 +58,12 @@ console.log("Encrypt [ " + dToEncrypt + "] =>", encryptedData);
 
 console.log("Decrypt =>" , crypto.decrypt(key, encryptedData));
 
+console.log('========== ENCRYPT ARRAY INSIDE ======');
+var dToEncrypt = [ 'a', 'b', { 'a' : 1 } ];
+var encryptedData = crypto.cryptDecryptInsideArray(key, dToEncrypt, null, true);
+console.log("Encrypt Array inside [ " + dToEncrypt + "] =>", encryptedData);
+console.log("Decrypt Array inside=>" , crypto.cryptDecryptInsideArray(key, encryptedData, null, false));
+
 console.log('========= DATE ===========');
 console.log("Date list from 1970 to 1990 with no prefix and suffix and no reversed" , date.generateList(1970, 1990));
 console.log("Date list from 1970 to 1990 with prefix and suffix and reversed" , date.generateList(1970, 1990, 'prefix', 'suffix', true));
