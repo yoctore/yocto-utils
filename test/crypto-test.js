@@ -71,7 +71,9 @@ describe('Crypto()', function() {
     { keys : [ 'd41d8cd98f00b204e9800998ecf8427e', 'AAAAAAAAA',  'aes192'  ] },
     { keys : [ '74be16979710d4c4e7c6647856088456', { a : 2 , b : 3 },  'aes192' ] },
     { keys : [ 'acf7ef943fdeb3cbfed8dd0d8f584731', [ { a : 2 } ],  'aes192' ] },
-    { keys : [ '5a8dccb220de5c6775c873ead6ff2e43', 1,  'aes192' ] }
+    { keys : [ '5a8dccb220de5c6775c873ead6ff2e43', 1,  'aes192' ] },
+    { keys : [ '5a8dccb220de5c6775c873ead6ff2e43', [ 'a', 'b', 'c'],  'aes192' ] },
+    { keys : [ '5a8dccb220de5c6775c873ead6ff2e43', [ 'a', 'b', 'c'],  'aes192' ], inside : true }
   ];
 
   d.forEach(function(data) {

@@ -88,6 +88,18 @@ Obj.prototype.camelizeKeysMongoose = function (o) {
 };
 
 /**
+ * Change object key given to a key name underscored for an Mongoose object that are use
+ * Yocto-mongoose crypt
+ *
+ * @param  {Object} o object reference to use
+ * @return {Object} object to use. empty object if required checking format is invalid
+ */
+Obj.prototype.camelizeKeysMongooseCrypt = function (o) {
+  // Default statement
+  return this.objUtil.camelizeKeys(o.toObject());
+};
+
+/**
  * Change object key given to a key name camelized for an Mongoose object
  *
  * @param  {Object} o object reference to use
