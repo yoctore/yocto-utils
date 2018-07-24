@@ -1,6 +1,6 @@
 {
   "name": "yocto-utils",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "Utility tools for : cryptography, date, media, object, strings",
   "scripts": {
     "test": "grunt test"
@@ -30,7 +30,7 @@
   "license": "Apache-2.0",
   "main": "dist/index.js",
   "engines": {
-    "node": ">=8.9.4"
+    "node": ">=8.11.3"
   },
   "keywords": [
     "utility",
@@ -50,15 +50,15 @@
     "README.md"
   ],
   "dependencies": {
-    "joi": "^13.1.2",
-    "lodash": "^4.17.4",
+    "joi": "^13.4.0",
+    "lodash": "^4.17.10",
     "map-obj": "^2.0.0",
-    "moment": "^2.18.1",
+    "moment": "^2.22.2",
     "yocto-logger": "^3.0.0"
   },
   "devDependencies": {
     "chai": "^4.1.2",
-    "grunt": "^1.0.1",
+    "grunt": "^1.0.3",
     "grunt-contrib-uglify": "^3.0.0",
     "grunt-mocha-cli": "^4.0.0",
     "yocto-hint": "^2.0.10"
