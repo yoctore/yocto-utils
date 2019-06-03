@@ -121,7 +121,7 @@ Crypto.prototype.encrypt = function (key, data, algorithm) {
     }
 
     // Default buffer
-    var buffer = new Buffer(key, 'hex').toString();
+    var buffer = new Buffer(key, 'utf-8').toString();
 
     // Stringify data
     data = JSON.stringify(data);
@@ -191,14 +191,31 @@ Crypto.prototype.decrypt = function (key, data, algorithm) {
       throw 'Key cannot be empty and must be a cypher key';
     }
 
+    // Create buffer first
+    var buffer    = new Buffer(key, 'utf-8').toString();
+    var decipher  = crypto.createDecipher(algorithm || 'aes256', buffer.toString());
+
+    // Try this for issue process
+    // in a a issue we use invalid crypto method
+
+    try {
+      decrypted = decipher.update(data, 'hex', 'utf-8');
+      decrypted += decipher.final('utf-8');
+    } catch (e) {
+      buffer = new Buffer(key, 'hex').toString();
+      decipher = crypto.createDecipher(algorithm || 'aes256', buffer.toString());
+      decrypted = decipher.update(encryptedValue, 'hex', 'utf-8');
+      decrypted += decipher.final('utf-8');
+    }
+
     // Default buffer
-    var buffer = new Buffer(key, 'hex').toString();
+    // var buffer = new Buffer(key, 'hex').toString();
 
     // Manage crypher
-    var decipher  = crypto.createDecipher(algorithm || 'aes256', buffer);
+    // var decipher  = crypto.createDecipher(algorithm || 'aes256', buffer);
 
-    decrypted = decipher.update(data, 'hex', 'utf-8');
-    decrypted += decipher.final('utf-8');
+    // decrypted = decipher.update(data, 'hex', 'utf-8');
+    // decrypted += decipher.final('utf-8');
 
     // Return decrypted data
     decrypted = JSON.parse(decrypted);
