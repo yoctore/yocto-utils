@@ -144,6 +144,55 @@ Crypto.prototype.encrypt = function (key, data, algorithm) {
 };
 
 /**
+ * Utility function to decrypt data by a given key
+ *
+ * @method decrypt
+ * @param {String} key key to use for encryption
+ * @param {Mixed} data data to encrypt
+  * @param {String} algorithm type of algorithm to use on process
+ * @return {String|Boolean} decrypted data
+ */
+Crypto.prototype.decrypt = function (key, data, algorithm) {
+  // Default value
+  var decrypted = false;
+
+  try {
+    // Test empty key
+    if (_.isEmpty(key)) {
+      throw 'Key cannot be empty and must be a cypher key';
+    }
+
+    // Create buffer first
+    var buffer    = new Buffer(key, 'utf-8').toString();
+    var decipher  = crypto.createDecipher(algorithm || 'aes256', buffer.toString());
+
+    // Try this for issue process
+    // in a a issue we use invalid crypto method
+    try {
+      decrypted = decipher.update(data, 'hex', 'utf-8');
+      decrypted += decipher.final('utf-8');
+    } catch (e) {
+      buffer = new Buffer(key, 'hex').toString();
+      decipher = crypto.createDecipher(algorithm || 'aes256', buffer.toString());
+      decrypted = decipher.update(data, 'hex', 'utf-8');
+      decrypted += decipher.final('utf-8');
+    }
+
+    // Return decrypted data
+    decrypted = JSON.parse(decrypted);
+  } catch (e) {
+    // Error too bad so log it
+    this.logger.verbose([ '[ Utils.Crypto.decrypt ] -', e ].join(' '));
+
+    // Set to false when error
+    decrypted = false;
+  }
+
+  // Return false if errors occured
+  return decrypted;
+};
+
+/**
  * Utility function to encrypt/data in an array with a given key
  *
  * @method cryptDecryptInsideArray
@@ -170,65 +219,6 @@ Crypto.prototype.cryptDecryptInsideArray = function (key, data, algorithm, isEnc
 
   // In other case we do classic process
   return isEncrypt ? this.encrypt(key, data, algorithm) : this.decrypt(key, data, algorithm);
-};
-
-/**
- * Utility function to decrypt data by a given key
- *
- * @method decrypt
- * @param {String} key key to use for encryption
- * @param {Mixed} data data to encrypt
-  * @param {String} algorithm type of algorithm to use on process
- * @return {String|Boolean} decrypted data
- */
-Crypto.prototype.decrypt = function (key, data, algorithm) {
-  // Default value
-  var decrypted = false;
-
-  try {
-    // Test empty key
-    if (_.isEmpty(key)) {
-      throw 'Key cannot be empty and must be a cypher key';
-    }
-
-    // Create buffer first
-    var buffer    = new Buffer(key, 'utf-8').toString();
-    var decipher  = crypto.createDecipher(algorithm || 'aes256', buffer.toString());
-
-    // Try this for issue process
-    // in a a issue we use invalid crypto method
-
-    try {
-      decrypted = decipher.update(data, 'hex', 'utf-8');
-      decrypted += decipher.final('utf-8');
-    } catch (e) {
-      buffer = new Buffer(key, 'hex').toString();
-      decipher = crypto.createDecipher(algorithm || 'aes256', buffer.toString());
-      decrypted = decipher.update(encryptedValue, 'hex', 'utf-8');
-      decrypted += decipher.final('utf-8');
-    }
-
-    // Default buffer
-    // var buffer = new Buffer(key, 'hex').toString();
-
-    // Manage crypher
-    // var decipher  = crypto.createDecipher(algorithm || 'aes256', buffer);
-
-    // decrypted = decipher.update(data, 'hex', 'utf-8');
-    // decrypted += decipher.final('utf-8');
-
-    // Return decrypted data
-    decrypted = JSON.parse(decrypted);
-  } catch (e) {
-    // Error too bad so log it
-    this.logger.verbose([ '[ Utils.Crypto.decrypt ] -', e ].join(' '));
-
-    // Set to false when error
-    decrypted = false;
-  }
-
-  // Return false if errors occured
-  return decrypted;
 };
 
 /**
