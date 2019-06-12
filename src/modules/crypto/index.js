@@ -144,6 +144,49 @@ Crypto.prototype.encrypt = function (key, data, algorithm) {
 };
 
 /**
+ * Utility function to encrypt data with a given key
+ *
+ * @deprecated
+ * @method encrypt
+ * @param {String} key key to use for encryption
+ * @param {Mixed} data data to encrypt
+ * @param {String} algorithm type of algorithm to use on process
+ * @return {String|Boolean} crypted data
+ */
+Crypto.prototype.encryptOldMethod = function (key, data, algorithm) {
+  // Default value
+  var crypted = false;
+
+  try {
+    // Checking key value
+    if (_.isEmpty(key) || key.length < 32) {
+      throw 'Key cannot be empty and must be 32 chars length min';
+    }
+
+    // Default buffer
+    var buffer = new Buffer(key, 'hex').toString();
+
+    // Stringify data
+    data = JSON.stringify(data);
+
+    // Manage cypher
+    var cipher  = crypto.createCipher(algorithm || 'aes256', buffer);
+
+    crypted = cipher.update(data, 'utf-8', 'hex');
+    crypted += cipher.final('hex');
+  } catch (e) {
+    // Error too bad so log it
+    this.logger.verbose([ '[ Utils.Crypto.encrypt ] -', e ].join(' '));
+
+    // Set to false when error
+    crypted = false;
+  }
+
+  // Return false if errors occured
+  return crypted;
+};
+
+/**
  * Utility function to decrypt data by a given key
  *
  * @method decrypt
